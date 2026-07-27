@@ -22,8 +22,36 @@ local normal_nc = vim.api.nvim_get_hl(0, { name = "NormalNC", link = false })
 assert(normal_nc.fg == normal.fg and normal_nc.bg == normal.bg)
 
 local separator = vim.api.nvim_get_hl(0, { name = "WinSeparator", link = false })
-assert(separator.fg == tonumber("090909", 16))
+assert(separator.fg == tonumber("000000", 16))
 assert(separator.bg == nil)
+assert(vim.api.nvim_get_hl(0, { name = "VertSplit" }).link == "WinSeparator")
+
+local line_nr = vim.api.nvim_get_hl(0, { name = "LineNr", link = false })
+local cursor_line_nr = vim.api.nvim_get_hl(0, { name = "CursorLineNr", link = false })
+assert(line_nr.fg == tonumber(limei.get_palette().fg_hidden:sub(2), 16))
+assert(vim.api.nvim_get_hl(0, { name = "LineNrAbove" }).link == "LineNr")
+assert(vim.api.nvim_get_hl(0, { name = "LineNrBelow" }).link == "LineNr")
+assert(cursor_line_nr.fg == tonumber(limei.get_palette().fg_dim:sub(2), 16))
+assert(cursor_line_nr.fg ~= tonumber(limei.get_palette().fg_bright:sub(2), 16))
+assert(cursor_line_nr.bold == true)
+
+local match_paren = vim.api.nvim_get_hl(0, { name = "MatchParen", link = false })
+assert(match_paren.bold == true)
+for _, attribute in ipairs({ "fg", "bg", "sp", "underline", "undercurl", "reverse", "standout", "italic" }) do
+  assert(match_paren[attribute] == nil or match_paren[attribute] == false)
+end
+
+for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
+  local group = vim.api.nvim_get_hl(0, { name = name, link = false })
+  assert(group.fg == tonumber(limei.get_palette().fg_hidden:sub(2), 16))
+  assert(group.bg == nil and group.bold ~= true and group.italic ~= true)
+end
+
+local end_of_buffer = vim.api.nvim_get_hl(0, { name = "EndOfBuffer", link = false })
+assert(end_of_buffer.fg == normal.bg and end_of_buffer.bg == normal.bg)
+
+local float_border = vim.api.nvim_get_hl(0, { name = "FloatBorder" })
+assert(float_border.link ~= "WinSeparator")
 
 local directory = vim.api.nvim_get_hl(0, { name = "Directory", link = false })
 local oil_dir = vim.api.nvim_get_hl(0, { name = "OilDir", link = false })

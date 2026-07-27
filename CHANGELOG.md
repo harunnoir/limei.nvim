@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.4]
+
+### Changed
+
+- Reduced the visibility of ordinary whitespace markers.
+- Dimmed ordinary line numbers while keeping the current line number gently clearer.
+- Changed matching-bracket emphasis to bold-only while preserving existing bracket colors.
+- Changed split separators to a foreground-only `#000000` character.
+- Continued the conservative semantic color-usage audit.
+
+### Fixed
+
+- Fixed whitespace markers competing visually with normal code.
+- Fixed matching brackets receiving unnecessary color and background changes.
+
 ## [1.0.1]
 
 ### Changed

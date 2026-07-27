@@ -134,10 +134,21 @@ for name, value in pairs(groups) do
 end
 
 check(groups.NormalNC.link == "Normal", "NormalNC does not inherit Normal")
-check(groups.WinSeparator.fg == colors.separator and groups.WinSeparator.bg == nil, "separator is not foreground-only")
+check(groups.WinSeparator.fg == "#000000" and groups.WinSeparator.bg == nil, "separator is not black foreground-only")
 check(groups.VertSplit.link == "WinSeparator", "VertSplit does not inherit WinSeparator")
 check(groups.OilDir.link == "Directory", "OilDir does not inherit Directory")
 check(groups.OilDirIcon.link == "Directory", "OilDirIcon does not inherit Directory")
+check(groups.LineNr.fg == colors.fg_hidden, "LineNr does not use the hidden foreground")
+check(groups.LineNrAbove.link == "LineNr", "LineNrAbove does not inherit LineNr")
+check(groups.LineNrBelow.link == "LineNr", "LineNrBelow does not inherit LineNr")
+check(groups.CursorLineNr.fg == colors.fg_dim and groups.CursorLineNr.bold, "CursorLineNr hierarchy is incorrect")
+check(groups.MatchParen.bold and vim.tbl_count(groups.MatchParen) == 1, "MatchParen must contain only bold emphasis")
+for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
+  check(groups[name].fg == colors.fg_hidden, name .. " does not use the hidden foreground")
+  check(groups[name].bg == nil and not groups[name].bold, name .. " contains distracting attributes")
+end
+check(groups.EndOfBuffer.fg == groups.Normal.bg and groups.EndOfBuffer.bg == groups.Normal.bg, "EndOfBuffer is visible")
+check(groups.FloatBorder.link ~= "WinSeparator", "FloatBorder inherits the split separator")
 
 local readme = table.concat(vim.fn.readfile("README.md"), "\n"):lower()
 for role, meaning in pairs(palette.semantic) do

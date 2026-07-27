@@ -17,7 +17,7 @@ function M.get(c, options)
     WinBarNC = { fg = c.fg_muted, bg = bg },
 
     -- Split separators
-    WinSeparator = { fg = c.separator },
+    WinSeparator = { fg = "#000000" },
     VertSplit = { link = "WinSeparator" },
 
     -- Cursor and current line
@@ -29,10 +29,10 @@ function M.get(c, options)
     CursorLine = { bg = c.bg_alt },
     CursorColumn = { bg = c.bg_alt },
     ColorColumn = { bg = c.bg_alt },
-    LineNr = { fg = c.fg_muted },
+    LineNr = { fg = c.fg_hidden },
     LineNrAbove = { link = "LineNr" },
     LineNrBelow = { link = "LineNr" },
-    CursorLineNr = { fg = c.fg_bright, bold = true },
+    CursorLineNr = { fg = c.fg_dim, bold = true },
     CursorLineSign = { fg = c.fg_dim, bg = c.bg_alt },
     CursorLineFold = { fg = c.fg_dim, bg = c.bg_alt },
     SignColumn = { fg = c.fg_muted, bg = bg },
@@ -46,7 +46,7 @@ function M.get(c, options)
     CurSearch = { fg = c.bg, bg = c.warning, bold = true },
     IncSearch = { fg = c.bg, bg = c.warning, bold = true },
     Substitute = { fg = c.bg, bg = c.transform, bold = true },
-    MatchParen = { fg = c.type, bg = c.bg_active, bold = true, underline = true },
+    MatchParen = { bold = true },
 
     -- Tabs and statusline
     StatusLine = { fg = c.fg, bg = c.bg_surface },
@@ -76,7 +76,7 @@ function M.get(c, options)
     WildMenu = { link = "PmenuSel" },
 
     -- Whitespace and separators
-    Whitespace = { fg = c.whitespace },
+    Whitespace = { fg = c.fg_hidden },
     NonText = { fg = c.fg_hidden },
     SpecialKey = { fg = c.fg_hidden },
 

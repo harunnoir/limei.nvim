@@ -67,11 +67,26 @@ punctuation, paths, and metadata stay neutral or dim.
 Floating windows, completion menus, and plugin popups stay close to the editor
 background. Active and inactive splits share one editor background, with focus
 communicated by ordinary editor cues. Split separators are subtle
-darker-than-background lines. Floats use visible muted neutral borders,
+darker-than-background characters. Floats use visible muted neutral borders,
 including standard LSP hover documentation.
 
 Critical states use signs, labels, undercurls, icons, or text styles where the
 interface supports them, rather than relying on hue alone.
+
+## Quiet structural cues
+
+Limei keeps ordinary line numbers dim so they remain available without
+competing with code. The current line number is slightly clearer.
+
+Ordinary bracket colors remain unchanged. Matching brackets gain bold emphasis
+only, preserving their original syntax color.
+
+Active and inactive splits share the same editor background. A foreground-only
+black separator provides a subtle boundary between windows.
+
+Whitespace markers use very low-contrast neutral colors. They remain
+discoverable when needed without becoming immediate visual noise, while
+end-of-buffer markers disappear into the editor background.
 
 ## Requirements
 
@@ -143,7 +158,7 @@ Transparency removes only editor canvas backgrounds. Popups and menus remain
 opaque for readability. Active and inactive editing windows share the same
 background; focus remains visible through the cursor, cursor line, current line
 number, statusline, and winbar. Split separators use a thin foreground-only line
-slightly darker than the editor background.
+that is darker than the editor background.
 
 The deprecated `dim_inactive` option is still accepted for compatibility but no
 longer changes any highlight.
