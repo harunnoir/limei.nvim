@@ -11,6 +11,8 @@ that remains readable and comfortable after ten hours.
 
 > Screenshot placeholder — add representative code, picker, and explorer
 > screenshots before publishing.
+<img width="1340" height="726" alt="image" src="https://github.com/user-attachments/assets/7e918655-6d03-470e-a9ee-d3817bcfde64" />
+<img width="1340" height="726" alt="image" src="https://github.com/user-attachments/assets/325867c0-45f1-4666-a4f8-d435ba52a4b6" />
 
 ## A quiet, neutral palette
 
