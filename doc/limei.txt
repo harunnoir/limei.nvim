@@ -29,6 +29,9 @@ Optional Lua setup: >
     transparent = false,
     dim_inactive = true,
     terminal_colors = true,
+    palette = {},
+    roles = {},
+    highlights = {},
   })
   vim.cmd.colorscheme("limei")
 <
@@ -47,6 +50,9 @@ styles            Optional attributes for comments, keywords, functions, and
                   variables.
 
 palette           Palette overrides applied before highlights are generated.
+
+roles             Semantic role overrides. Values may be palette keys or
+                  #RRGGBB colors. Resolved after palette overrides.
 
 highlights        A table or function returning final highlight overrides.
 

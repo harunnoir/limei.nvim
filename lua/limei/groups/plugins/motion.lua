@@ -5,7 +5,7 @@ function M.get(c)
     -- flash.nvim
     FlashLabel = { fg = c.bg, bg = c.warning, bold = true },
     FlashMatch = { fg = c.type },
-    FlashCurrent = { fg = c.transform, underline = true },
+    FlashCurrent = { fg = c.transformation, underline = true },
     FlashBackdrop = { fg = c.fg_muted },
 
     -- todo-comments.nvim
@@ -13,7 +13,7 @@ function M.get(c)
     TodoFgWARN = { fg = c.warning, bold = true },
     TodoFgTODO = { fg = c.warning, bold = true },
     TodoFgNOTE = { fg = c.information, bold = true },
-    TodoFgPERF = { fg = c.symbol, bold = true },
+    TodoFgPERF = { fg = c.constant, bold = true },
     TodoSignFIX = { link = "TodoFgFIX" },
     TodoSignWARN = { link = "TodoFgWARN" },
     TodoSignTODO = { link = "TodoFgTODO" },

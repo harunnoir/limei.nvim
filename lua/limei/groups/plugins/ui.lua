@@ -21,7 +21,7 @@ function M.get(c)
     WhichKeyBorder = { link = "FloatBorder" },
     WhichKey = { fg = c.type },
     WhichKeyDesc = { fg = c.fg },
-    WhichKeyGroup = { fg = c.structure },
+    WhichKeyGroup = { fg = c.keyword },
     WhichKeySeparator = { fg = c.fg_hidden },
     WhichKeyValue = { fg = c.fg_muted },
     NoicePopup = { link = "NormalFloat" },
@@ -35,9 +35,9 @@ function M.get(c)
 
     -- slimline.nvim and bufferline.nvim
     SlimlineModeNormal = { fg = c.fg_bright, bold = true },
-    SlimlineModeInsert = { fg = c.literal, bold = true },
-    SlimlineModeVisual = { fg = c.symbol, bold = true },
-    SlimlineModeReplace = { fg = c.transform, bold = true },
+    SlimlineModeInsert = { fg = c.string, bold = true },
+    SlimlineModeVisual = { fg = c.constant, bold = true },
+    SlimlineModeReplace = { fg = c.transformation, bold = true },
     SlimlineModeCommand = { fg = c.fg_bright, bold = true },
     SlimlineInactive = { fg = c.fg_muted },
     BufferLineFill = { link = "TabLineFill" },

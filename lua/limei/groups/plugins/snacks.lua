@@ -34,6 +34,10 @@ function M.get(c)
     SnacksPickerGitStatusAdded = { link = "LimeiAdded" },
     SnacksPickerGitStatusModified = { fg = c.warning },
     SnacksPickerGitStatusDeleted = { link = "LimeiRemoved" },
+    SnacksPickerGitStatusStaged = { fg = c.staged },
+    SnacksPickerGitStatusUntracked = { fg = c.untracked },
+    SnacksPickerGitStatusUnmerged = { fg = c.conflict },
+    SnacksPickerGitStatusRenamed = { fg = c.renamed },
     SnacksPickerPathHidden = { fg = c.fg_muted },
     SnacksPickerPathIgnored = { fg = c.fg_hidden },
 

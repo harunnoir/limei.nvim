@@ -4,7 +4,7 @@ function M.get(c, options)
   local bg = options.transparent and "NONE" or c.bg
   local deep = options.transparent and "NONE" or c.bg_deep
   local inactive = options.transparent and "NONE" or c.bg_inactive
-  local normal_nc = options.dim_inactive and { fg = c.fg_dim, bg = inactive } or { fg = c.fg, bg = bg }
+  local normal_nc = options.dim_inactive and { fg = c.fg, bg = inactive } or { fg = c.fg, bg = bg }
   local inactive_surface = options.dim_inactive and inactive or c.bg_alt
 
   return {
@@ -20,8 +20,8 @@ function M.get(c, options)
     WinBarNC = { fg = c.fg_muted, bg = inactive_surface },
 
     -- Split separators
-    WinSeparator = { fg = c.separator, bg = c.separator },
-    VertSplit = { fg = c.separator, bg = c.separator },
+    WinSeparator = { fg = c.separator },
+    VertSplit = { link = "WinSeparator" },
 
     -- Cursor and current line
     Cursor = { fg = c.bg, bg = c.fg_bright },
@@ -29,9 +29,9 @@ function M.get(c, options)
     CursorIM = { link = "Cursor" },
     TermCursor = { link = "Cursor" },
     TermCursorNC = { fg = c.bg, bg = c.fg_dim },
-    CursorLine = { bg = c.bg_alt },
-    CursorColumn = { bg = c.bg_alt },
-    ColorColumn = { bg = c.bg_alt },
+    CursorLine = { bg = c.bg_cursorline },
+    CursorColumn = { bg = c.bg_cursorline },
+    ColorColumn = { bg = c.bg_cursorline },
     LineNr = { fg = c.fg_muted },
     LineNrAbove = { link = "LineNr" },
     LineNrBelow = { link = "LineNr" },
@@ -48,7 +48,7 @@ function M.get(c, options)
     Search = { fg = c.type, bg = c.bg_selection },
     CurSearch = { fg = c.bg, bg = c.warning, bold = true },
     IncSearch = { fg = c.bg, bg = c.warning, bold = true },
-    Substitute = { fg = c.bg, bg = c.transform, bold = true },
+    Substitute = { fg = c.bg, bg = c.transformation, bold = true },
     MatchParen = { fg = c.type, bg = c.bg_active, bold = true, underline = true },
 
     -- Tabs and statusline
@@ -75,7 +75,7 @@ function M.get(c, options)
     PmenuMatch = { fg = c.type, bg = c.bg_popup },
     PmenuMatchSel = { fg = c.type, bg = c.bg_selection, bold = true },
     PmenuSbar = { bg = c.bg_alt },
-    PmenuThumb = { bg = c.fg_hidden },
+    PmenuThumb = { bg = c.scrollbar },
     WildMenu = { link = "PmenuSel" },
 
     -- Whitespace and separators
@@ -92,9 +92,9 @@ function M.get(c, options)
     QuickFixLine = { fg = c.fg_bright, bg = c.bg_selection },
 
     -- Diff and spelling
-    DiffAdd = { fg = c.literal, bg = c.bg_alt },
-    DiffChange = { fg = c.warning, bg = c.bg_alt },
-    DiffDelete = { fg = c.error, bg = c.bg_alt },
+    DiffAdd = { fg = c.added, bg = c.bg_alt },
+    DiffChange = { fg = c.changed, bg = c.bg_alt },
+    DiffDelete = { fg = c.deleted, bg = c.bg_alt },
     DiffText = { fg = c.fg_bright, bg = c.bg_selection, bold = true },
     Added = { link = "LimeiAdded" },
     Changed = { link = "LimeiChanged" },

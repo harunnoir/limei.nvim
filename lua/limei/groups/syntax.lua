@@ -14,29 +14,29 @@ function M.get(c, options)
     LimeiFunction = vim.tbl_extend("force", { fg = c.callable }, styles.functions),
 
     -- Comments and documentation
-    LimeiComment = vim.tbl_extend("force", { fg = c.fg_muted }, styles.comments),
+    LimeiComment = vim.tbl_extend("force", { fg = c.comment }, styles.comments),
     LimeiDocComment = { fg = c.fg_dim },
 
     -- Keywords and language structure
-    LimeiKeyword = vim.tbl_extend("force", { fg = c.structure }, styles.keywords),
-    LimeiDeclaration = vim.tbl_extend("force", { fg = c.structure }, styles.keywords),
-    LimeiControl = { fg = c.structure },
+    LimeiKeyword = vim.tbl_extend("force", { fg = c.keyword }, styles.keywords),
+    LimeiDeclaration = vim.tbl_extend("force", { fg = c.keyword }, styles.keywords),
+    LimeiControl = { fg = c.keyword },
     LimeiException = { fg = c.conflict },
-    LimeiReturn = { fg = c.structure },
+    LimeiReturn = { fg = c.keyword },
     LimeiImport = { fg = c.navigation },
-    LimeiRegex = { fg = c.transform },
-    LimeiSpecial = { fg = c.transform },
+    LimeiRegex = { fg = c.transformation },
+    LimeiSpecial = { fg = c.transformation },
 
     -- Strings and textual literals
-    LimeiString = { fg = c.literal },
+    LimeiString = { fg = c.string },
     LimeiEscape = { fg = c.type },
 
     -- Numbers, logic, and symbolic identity
-    LimeiNumber = { fg = c.numeric },
-    LimeiBoolean = { fg = c.logic },
-    LimeiConstant = { fg = c.symbol },
-    LimeiBuiltinConstant = { fg = c.symbol },
-    LimeiEnum = { fg = c.logic },
+    LimeiNumber = { fg = c.number },
+    LimeiBoolean = { fg = c.boolean },
+    LimeiConstant = { fg = c.constant },
+    LimeiBuiltinConstant = { fg = c.constant },
+    LimeiEnum = { fg = c.boolean },
 
     -- Types, schemas, and secondary structure
     LimeiType = { fg = c.type },
@@ -48,11 +48,11 @@ function M.get(c, options)
     LimeiError = { fg = c.error },
     LimeiWarning = { fg = c.warning },
     LimeiInfo = { fg = c.information },
-    LimeiHint = { fg = c.literal },
+    LimeiHint = { fg = c.string },
     LimeiSuccess = { fg = c.success },
-    LimeiAdded = { fg = c.literal },
-    LimeiChanged = { fg = c.warning },
-    LimeiRemoved = { fg = c.error },
+    LimeiAdded = { fg = c.added },
+    LimeiChanged = { fg = c.changed },
+    LimeiRemoved = { fg = c.deleted },
 
     -- Legacy syntax
     Comment = { link = "LimeiComment" },

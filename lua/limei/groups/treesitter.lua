@@ -68,7 +68,7 @@ function M.get(c)
     ["@comment.error"] = { fg = c.error, bold = true },
     ["@comment.warning"] = { fg = c.warning, bold = true },
     ["@comment.todo"] = { fg = c.warning, bold = true },
-    ["@comment.note"] = { fg = c.literal, bold = true },
+    ["@comment.note"] = { fg = c.string, bold = true },
 
     -- Markup
     ["@markup.heading"] = { link = "Title" },

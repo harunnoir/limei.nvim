@@ -11,18 +11,28 @@ assert(vim.g.colors_name == "limei")
 
 load()
 assert(require("limei.config").options.dim_inactive == true)
+local palette = limei.get_palette()
+assert(vim.api.nvim_get_hl(0, { name = "Normal" }).bg == tonumber(palette.bg:sub(2), 16))
+assert(vim.api.nvim_get_hl(0, { name = "NormalNC" }).bg == tonumber(palette.bg_inactive:sub(2), 16))
+assert(vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg == tonumber(palette.bg_popup:sub(2), 16))
+assert(vim.api.nvim_get_hl(0, { name = "WinSeparator" }).bg == nil)
+assert(vim.g.terminal_color_4 == palette.blue)
+assert(vim.g.terminal_color_6 == palette.teal)
+assert(vim.g.terminal_color_12 == palette.sky)
+assert(vim.g.terminal_color_14 == palette.cyan)
 
 load({ transparent = true })
 assert(vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil)
 assert(vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg ~= nil)
 
 load({ dim_inactive = false })
-load({ palette = { bg = "#0e0e0e", callable = "#99887b" } })
-assert(limei.get_palette().bg == "#0e0e0e")
-assert(limei.get_palette().callable == "#99887b")
+load({ palette = { bg = "#0e0f10", blue = "#8290a4" } })
+assert(limei.get_palette().bg == "#0e0f10")
+assert(limei.get_roles().callable == "#8290a4")
 
-load({ palette = { function_color = "#97877a" } })
-assert(limei.get_palette().callable == "#97877a")
+load({ roles = { callable = "violet", variable = "#aa8174" } })
+assert(limei.get_roles().callable == limei.get_palette().violet)
+assert(limei.get_roles().variable == "#aa8174")
 
 load({ highlights = { Comment = { fg = "#706c66", italic = true } } })
 assert(vim.api.nvim_get_hl(0, { name = "Comment" }).italic == true)
@@ -34,7 +44,9 @@ load({
 })
 assert(vim.api.nvim_get_hl(0, { name = "TestLimeiOverride" }).fg ~= nil)
 
+local colors = vim.tbl_extend("force", limei.get_palette(), limei.get_roles())
 for _, module in ipairs({
+  "ai",
   "completion",
   "dap",
   "files",
@@ -48,7 +60,7 @@ for _, module in ipairs({
   "testing",
   "ui",
 }) do
-  local groups = require("limei.groups.plugins." .. module).get(limei.get_palette())
+  local groups = require("limei.groups.plugins." .. module).get(colors)
   assert(type(groups) == "table" and next(groups) ~= nil)
 end
 
@@ -87,6 +99,23 @@ for filetype, line in pairs(samples) do
   vim.bo.filetype = filetype
   vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(line, "\n"))
   vim.cmd.syntax("on")
+end
+
+local seen = {}
+for _, role in ipairs({
+  "variable",
+  "callable",
+  "keyword",
+  "string",
+  "number",
+  "type",
+  "constant",
+  "boolean",
+  "comment",
+}) do
+  local value = limei.get_roles()[role]
+  assert(seen[value] == nil, role .. " duplicates " .. tostring(seen[value]))
+  seen[value] = role
 end
 
 limei.load()
