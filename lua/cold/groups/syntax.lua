@@ -1,0 +1,72 @@
+local M = {}
+
+function M.get(c, options)
+  local styles = options.styles
+
+  return {
+    -- Reusable semantic groups
+    ColdText = { fg = c.fg },
+    ColdVariable = vim.tbl_extend("force", { fg = c.fg }, styles.variables),
+    ColdFunction = vim.tbl_extend("force", { fg = c.fg_bright }, styles.functions),
+    ColdMuted = { fg = c.fg_dim },
+    ColdPunctuation = { fg = c.fg_muted },
+    ColdComment = vim.tbl_extend("force", { fg = c.fg_muted }, styles.comments),
+    ColdDocComment = { fg = c.fg_dim },
+    ColdKeyword = vim.tbl_extend("force", { fg = c.steel }, styles.keywords),
+    ColdString = { fg = c.sage },
+    ColdEscape = { fg = c.mist },
+    ColdNumber = { fg = c.amber },
+    ColdBoolean = { fg = c.ochre },
+    ColdConstant = { fg = c.lavender },
+    ColdType = { fg = c.mist },
+    ColdNamespace = { fg = c.clay },
+    ColdRegex = { fg = c.rose },
+    ColdSpecial = { fg = c.wheat },
+    ColdError = { fg = c.rose },
+    ColdWarning = { fg = c.amber },
+    ColdInfo = { fg = c.steel },
+    ColdHint = { fg = c.mist },
+    ColdAdded = { fg = c.sage },
+    ColdChanged = { fg = c.ochre },
+    ColdRemoved = { fg = c.rose },
+
+    -- Legacy syntax
+    Comment = { link = "ColdComment" },
+    SpecialComment = { link = "ColdDocComment" },
+    Constant = { link = "ColdConstant" },
+    String = { link = "ColdString" },
+    Character = { link = "ColdString" },
+    Number = { link = "ColdNumber" },
+    Boolean = { link = "ColdBoolean" },
+    Float = { link = "ColdNumber" },
+    Identifier = { link = "ColdVariable" },
+    Function = { link = "ColdFunction" },
+    Statement = { link = "ColdKeyword" },
+    Conditional = { link = "ColdKeyword" },
+    Repeat = { link = "ColdKeyword" },
+    Label = { link = "ColdKeyword" },
+    Operator = { link = "ColdMuted" },
+    Keyword = { link = "ColdKeyword" },
+    Exception = { link = "ColdKeyword" },
+    PreProc = { link = "ColdKeyword" },
+    Include = { link = "ColdKeyword" },
+    Define = { link = "ColdKeyword" },
+    Macro = { link = "ColdKeyword" },
+    PreCondit = { link = "ColdKeyword" },
+    Type = { link = "ColdType" },
+    StorageClass = { link = "ColdKeyword" },
+    Structure = { link = "ColdType" },
+    Typedef = { link = "ColdType" },
+    Special = { link = "ColdSpecial" },
+    SpecialChar = { link = "ColdEscape" },
+    Tag = { link = "ColdKeyword" },
+    Delimiter = { link = "ColdPunctuation" },
+    Debug = { link = "ColdWarning" },
+    Underlined = { fg = c.fg_dim, underline = true },
+    Ignore = { link = "ColdPunctuation" },
+    Error = { link = "ColdError" },
+    Todo = { fg = c.wheat, bold = true },
+  }
+end
+
+return M

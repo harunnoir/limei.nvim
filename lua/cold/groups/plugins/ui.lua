@@ -1,0 +1,142 @@
+local M = {}
+
+function M.get(c)
+  return {
+    -- lazy.nvim and mason.nvim
+    LazyNormal = { link = "NormalFloat" },
+    LazyButton = { link = "Pmenu" },
+    LazyButtonActive = { link = "PmenuSel" },
+    LazyH1 = { link = "FloatTitle" },
+    LazySpecial = { fg = c.wheat },
+    LazyComment = { link = "Comment" },
+    MasonNormal = { link = "NormalFloat" },
+    MasonHeader = { fg = c.fg_bright, bg = c.bg_surface, bold = true },
+    MasonHeaderSecondary = { link = "FloatBorder" },
+    MasonHighlight = { fg = c.steel },
+    MasonHighlightBlockBold = { link = "PmenuSel" },
+    MasonMuted = { fg = c.fg_muted },
+
+    -- WhichKey, Noice, Notify, and nui.nvim
+    WhichKeyNormal = { link = "NormalFloat" },
+    WhichKeyBorder = { link = "FloatBorder" },
+    WhichKey = { fg = c.wheat },
+    WhichKeyDesc = { fg = c.fg },
+    WhichKeyGroup = { fg = c.clay },
+    WhichKeySeparator = { fg = c.fg_hidden },
+    WhichKeyValue = { fg = c.fg_muted },
+    NoicePopup = { link = "NormalFloat" },
+    NoicePopupBorder = { link = "FloatBorder" },
+    NoiceCmdlinePopup = { link = "NormalFloat" },
+    NoiceCmdlinePopupBorder = { link = "FloatBorder" },
+    NotifyBackground = { link = "NormalFloat" },
+    NotifyERRORBorder = { link = "DiagnosticError" },
+    NotifyWARNBorder = { link = "DiagnosticWarn" },
+    NotifyINFOBorder = { link = "DiagnosticInfo" },
+
+    -- slimline.nvim and bufferline.nvim
+    SlimlineModeNormal = { fg = c.fg_bright, bold = true },
+    SlimlineModeInsert = { fg = c.sage, bold = true },
+    SlimlineModeVisual = { fg = c.lavender, bold = true },
+    SlimlineModeReplace = { fg = c.rose, bold = true },
+    SlimlineModeCommand = { fg = c.wheat, bold = true },
+    SlimlineInactive = { fg = c.fg_muted },
+    BufferLineFill = { link = "TabLineFill" },
+    BufferLineBackground = { link = "TabLine" },
+    BufferLineBufferVisible = { link = "TabLine" },
+    BufferLineBufferSelected = { link = "TabLineSel" },
+    BufferLineSeparator = { link = "WinSeparator" },
+    BufferLineModified = { fg = c.ochre },
+
+    -- satellite.nvim and columns
+    SatelliteBackground = { fg = c.fg_hidden },
+    SatelliteBar = { fg = c.fg_muted },
+    SatelliteCursor = { fg = c.fg_dim },
+    SatelliteSearch = { fg = c.wheat },
+    SatelliteSearchCurrent = { fg = c.amber },
+    SatelliteDiagnosticError = { link = "DiagnosticError" },
+    SatelliteDiagnosticWarn = { link = "DiagnosticWarn" },
+    SatelliteDiagnosticInfo = { link = "DiagnosticInfo" },
+    SatelliteDiagnosticHint = { link = "DiagnosticHint" },
+    SatelliteGitSignsAdd = { link = "ColdAdded" },
+    SatelliteGitSignsChange = { link = "ColdChanged" },
+    SatelliteGitSignsDelete = { link = "ColdRemoved" },
+    VirtColumn = { fg = c.fg_hidden },
+
+    -- overseer.nvim
+    OverseerSUCCESS = { fg = c.sage },
+    OverseerRUNNING = { fg = c.amber },
+    OverseerFAILURE = { fg = c.rose },
+    OverseerPENDING = { fg = c.fg_dim },
+    OverseerCANCELED = { fg = c.fg_muted },
+    OverseerDISPOSED = { fg = c.fg_hidden },
+    OverseerTaskBorder = { link = "FloatBorder" },
+
+    -- Flash and todo-comments.nvim
+    FlashLabel = { fg = c.bg, bg = c.amber, bold = true },
+    FlashMatch = { fg = c.wheat },
+    FlashCurrent = { fg = c.clay },
+    FlashBackdrop = { fg = c.fg_muted },
+    TodoFgFIX = { fg = c.rose, bold = true },
+    TodoFgWARN = { fg = c.amber, bold = true },
+    TodoFgTODO = { fg = c.wheat, bold = true },
+    TodoFgNOTE = { fg = c.mist, bold = true },
+    TodoFgPERF = { fg = c.lavender, bold = true },
+    TodoSignFIX = { link = "TodoFgFIX" },
+    TodoSignWARN = { link = "TodoFgWARN" },
+    TodoSignTODO = { link = "TodoFgTODO" },
+    TodoSignNOTE = { link = "TodoFgNOTE" },
+    TodoSignPERF = { link = "TodoFgPERF" },
+
+    -- grug-far.nvim
+    GrugFarInputLabel = { fg = c.fg_bright, bold = true },
+    GrugFarInputPlaceholder = { fg = c.fg_muted },
+    GrugFarResultsMatch = { fg = c.wheat, bold = true },
+    GrugFarCurrentMatch = { link = "CurSearch" },
+    GrugFarResultsPath = { fg = c.steel },
+    GrugFarResultsLineNr = { link = "LineNr" },
+    GrugFarResultsAddIndicator = { link = "ColdAdded" },
+    GrugFarResultsRemoveIndicator = { link = "ColdRemoved" },
+
+    -- Marks, Harpoon, Yanky, hardtime, ToggleTerm, and nvim-ufo
+    MarkSignHL = { fg = c.wheat },
+    MarkSignNumHL = { fg = c.fg_dim },
+    HarpoonCurrentFile = { fg = c.wheat, bold = true },
+    YankyPut = { link = "Search" },
+    YankyYanked = { link = "IncSearch" },
+    HardtimeGroup = { fg = c.amber },
+    HauntAnnotation = { link = "DiagnosticVirtualTextHint" },
+    HauntAnnotationBorder = { link = "FloatBorder" },
+    ToggleTermNormal = { link = "Normal" },
+    ToggleTermNormalFloat = { link = "NormalFloat" },
+    UfoFoldedBg = { bg = c.bg_alt },
+    UfoCursorFoldedLine = { link = "CursorLine" },
+    UfoPreviewSbar = { bg = c.bg_alt },
+    UfoPreviewThumb = { bg = c.fg_muted },
+
+    -- leetcode.nvim
+    leetcode_easy = { fg = c.sage },
+    leetcode_medium = { fg = c.amber },
+    leetcode_hard = { fg = c.rose },
+    leetcode_easy_alt = { fg = c.sage_dim },
+    leetcode_medium_alt = { fg = c.amber_dim },
+    leetcode_hard_alt = { fg = c.rose_dim },
+    leetcode_calendar_0 = { fg = c.fg_hidden },
+    leetcode_calendar_10 = { fg = c.sage_dim },
+    leetcode_calendar_20 = { fg = c.sage_dim },
+    leetcode_calendar_30 = { fg = c.sage_dim },
+    leetcode_calendar_40 = { fg = c.sage_dim },
+    leetcode_calendar_50 = { fg = c.sage },
+    leetcode_calendar_60 = { fg = c.sage },
+    leetcode_calendar_70 = { fg = c.sage },
+    leetcode_calendar_80 = { fg = c.sage },
+    leetcode_calendar_90 = { fg = c.sage },
+    leetcode_calendar_100 = { fg = c.sage },
+
+    -- Generic health groups
+    healthError = { link = "ColdError" },
+    healthWarning = { link = "ColdWarning" },
+    healthSuccess = { link = "ColdAdded" },
+  }
+end
+
+return M
