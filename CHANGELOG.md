@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.0.0]
+
+### Added
+
+- Added the first stable release of cold.nvim.
+- Added a complete semantic color-language system.
+- Added distinct identities for variables, callables, keywords, literals, numbers, types, constants, and logical values.
+- Added quiet active, inactive, popup, and floating-window surface hierarchies.
+- Added visible neutral floating-window borders and dark inactive splits.
+- Added verified support for the visible plugin environment.
+- Added palette auditing, headless smoke tests, CI, Vim help documentation, and development commands.
+
+### Changed
+
+- Refined the palette for long-session visual comfort and balanced color frequency.
+- Removed remaining blue and cool-color dominance from common structural roles.
+- Unified syntax, Treesitter, semantic tokens, completion, LSP, diagnostics, Git, DAP, testing, and plugin states.
+- Reduced repetitive color reuse between unrelated high-frequency code categories.
+- Darkened popup surfaces and integrated Snacks and other floating interfaces with the editor.
+- Changed inactive splits to a slightly darker background by default.
+- Changed split separators to a black, unobtrusive gap.
+- Simplified and documented the project structure.
+
+### Removed
+
+- Removed contradictory, arbitrary, obsolete, and unused palette definitions.
+- Removed duplicated pigment-level mappings from core highlight modules.
+
 ## [0.4.0]
 
 ### Added

@@ -1,15 +1,17 @@
 local M = {}
 
 local modules = {
-  "blink",
+  "completion",
   "dap",
-  "fzf",
+  "finder",
   "git",
   "lsp",
   "markdown",
   "mini",
-  "oil",
+  "motion",
+  "files",
   "snacks",
+  "testing",
   "ui",
 }
 

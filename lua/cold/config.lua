@@ -2,12 +2,12 @@ local M = {}
 
 M.defaults = {
   transparent = false,
-  dim_inactive = false,
+  dim_inactive = true,
   terminal_colors = true,
   styles = {
-    comments = {},
-    keywords = {},
-    functions = {},
+    comments = { italic = false },
+    keywords = { italic = false },
+    functions = { bold = false },
     variables = {},
   },
   palette = {},

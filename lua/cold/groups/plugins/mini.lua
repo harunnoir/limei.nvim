@@ -14,17 +14,17 @@ function M.get(c)
     MiniStarterItem = { fg = c.fg },
     MiniStarterItemBullet = { fg = c.fg_muted },
     MiniStarterItemPrefix = { fg = c.fg_muted },
-    MiniStarterQuery = { fg = c.wheat },
+    MiniStarterQuery = { fg = c.type },
     MiniStarterSection = { fg = c.fg_bright, bold = true },
 
     -- mini.hipatterns
-    MiniHipatternsFixme = { fg = c.rose, bold = true },
-    MiniHipatternsHack = { fg = c.brick, bold = true },
-    MiniHipatternsTodo = { fg = c.amber, bold = true },
-    MiniHipatternsNote = { fg = c.sage, bold = true },
+    MiniHipatternsFixme = { fg = c.error, bold = true },
+    MiniHipatternsHack = { fg = c.conflict, bold = true },
+    MiniHipatternsTodo = { fg = c.warning, bold = true },
+    MiniHipatternsNote = { fg = c.literal, bold = true },
 
     -- mini.surround
-    MiniSurround = { fg = c.bg, bg = c.amber },
+    MiniSurround = { fg = c.bg, bg = c.warning },
 
     -- mini.ai and mini.align define no persistent highlight groups; they
     -- inherit the active buffer's core syntax and UI groups.

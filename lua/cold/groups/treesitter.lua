@@ -65,10 +65,10 @@ function M.get(c)
     -- Comments and documentation
     ["@comment"] = { link = "ColdComment" },
     ["@comment.documentation"] = { link = "ColdDocComment" },
-    ["@comment.error"] = { fg = c.rose, bold = true },
-    ["@comment.warning"] = { fg = c.amber, bold = true },
-    ["@comment.todo"] = { fg = c.amber, bold = true },
-    ["@comment.note"] = { fg = c.sage, bold = true },
+    ["@comment.error"] = { fg = c.error, bold = true },
+    ["@comment.warning"] = { fg = c.warning, bold = true },
+    ["@comment.todo"] = { fg = c.warning, bold = true },
+    ["@comment.note"] = { fg = c.literal, bold = true },
 
     -- Markup
     ["@markup.heading"] = { link = "Title" },
@@ -78,8 +78,8 @@ function M.get(c)
     ["@markup.heading.4"] = { link = "@markup.heading" },
     ["@markup.heading.5"] = { link = "@markup.heading" },
     ["@markup.heading.6"] = { link = "@markup.heading" },
-    ["@markup.link"] = { fg = c.slate },
-    ["@markup.link.url"] = { fg = c.slate, underline = true },
+    ["@markup.link"] = { fg = c.information },
+    ["@markup.link.url"] = { fg = c.information, underline = true },
     ["@markup.raw"] = { link = "ColdString" },
     ["@markup.list"] = { link = "ColdPunctuation" },
     ["@markup.quote"] = { link = "ColdMuted" },

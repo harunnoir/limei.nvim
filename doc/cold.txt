@@ -1,0 +1,58 @@
+*cold.txt* *cold.nvim*      cold.nvim
+
+==============================================================================
+CONTENTS                                                        *cold-contents*
+
+1. Introduction ................................................ |cold|
+2. Setup .................................................. |cold-setup|
+3. Options .............................................. |cold-options|
+4. Commands ............................................ |cold-commands|
+
+==============================================================================
+INTRODUCTION                                                          *cold*
+
+cold.nvim is a deeply dark, muted colorscheme for Neovim 0.10 and newer.
+"Cold" describes an emotionally neutral, quiet interface; it does not mean
+blue. Major code categories have distinct semantic identities while ordinary
+structure and plugin surfaces remain neutral.
+
+==============================================================================
+SETUP                                                            *cold-setup*
+
+The colorscheme works without configuration: >
+
+  :colorscheme cold
+<
+Optional Lua setup: >
+
+  require("cold").setup({
+    transparent = false,
+    dim_inactive = true,
+    terminal_colors = true,
+  })
+  vim.cmd.colorscheme("cold")
+<
+==============================================================================
+OPTIONS                                                        *cold-options*
+
+transparent       Remove active and inactive editor canvas backgrounds.
+                  Floating windows and popup menus remain opaque.
+
+dim_inactive      Recede inactive windows with a darker background. Default:
+                  true.
+
+terminal_colors   Install the muted 16-color terminal palette. Default: true.
+
+styles            Optional attributes for comments, keywords, functions, and
+                  variables.
+
+palette           Palette overrides applied before highlights are generated.
+
+highlights        A table or function returning final highlight overrides.
+
+==============================================================================
+COMMANDS                                                      *cold-commands*
+
+There are no custom commands. Use |:colorscheme| and the Lua setup API.
+
+vim:tw=78:ts=8:noet:ft=help:norl:

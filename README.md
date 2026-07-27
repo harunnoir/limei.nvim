@@ -1,72 +1,76 @@
 # cold.nvim
 
-An extremely dark, muted Neovim colorscheme built for long programming
-sessions. `cold.nvim` uses a nearly black neutral charcoal canvas, soft
-foregrounds, and a small family of weathered warm and cool pigments.
+`cold.nvim` is a deeply dark, muted Neovim colorscheme designed for long
+programming sessions. It combines a neutral `#101010` charcoal canvas, soft
+foregrounds, distinct semantic syntax identities, and quiet plugin surfaces.
 
-Neutral text defines the screen, while muted ochre directories and restrained
-earthy, natural, and rare slate accents provide quiet semantic structure.
+The goal is not maximum contrast or screenshot impact. The goal is an editor
+that remains readable and comfortable after ten hours.
 
-The goal is not maximum contrast or an impressive screenshot. The goal is an
-editor that remains comfortable after ten hours.
+> Screenshot placeholder — add representative code, picker, and explorer
+> screenshots before publishing.
 
-“Cold” means emotionally neutral and visually calm—not blue.
+## Cold does not mean blue
 
-> Screenshot placeholder — add a representative code and plugin screenshot
-> before publishing.
+“Cold” means emotionally neutral: calm, precise, detached from visual noise,
+and timeless. It does not mean blue, cyan, icy, or metallic. Cool color is
+reserved for occasional links, references, and informational states.
 
 ## Colors have meaning
 
-`cold.nvim` uses color as a semantic language rather than decoration.
+Color is a semantic language rather than decoration.
 
-- Rose represents failure, deletion, and destructive state.
-- Brick represents conflict, exception, and interruption.
-- Clay represents declaration, construction, and language structure.
-- Rust represents patterns, transformation, and replacement.
-- Amber represents warnings, attention, active processes, and numbers.
-- Wheat represents types, schemas, and stable definitions.
-- Ochre represents imports, paths, directories, and navigation.
-- Sage represents literal content, creation, and valid data.
-- Moss represents completed success and accepted state.
-- Olive represents booleans, alternatives, and logical state.
-- Slate represents information, references, and links.
-- Faded lavender represents constants and symbolic identity.
+| Role | Meaning |
+| --- | --- |
+| `variable` | Ordinary contextual data |
+| `callable` | Callable behavior and execution |
+| `structure` | Language grammar and construction |
+| `literal` | Literal textual content |
+| `numeric` | Numeric quantity |
+| `type` | Shape, schema, and data category |
+| `symbol` | Fixed or symbolic identity |
+| `logic` | Logical state and bounded choice |
+| `error` | Failure, deletion, and destructive state |
+| `conflict` | Conflict, exception, and interruption |
+| `transform` | Pattern, replacement, and transformation |
+| `warning` | Attention, warning, and active process |
+| `success` | Completed success and accepted state |
+| `information` | Reference, link, and non-urgent information |
+| `navigation` | Path, directory, import, and external target |
 
-Most code remains neutral. Color is used only when it improves recognition.
-The same meanings apply across syntax, diagnostics, Git, completion, LSP, file
-explorers, DAP, tasks, and plugin interfaces.
+These meanings remain stable across syntax, Treesitter, semantic tokens,
+diagnostics, Git, completion, LSP, file explorers, DAP, tasks, and plugins.
+Most code and UI remain neutral.
 
 ## Distinct semantic identities
 
-Important code categories use stable, recognizable visual identities.
+Important categories are recognizable without rainbow syntax:
 
-- Variables use a neutral data color.
-- Functions use a muted callable color.
-- Keywords use a structural color.
-- Strings use a literal-content color.
-- Numbers use a quantity color.
-- Types use a schema color.
-- Constants use a symbolic identity color.
-- Comments remain neutral and secondary.
+| Code category | Identity |
+| --- | --- |
+| Variables, fields, properties | Neutral data |
+| Functions and methods | Muted callable |
+| Keywords and declarations | Muted structure |
+| Strings and characters | Muted literal |
+| Numbers and floats | Muted numeric |
+| Types and schemas | Muted type |
+| Constants | Muted symbol |
+| Booleans and state enums | Muted logic |
+| Comments | Secondary neutral |
 
-Related elements share an identity, but unrelated high-frequency categories do
-not reuse the same visible color. The goal is faster recognition without
-rainbow syntax.
-
-These identities remain compatible with the broader semantic language. String
-green still means literal or introduced content, numeric amber still means a
-quantity or attention, and the clay-like keyword family still means structure.
-The explicit palette aliases keep syntax roles traceable without changing the
-meaning of diagnostic, Git, or plugin state colors.
+Related elements share an identity; unrelated high-frequency categories do not
+reuse the same visible color. Parameters, modules, namespaces, operators,
+punctuation, paths, and metadata stay neutral or dim.
 
 ## Quiet surfaces
 
-Floating windows, completion menus, and plugin popups stay close to the main
-editor background.
+Floating windows, completion menus, and plugin popups stay close to the editor
+background. Inactive splits recede with a slightly darker background by
+default. Split separators are black and unobtrusive. Floats use visible muted
+neutral borders, including standard LSP hover documentation.
 
-Inactive splits use a slightly darker background when `dim_inactive` is
-enabled. Split separators are intentionally black and unobtrusive. Floating
-windows use visible neutral borders, including LSP hover documentation.
+Critical states use signs, labels, undercurls, icons, or text styles where the
+interface supports them, rather than relying on hue alone.
 
 ## Requirements
 
@@ -90,21 +94,13 @@ With lazy.nvim:
 }
 ```
 
-For local development:
+For local development, replace the repository name with:
 
 ```lua
-{
-  dir = "/path/to/cold.nvim",
-  name = "cold.nvim",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.cmd.colorscheme("cold")
-  end,
-}
+dir = "/path/to/cold.nvim"
 ```
 
-Calling `setup()` is optional. This works by itself:
+Calling `setup()` is optional:
 
 ```vim
 :colorscheme cold
@@ -115,7 +111,7 @@ Calling `setup()` is optional. This works by itself:
 ```lua
 require("cold").setup({
   transparent = false,
-  dim_inactive = false,
+  dim_inactive = true,
   terminal_colors = true,
 
   styles = {
@@ -132,22 +128,21 @@ require("cold").setup({
 vim.cmd.colorscheme("cold")
 ```
 
-Configuration is reset to safe defaults on each `setup()` call. Reapply the
+Configuration is reset to defaults on every `setup()` call. Reapply the
 colorscheme after changing it.
 
-### Transparency and inactive windows
+### Transparency and inactive splits
 
 ```lua
 require("cold").setup({
   transparent = true,
   dim_inactive = true,
 })
-vim.cmd.colorscheme("cold")
 ```
 
 Transparency removes only editor canvas backgrounds. Popups and menus remain
-opaque for readability. With `dim_inactive`, inactive windows use the recessed
-background and dim foreground when transparency is disabled.
+opaque for readability. In opaque mode, `dim_inactive` uses the recessed
+background and dim foreground for inactive windows.
 
 ### Palette overrides
 
@@ -155,15 +150,13 @@ background and dim foreground when transparency is disabled.
 require("cold").setup({
   palette = {
     bg = "#0e0e0e",
+    callable = "#99887b",
   },
 })
 ```
 
-The resolved palette is available through:
-
-```lua
-local colors = require("cold").get_palette()
-```
+The resolved palette is available through `require("cold").get_palette()`.
+Legacy v0.x palette role names remain accepted where practical.
 
 ### Highlight overrides
 
@@ -172,7 +165,7 @@ Use a table:
 ```lua
 require("cold").setup({
   highlights = {
-    Comment = { fg = "#707070", italic = true },
+    Comment = { fg = "#706c66", italic = true },
   },
 })
 ```
@@ -183,60 +176,51 @@ Or a function:
 require("cold").setup({
   highlights = function(colors)
     return {
-      CursorLineNr = { fg = colors.wheat, bold = true },
+      CursorLineNr = { fg = colors.warning, bold = true },
     }
   end,
 })
 ```
 
-Highlight overrides are applied after all built-in and plugin groups.
+User highlight overrides always run last.
 
-## Supported integrations
+## Plugin support
 
-The theme includes dedicated groups for:
+Dedicated grouped highlights cover the visible interfaces in the project’s
+tested environment:
 
-- Treesitter and LSP semantic tokens
-- Native diagnostics, Tiny Inline Diagnostic, and norminette42
 - Blink, blink-cmp-words, and nvim-cmp
-- fzf-lua and the combined fzf-oil workflow
+- fzf-lua and fzf-oil
 - Oil, oil-git, and oil-lsp-diagnostics
-- GitSigns, GitGraph, and Undotree
-- Mini Indentscope, Starter, Hipatterns, and Surround
+- Gitsigns, Gitgraph, and Undotree
+- Lspsaga, Fidget, Glance, Trouble, Tiny Inline Diagnostic, symbol-usage, and Quicker
 - nvim-dap and nvim-dap-ui
-- Lspsaga, Fidget, Glance, Trouble, and symbol-usage
+- Mini Indentscope, Starter, Hipatterns, and Surround
 - render-markdown and CSVView
-- Snacks picker, dashboard, notifier, input, terminal, explorer, indent, and diff
-- lazy.nvim, Mason, WhichKey, Noice, Notify, Slimline, Bufferline
-- Satellite, Overseer, Flash, todo-comments, grug-far, Marks, Yanky, hardtime, ToggleTerm, and nvim-ufo
-- Haunt, Leetcode, and Quicker
+- Snacks picker, explorer, dashboard, notifier, input, terminal, indent, and diff
+- lazy.nvim, Mason, WhichKey, Noice, Notify, Slimline, Bufferline, Satellite, and ToggleTerm
+- Overseer, Leetcode, Flash, todo-comments, grug-far, Marks, Harpoon, Yanky, hardtime, Haunt, and nvim-ufo
 
-Plugins without dedicated highlight groups naturally inherit core editor,
-syntax, floating-window, diagnostic, or diff groups. Plugin modules are never
-required at colorscheme load time, so missing plugins are safe.
+Plugins without dedicated highlight groups inherit standard editor, syntax,
+diagnostic, diff, popup, and floating-window groups. No plugin is required at
+theme load time. Support claims are limited to groups verified against the
+locally installed plugin versions.
 
 ## Development
 
-The code is divided into editor, syntax, Treesitter, semantic-token,
-diagnostic, terminal, and grouped plugin modules. Highlights are plain Lua
-tables and are applied with `vim.api.nvim_set_hl()`.
-
-Format the project with:
-
 ```sh
-stylua lua colors
+make format
+make check
+make test
 ```
 
-Validate a local checkout with:
-
-```sh
-nvim --headless -u NONE --cmd "set rtp^=." \
-  +"colorscheme cold" \
-  +"lua print(vim.g.colors_name)" \
-  +qa
-```
+`make check` runs StyLua and the palette/semantic audit. `make test` loads the
+theme headlessly in default, transparent, override, and reload configurations.
+See `:help cold.nvim` for concise in-editor documentation.
 
 ## Design lineage
 
-The grayscale-first simplicity is inspired by
-[nendix/zen.nvim](https://github.com/nendix/zen.nvim). The palette,
-implementation, and integrations in `cold.nvim` are distinct.
+The grayscale-first restraint is inspired by
+[nendix/zen.nvim](https://github.com/nendix/zen.nvim), while the pigment
+relationships take broad inspiration from Gruvbox. The palette,
+implementation, semantic model, and integrations are original to `cold.nvim`.

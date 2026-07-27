@@ -27,12 +27,12 @@ function M.get(c)
     SnacksPickerPreviewTitle = { fg = c.fg_bright, bg = c.bg_alt, bold = true },
     SnacksPickerListCursorLine = { link = "PmenuSel" },
     SnacksPickerPreviewCursorLine = { link = "PmenuSel" },
-    SnacksPickerMatch = { fg = c.wheat, bold = true },
-    SnacksPickerPrompt = { fg = c.amber },
+    SnacksPickerMatch = { fg = c.type, bold = true },
+    SnacksPickerPrompt = { fg = c.warning },
     SnacksPickerDir = { fg = c.fg_dim },
     SnacksPickerFile = { fg = c.fg },
     SnacksPickerGitStatusAdded = { link = "ColdAdded" },
-    SnacksPickerGitStatusModified = { fg = c.amber },
+    SnacksPickerGitStatusModified = { fg = c.warning },
     SnacksPickerGitStatusDeleted = { link = "ColdRemoved" },
     SnacksPickerPathHidden = { fg = c.fg_muted },
     SnacksPickerPathIgnored = { fg = c.fg_hidden },
@@ -41,7 +41,7 @@ function M.get(c)
     SnacksDashboardNormal = { link = "Normal" },
     SnacksDashboardDesc = { fg = c.fg },
     SnacksDashboardIcon = { fg = c.fg_dim },
-    SnacksDashboardKey = { fg = c.wheat },
+    SnacksDashboardKey = { fg = c.type },
 
     -- Notifier, input, terminal, and scratch surfaces
     SnacksNotifier = { fg = c.fg, bg = c.bg_popup },
@@ -61,15 +61,15 @@ function M.get(c)
     SnacksInputNormal = { fg = c.fg, bg = c.bg_popup },
     SnacksInputBorder = { link = "FloatBorder" },
     SnacksInputTitle = { link = "FloatTitle" },
-    SnacksInputIcon = { fg = c.amber },
+    SnacksInputIcon = { fg = c.warning },
     SnacksTerminal = { fg = c.fg, bg = c.bg },
     SnacksTerminalBorder = { link = "FloatBorder" },
     SnacksScratch = { fg = c.fg, bg = c.bg_popup },
-    SnacksScratchKey = { fg = c.wheat },
+    SnacksScratchKey = { fg = c.type },
     SnacksScratchDesc = { fg = c.fg_dim },
 
     -- Explorer, indent, scope, words, and zen
-    SnacksPickerDirectory = { fg = c.ochre },
+    SnacksPickerDirectory = { fg = c.navigation },
     SnacksIndent = { fg = c.indent },
     SnacksIndentScope = { fg = c.indent_scope },
     SnacksIndentChunk = { fg = c.indent_scope },
@@ -81,7 +81,7 @@ function M.get(c)
     SnacksDiffAdd = { link = "DiffAdd" },
     SnacksDiffDelete = { link = "DiffDelete" },
     SnacksDiffContext = { fg = c.fg_dim },
-    SnacksDiffConflict = { fg = c.brick },
+    SnacksDiffConflict = { fg = c.conflict },
   }
 end
 

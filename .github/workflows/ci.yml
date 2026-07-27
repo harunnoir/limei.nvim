@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: JohnnyMorganz/stylua-action@v4
+        with:
+          version: latest
+          args: --check lua colors scripts tests
+      - uses: MunifTanjim/setup-neovim-action@v1
+        with:
+          tag: stable
+      - run: make test
+      - run: nvim --clean --headless -u tests/minimal_init.lua -c "lua dofile('scripts/audit.lua')" -c "qa!"
