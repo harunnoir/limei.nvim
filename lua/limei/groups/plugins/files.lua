@@ -3,8 +3,8 @@ local M = {}
 function M.get(c)
   return {
     -- oil.nvim
-    OilDir = { fg = c.navigation },
-    OilDirIcon = { fg = c.structure },
+    OilDir = { link = "Directory" },
+    OilDirIcon = { link = "Directory" },
     OilLink = { fg = c.information },
     OilLinkTarget = { fg = c.fg_dim },
     OilOrphanLink = { fg = c.error },

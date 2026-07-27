@@ -4,11 +4,11 @@ function M.get(c)
   return {
     -- Shared window surfaces
     SnacksNormal = { fg = c.fg, bg = c.bg_popup },
-    SnacksNormalNC = { fg = c.fg_muted, bg = c.bg_inactive },
+    SnacksNormalNC = { fg = c.fg_muted, bg = c.bg_popup },
     SnacksTitle = { fg = c.fg_bright, bg = c.bg_popup, bold = true },
     SnacksFooter = { fg = c.fg_dim, bg = c.bg_popup },
     SnacksWinBar = { fg = c.fg, bg = c.bg_popup },
-    SnacksWinBarNC = { fg = c.fg_muted, bg = c.bg_inactive },
+    SnacksWinBarNC = { fg = c.fg_muted, bg = c.bg_popup },
     SnacksWinSeparator = { link = "WinSeparator" },
     SnacksBackdrop = { bg = c.bg_deep },
 

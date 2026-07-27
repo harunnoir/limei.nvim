@@ -27,7 +27,6 @@ Optional Lua setup: >
 
   require("limei").setup({
     transparent = false,
-    dim_inactive = true,
     terminal_colors = true,
   })
   vim.cmd.colorscheme("limei")
@@ -38,8 +37,8 @@ OPTIONS                                                        *limei-options*
 transparent       Remove active and inactive editor canvas backgrounds.
                   Floating windows and popup menus remain opaque.
 
-dim_inactive      Recede inactive windows with a darker background. Default:
-                  true.
+dim_inactive      Deprecated compatibility option. Accepted but visually
+                  ineffective; active and inactive windows share a background.
 
 terminal_colors   Install the muted 16-color terminal palette. Default: true.
 

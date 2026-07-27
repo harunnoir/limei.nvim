@@ -2,7 +2,9 @@ local M = {}
 
 M.defaults = {
   transparent = false,
-  dim_inactive = true,
+  -- Deprecated compatibility option. Active and inactive windows now share
+  -- one background regardless of its value.
+  dim_inactive = false,
   terminal_colors = true,
   styles = {
     comments = { italic = false },

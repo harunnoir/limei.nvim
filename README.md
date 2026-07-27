@@ -65,9 +65,10 @@ punctuation, paths, and metadata stay neutral or dim.
 ## Quiet surfaces
 
 Floating windows, completion menus, and plugin popups stay close to the editor
-background. Inactive splits recede with a slightly darker background by
-default. Split separators are black and unobtrusive. Floats use visible muted
-neutral borders, including standard LSP hover documentation.
+background. Active and inactive splits share one editor background, with focus
+communicated by ordinary editor cues. Split separators are subtle
+darker-than-background lines. Floats use visible muted neutral borders,
+including standard LSP hover documentation.
 
 Critical states use signs, labels, undercurls, icons, or text styles where the
 interface supports them, rather than relying on hue alone.
@@ -111,7 +112,6 @@ Calling `setup()` is optional:
 ```lua
 require("limei").setup({
   transparent = false,
-  dim_inactive = true,
   terminal_colors = true,
 
   styles = {
@@ -131,18 +131,29 @@ vim.cmd.colorscheme("limei")
 Configuration is reset to defaults on every `setup()` call. Reapply the
 colorscheme after changing it.
 
-### Transparency and inactive splits
+### Transparency and split presentation
 
 ```lua
 require("limei").setup({
   transparent = true,
-  dim_inactive = true,
 })
 ```
 
 Transparency removes only editor canvas backgrounds. Popups and menus remain
-opaque for readability. In opaque mode, `dim_inactive` uses the recessed
-background and dim foreground for inactive windows.
+opaque for readability. Active and inactive editing windows share the same
+background; focus remains visible through the cursor, cursor line, current line
+number, statusline, and winbar. Split separators use a thin foreground-only line
+slightly darker than the editor background.
+
+The deprecated `dim_inactive` option is still accepted for compatibility but no
+longer changes any highlight.
+
+### Oil directories
+
+Ordinary Oil directory icons and directory names both inherit `Directory`, so
+they render as one visual unit. File-type icons retain their useful individual
+colors, while Git and diagnostic states may still override the directory color
+when communicating a real state.
 
 ### Palette overrides
 

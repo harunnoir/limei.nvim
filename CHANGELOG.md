@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.1]
+
+### Changed
+
+- Unified Oil directory icons and directory names under the same directory highlight.
+- Removed inactive-window background dimming.
+- Restored one consistent editor background across active and inactive splits.
+- Refined split separators into a simple, subtle line darker than the main background.
+
+### Fixed
+
+- Fixed Oil folder icons and folder names rendering with inconsistent colors.
+- Fixed split separators appearing as heavy or excessively dark gaps.
+
 ## [1.0.0]
 
 ### Added

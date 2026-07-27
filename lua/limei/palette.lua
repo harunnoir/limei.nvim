@@ -39,7 +39,7 @@ local defaults = {
 
   -- Neutral UI colors
   border = "#373330",
-  separator = "#000000",
+  separator = "#090909",
   whitespace = "#34312f",
   indent = "#272522",
   indent_scope = "#514940",

@@ -10,13 +10,25 @@ vim.cmd.colorscheme("limei")
 assert(vim.g.colors_name == "limei")
 
 load()
-assert(require("limei.config").options.dim_inactive == true)
+assert(require("limei.config").options.dim_inactive == false)
 
 load({ transparent = true })
 assert(vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil)
 assert(vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg ~= nil)
 
-load({ dim_inactive = false })
+load({ dim_inactive = true })
+local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
+local normal_nc = vim.api.nvim_get_hl(0, { name = "NormalNC", link = false })
+assert(normal_nc.fg == normal.fg and normal_nc.bg == normal.bg)
+
+local separator = vim.api.nvim_get_hl(0, { name = "WinSeparator", link = false })
+assert(separator.fg == tonumber("090909", 16))
+assert(separator.bg == nil)
+
+local directory = vim.api.nvim_get_hl(0, { name = "Directory", link = false })
+local oil_dir = vim.api.nvim_get_hl(0, { name = "OilDir", link = false })
+local oil_dir_icon = vim.api.nvim_get_hl(0, { name = "OilDirIcon", link = false })
+assert(oil_dir.fg == directory.fg and oil_dir_icon.fg == directory.fg)
 load({ palette = { bg = "#0e0e0e", callable = "#99887b" } })
 assert(limei.get_palette().bg == "#0e0e0e")
 assert(limei.get_palette().callable == "#99887b")

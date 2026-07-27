@@ -3,25 +3,22 @@ local M = {}
 function M.get(c, options)
   local bg = options.transparent and "NONE" or c.bg
   local deep = options.transparent and "NONE" or c.bg_deep
-  local inactive = options.transparent and "NONE" or c.bg_inactive
-  local normal_nc = options.dim_inactive and { fg = c.fg_dim, bg = inactive } or { fg = c.fg, bg = bg }
-  local inactive_surface = options.dim_inactive and inactive or c.bg_alt
 
   return {
     -- Active and inactive windows
     Normal = { fg = c.fg, bg = bg },
-    NormalNC = normal_nc,
+    NormalNC = { link = "Normal" },
     EndOfBuffer = { fg = bg, bg = bg },
     Conceal = { fg = c.fg_dim },
     Directory = { fg = c.navigation },
     Title = { fg = c.fg_bright, bold = true },
 
     WinBar = { fg = c.fg, bg = bg },
-    WinBarNC = { fg = c.fg_muted, bg = inactive_surface },
+    WinBarNC = { fg = c.fg_muted, bg = bg },
 
     -- Split separators
-    WinSeparator = { fg = c.separator, bg = c.separator },
-    VertSplit = { fg = c.separator, bg = c.separator },
+    WinSeparator = { fg = c.separator },
+    VertSplit = { link = "WinSeparator" },
 
     -- Cursor and current line
     Cursor = { fg = c.bg, bg = c.fg_bright },
@@ -53,7 +50,7 @@ function M.get(c, options)
 
     -- Tabs and statusline
     StatusLine = { fg = c.fg, bg = c.bg_surface },
-    StatusLineNC = { fg = c.fg_muted, bg = inactive_surface },
+    StatusLineNC = { fg = c.fg_muted, bg = c.bg_surface },
     TabLine = { fg = c.fg_dim, bg = c.bg_alt },
     TabLineFill = { bg = deep },
     TabLineSel = { fg = c.fg_bright, bg = c.bg_surface, bold = true },

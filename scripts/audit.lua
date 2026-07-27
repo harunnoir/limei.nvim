@@ -101,9 +101,9 @@ for _, key in ipairs({ "callable", "structure", "literal", "numeric", "type", "s
   check(ratio >= 4.5 and ratio <= 6.5, key .. " contrast is outside 4.5:1-6.5:1")
 end
 check(contrast(colors.fg_dim, colors.bg) >= 4.5, "secondary foreground contrast is below 4.5:1")
-check(luminance(colors.bg_inactive) < luminance(colors.bg), "inactive background is not darker")
 check(math.abs(luminance(colors.bg_popup) - luminance(colors.bg)) < 0.01, "popup background is too far from the editor")
-check(colors.separator == "#000000" or colors.separator == colors.bg_deep, "separator is not black or bg_deep")
+check(luminance(colors.separator) < luminance(colors.bg), "separator is not darker than the editor")
+check(colors.separator ~= "#000000", "separator must not be pure black")
 
 local groups = require("limei.groups").get(colors, require("limei.config").defaults)
 local allowed = {
@@ -132,6 +132,12 @@ for name, value in pairs(groups) do
     check(allowed[attribute], "invalid highlight attribute " .. attribute .. " in " .. name)
   end
 end
+
+check(groups.NormalNC.link == "Normal", "NormalNC does not inherit Normal")
+check(groups.WinSeparator.fg == colors.separator and groups.WinSeparator.bg == nil, "separator is not foreground-only")
+check(groups.VertSplit.link == "WinSeparator", "VertSplit does not inherit WinSeparator")
+check(groups.OilDir.link == "Directory", "OilDir does not inherit Directory")
+check(groups.OilDirIcon.link == "Directory", "OilDirIcon does not inherit Directory")
 
 local readme = table.concat(vim.fn.readfile("README.md"), "\n"):lower()
 for role, meaning in pairs(palette.semantic) do
