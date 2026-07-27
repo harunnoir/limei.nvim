@@ -4,6 +4,9 @@ An extremely dark, muted Neovim colorscheme built for long programming
 sessions. `cold.nvim` uses a nearly black neutral charcoal canvas, soft
 foregrounds, and a small family of weathered warm and cool pigments.
 
+Neutral text defines the screen, while muted ochre directories and restrained
+earthy, natural, and rare slate accents provide quiet semantic structure.
+
 The goal is not maximum contrast or an impressive screenshot. The goal is an
 editor that remains comfortable after ten hours.
 

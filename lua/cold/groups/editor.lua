@@ -11,7 +11,7 @@ function M.get(c, options)
     NormalNC = normal_nc,
     EndOfBuffer = { fg = bg, bg = bg },
     Conceal = { fg = c.fg_dim },
-    Directory = { fg = c.steel },
+    Directory = { fg = c.ochre },
     Title = { fg = c.fg_bright, bold = true },
 
     -- Cursor and current line
@@ -37,12 +37,12 @@ function M.get(c, options)
     Search = { fg = c.fg_bright, bg = c.bg_selection },
     CurSearch = { fg = c.bg, bg = c.amber, bold = true },
     IncSearch = { fg = c.bg, bg = c.clay, bold = true },
-    Substitute = { fg = c.bg, bg = c.orange, bold = true },
+    Substitute = { fg = c.bg, bg = c.rust, bold = true },
     MatchParen = { fg = c.wheat, bold = true, underline = true },
 
     -- Tabs and statusline
     StatusLine = { fg = c.fg, bg = c.bg_surface },
-    StatusLineNC = { fg = c.fg_dim, bg = c.bg_alt },
+    StatusLineNC = { fg = c.fg_muted, bg = c.bg_alt },
     TabLine = { fg = c.fg_dim, bg = c.bg_alt },
     TabLineFill = { bg = deep },
     TabLineSel = { fg = c.fg_bright, bg = c.bg_surface, bold = true },
@@ -90,9 +90,9 @@ function M.get(c, options)
     Changed = { link = "ColdChanged" },
     Removed = { link = "ColdRemoved" },
     SpellBad = { sp = c.rose, undercurl = true },
-    SpellCap = { sp = c.steel, undercurl = true },
-    SpellLocal = { sp = c.mist, undercurl = true },
-    SpellRare = { sp = c.lavender, undercurl = true },
+    SpellCap = { sp = c.slate, undercurl = true },
+    SpellLocal = { sp = c.sage, undercurl = true },
+    SpellRare = { sp = c.faded_lavender, undercurl = true },
   }
 end
 

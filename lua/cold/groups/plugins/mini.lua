@@ -13,7 +13,7 @@ function M.get(c)
     MiniStarterInactive = { fg = c.fg_hidden },
     MiniStarterItem = { fg = c.fg },
     MiniStarterItemBullet = { fg = c.fg_muted },
-    MiniStarterItemPrefix = { fg = c.steel },
+    MiniStarterItemPrefix = { fg = c.clay },
     MiniStarterQuery = { fg = c.wheat },
     MiniStarterSection = { fg = c.fg_bright, bold = true },
 
@@ -21,7 +21,7 @@ function M.get(c)
     MiniHipatternsFixme = { fg = c.rose, bold = true },
     MiniHipatternsHack = { fg = c.clay, bold = true },
     MiniHipatternsTodo = { fg = c.amber, bold = true },
-    MiniHipatternsNote = { fg = c.mist, bold = true },
+    MiniHipatternsNote = { fg = c.sage, bold = true },
 
     -- mini.surround
     MiniSurround = { fg = c.bg, bg = c.amber },

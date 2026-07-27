@@ -3,9 +3,9 @@ local M = {}
 function M.get(c)
   return {
     -- oil.nvim
-    OilDir = { fg = c.steel },
-    OilDirIcon = { fg = c.steel_dim },
-    OilLink = { fg = c.mist },
+    OilDir = { fg = c.ochre },
+    OilDirIcon = { fg = c.clay },
+    OilLink = { fg = c.slate },
     OilLinkTarget = { fg = c.fg_dim },
     OilOrphanLink = { fg = c.rose },
     OilOrphanLinkTarget = { fg = c.rose_dim },
@@ -14,6 +14,7 @@ function M.get(c)
     OilCreate = { fg = c.sage },
     OilDelete = { fg = c.rose },
     OilChange = { fg = c.amber },
+    OilRename = { fg = c.wheat },
     OilRestore = { fg = c.sage },
     OilPurge = { fg = c.rose },
     OilTrash = { fg = c.rose },
@@ -30,7 +31,7 @@ function M.get(c)
     OilGitAdded = { link = "ColdAdded" },
     OilGitModified = { fg = c.amber },
     OilGitRenamed = { fg = c.wheat },
-    OilGitUntracked = { link = "ColdAdded" },
+    OilGitUntracked = { fg = c.moss },
     OilGitIgnored = { link = "ColdPunctuation" },
 
     -- oil-lsp-diagnostics.nvim

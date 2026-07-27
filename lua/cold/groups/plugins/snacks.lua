@@ -41,8 +41,8 @@ function M.get(c)
     SnacksScratchDesc = { fg = c.fg_dim },
 
     -- Explorer, indent, scope, words, and zen
-    SnacksPickerDirectory = { fg = c.steel },
-    SnacksIndent = { fg = c.indent_static },
+    SnacksPickerDirectory = { fg = c.ochre },
+    SnacksIndent = { fg = c.indent },
     SnacksIndentScope = { fg = c.indent_scope },
     SnacksIndentChunk = { fg = c.indent_scope },
     SnacksWordsCurrent = { bg = c.bg_alt },
@@ -53,7 +53,7 @@ function M.get(c)
     SnacksDiffAdd = { link = "DiffAdd" },
     SnacksDiffDelete = { link = "DiffDelete" },
     SnacksDiffContext = { fg = c.fg_dim },
-    SnacksDiffConflict = { fg = c.amber },
+    SnacksDiffConflict = { fg = c.brick },
   }
 end
 

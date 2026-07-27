@@ -6,7 +6,7 @@ function M.get(c)
     DapBreakpoint = { fg = c.rose },
     DapBreakpointCondition = { fg = c.amber },
     DapBreakpointRejected = { fg = c.rose_dim },
-    DapLogPoint = { fg = c.steel },
+    DapLogPoint = { fg = c.slate },
     DapStopped = { fg = c.sage, bg = c.bg_alt },
 
     -- nvim-dap-ui
@@ -26,7 +26,7 @@ function M.get(c)
     DapUIWatchesEmpty = { fg = c.fg_muted },
     DapUIWatchesValue = { fg = c.sage },
     DapUIWatchesError = { fg = c.rose },
-    DapUIBreakpointsPath = { fg = c.steel },
+    DapUIBreakpointsPath = { fg = c.fg_dim },
     DapUIBreakpointsInfo = { fg = c.sage },
     DapUIBreakpointsCurrentLine = { fg = c.fg_bright, bold = true },
     DapUIBreakpointsDisabledLine = { fg = c.fg_muted },

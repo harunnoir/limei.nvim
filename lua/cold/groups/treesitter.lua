@@ -4,12 +4,12 @@ function M.get(c)
   return {
     -- Identifiers
     ["@variable"] = { link = "ColdVariable" },
-    ["@variable.builtin"] = { link = "ColdKeyword" },
-    ["@variable.parameter"] = { link = "@variable" },
+    ["@variable.builtin"] = { link = "@variable" },
+    ["@variable.parameter"] = { link = "ColdMuted" },
     ["@variable.member"] = { link = "@variable" },
     ["@property"] = { link = "@variable" },
     ["@constant"] = { link = "ColdConstant" },
-    ["@constant.builtin"] = { link = "@constant" },
+    ["@constant.builtin"] = { link = "ColdBuiltinConstant" },
     ["@label"] = { link = "ColdKeyword" },
     ["@module"] = { link = "ColdNamespace" },
     ["@module.builtin"] = { link = "@module" },
@@ -20,22 +20,23 @@ function M.get(c)
     ["@function.call"] = { link = "@function" },
     ["@function.method"] = { link = "@function" },
     ["@function.method.call"] = { link = "@function" },
-    ["@constructor"] = { link = "@function" },
+    ["@constructor"] = { link = "ColdClass" },
 
     -- Types and keywords
     ["@type"] = { link = "ColdType" },
-    ["@type.builtin"] = { link = "@type" },
+    ["@type.builtin"] = { link = "ColdBuiltinType" },
     ["@type.definition"] = { link = "@type" },
-    ["@type.qualifier"] = { link = "ColdKeyword" },
+    ["@type.qualifier"] = { link = "ColdMuted" },
     ["@attribute"] = { link = "ColdType" },
     ["@keyword"] = { link = "ColdKeyword" },
     ["@keyword.function"] = { link = "@keyword" },
+    ["@keyword.modifier"] = { link = "ColdMuted" },
     ["@keyword.operator"] = { link = "@keyword" },
-    ["@keyword.return"] = { link = "@keyword" },
-    ["@keyword.import"] = { link = "@keyword" },
-    ["@keyword.conditional"] = { link = "@keyword" },
-    ["@keyword.repeat"] = { link = "@keyword" },
-    ["@keyword.exception"] = { link = "@keyword" },
+    ["@keyword.return"] = { link = "ColdReturn" },
+    ["@keyword.import"] = { link = "ColdImport" },
+    ["@keyword.conditional"] = { link = "ColdControl" },
+    ["@keyword.repeat"] = { link = "ColdControl" },
+    ["@keyword.exception"] = { link = "ColdControl" },
     ["@operator"] = { link = "ColdMuted" },
 
     -- Literals
@@ -50,7 +51,7 @@ function M.get(c)
 
     -- Punctuation
     ["@punctuation.delimiter"] = { link = "ColdPunctuation" },
-    ["@punctuation.bracket"] = { link = "ColdPunctuation" },
+    ["@punctuation.bracket"] = { link = "ColdMuted" },
     ["@punctuation.special"] = { link = "ColdPunctuation" },
 
     -- Documentation
@@ -59,7 +60,7 @@ function M.get(c)
     ["@comment.error"] = { fg = c.rose, bold = true },
     ["@comment.warning"] = { fg = c.amber, bold = true },
     ["@comment.todo"] = { fg = c.wheat, bold = true },
-    ["@comment.note"] = { fg = c.mist, bold = true },
+    ["@comment.note"] = { fg = c.sage, bold = true },
 
     -- Markup
     ["@markup.heading"] = { link = "Title" },
@@ -69,8 +70,8 @@ function M.get(c)
     ["@markup.heading.4"] = { link = "@markup.heading" },
     ["@markup.heading.5"] = { link = "@markup.heading" },
     ["@markup.heading.6"] = { link = "@markup.heading" },
-    ["@markup.link"] = { fg = c.steel },
-    ["@markup.link.url"] = { link = "Underlined" },
+    ["@markup.link"] = { fg = c.slate },
+    ["@markup.link.url"] = { fg = c.slate, underline = true },
     ["@markup.raw"] = { link = "ColdString" },
     ["@markup.list"] = { link = "ColdPunctuation" },
     ["@markup.quote"] = { link = "ColdMuted" },
