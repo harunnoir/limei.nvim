@@ -36,6 +36,38 @@ Most code remains neutral. Color is used only when it improves recognition.
 The same meanings apply across syntax, diagnostics, Git, completion, LSP, file
 explorers, DAP, tasks, and plugin interfaces.
 
+## Distinct semantic identities
+
+Important code categories use stable, recognizable visual identities.
+
+- Variables use a neutral data color.
+- Functions use a muted callable color.
+- Keywords use a structural color.
+- Strings use a literal-content color.
+- Numbers use a quantity color.
+- Types use a schema color.
+- Constants use a symbolic identity color.
+- Comments remain neutral and secondary.
+
+Related elements share an identity, but unrelated high-frequency categories do
+not reuse the same visible color. The goal is faster recognition without
+rainbow syntax.
+
+These identities remain compatible with the broader semantic language. String
+green still means literal or introduced content, numeric amber still means a
+quantity or attention, and the clay-like keyword family still means structure.
+The explicit palette aliases keep syntax roles traceable without changing the
+meaning of diagnostic, Git, or plugin state colors.
+
+## Quiet surfaces
+
+Floating windows, completion menus, and plugin popups stay close to the main
+editor background.
+
+Inactive splits use a slightly darker background when `dim_inactive` is
+enabled. Split separators are intentionally black and unobtrusive. Floating
+windows use visible neutral borders, including LSP hover documentation.
+
 ## Requirements
 
 - Neovim 0.10+

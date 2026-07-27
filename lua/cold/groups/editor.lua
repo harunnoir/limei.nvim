@@ -3,16 +3,25 @@ local M = {}
 function M.get(c, options)
   local bg = options.transparent and "NONE" or c.bg
   local deep = options.transparent and "NONE" or c.bg_deep
-  local normal_nc = options.dim_inactive and { fg = c.fg_dim, bg = deep } or { fg = c.fg, bg = bg }
+  local inactive = options.transparent and "NONE" or c.bg_inactive
+  local normal_nc = options.dim_inactive and { fg = c.fg_dim, bg = inactive } or { fg = c.fg, bg = bg }
+  local inactive_surface = options.dim_inactive and inactive or c.bg_alt
 
   return {
-    -- Windows and backgrounds
+    -- Active and inactive windows
     Normal = { fg = c.fg, bg = bg },
     NormalNC = normal_nc,
     EndOfBuffer = { fg = bg, bg = bg },
     Conceal = { fg = c.fg_dim },
     Directory = { fg = c.ochre },
     Title = { fg = c.fg_bright, bold = true },
+
+    WinBar = { fg = c.fg, bg = bg },
+    WinBarNC = { fg = c.fg_muted, bg = inactive_surface },
+
+    -- Split separators
+    WinSeparator = { fg = c.separator, bg = c.separator },
+    VertSplit = { fg = c.separator, bg = c.separator },
 
     -- Cursor and current line
     Cursor = { fg = c.bg, bg = c.fg_bright },
@@ -42,20 +51,19 @@ function M.get(c, options)
 
     -- Tabs and statusline
     StatusLine = { fg = c.fg, bg = c.bg_surface },
-    StatusLineNC = { fg = c.fg_muted, bg = c.bg_alt },
+    StatusLineNC = { fg = c.fg_muted, bg = inactive_surface },
     TabLine = { fg = c.fg_dim, bg = c.bg_alt },
     TabLineFill = { bg = deep },
     TabLineSel = { fg = c.fg_bright, bg = c.bg_surface, bold = true },
-    WinSeparator = { fg = c.separator, bg = bg },
-    VertSplit = { link = "WinSeparator" },
-    WinBar = { fg = c.fg, bg = bg },
-    WinBarNC = { fg = c.fg_dim, bg = bg },
 
-    -- Menus and floating windows
+    -- Floating windows and borders
     NormalFloat = { fg = c.fg, bg = c.bg_popup },
     FloatBorder = { fg = c.border, bg = c.bg_popup },
     FloatTitle = { fg = c.fg_bright, bg = c.bg_popup, bold = true },
     FloatFooter = { fg = c.fg_dim, bg = c.bg_popup },
+    LspInfoBorder = { link = "FloatBorder" },
+
+    -- Popup menus
     Pmenu = { fg = c.fg, bg = c.bg_popup },
     PmenuSel = { fg = c.fg_bright, bg = c.bg_selection, bold = true },
     PmenuKind = { fg = c.fg_dim, bg = c.bg_popup },
@@ -65,7 +73,7 @@ function M.get(c, options)
     PmenuMatch = { fg = c.wheat, bg = c.bg_popup },
     PmenuMatchSel = { fg = c.wheat, bg = c.bg_selection, bold = true },
     PmenuSbar = { bg = c.bg_alt },
-    PmenuThumb = { bg = c.fg_muted },
+    PmenuThumb = { bg = c.fg_hidden },
     WildMenu = { link = "PmenuSel" },
 
     -- Whitespace and separators

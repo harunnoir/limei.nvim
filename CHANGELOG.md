@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.4.0]
+
+### Added
+
+- Added distinct visual identities for major high-frequency code categories.
+- Added dedicated semantic colors for variables, functions, keywords, strings, numbers, types, and constants.
+- Added consistent callable, data, type, literal, numeric, and symbolic mappings across syntax, Treesitter, semantic tokens, completion, and LSP interfaces.
+
+### Changed
+
+- Reduced repetitive color reuse between unrelated important code elements.
+- Refined popup and floating-window backgrounds to remain close to the editor background.
+- Darkened inactive splits for clearer focus without high contrast.
+- Changed split separators to a fully black, unobtrusive appearance.
+- Improved floating-window border consistency, including LSP hover documentation.
+- Refined Snacks window surfaces to avoid bright, detached popup backgrounds.
+- Preserved muted contrast and long-session visual comfort.
+
 ## [0.3.0]
 
 ### Added

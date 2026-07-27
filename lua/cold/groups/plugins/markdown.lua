@@ -16,7 +16,7 @@ function M.get(c)
     RenderMarkdownH5Bg = { link = "RenderMarkdownH1Bg" },
     RenderMarkdownH6Bg = { link = "RenderMarkdownH1Bg" },
     RenderMarkdownCode = { bg = c.bg_alt },
-    RenderMarkdownCodeInline = { fg = c.sage, bg = c.bg_alt },
+    RenderMarkdownCodeInline = { fg = c.string_color, bg = c.bg_alt },
     RenderMarkdownCodeInfo = { fg = c.fg_muted, bg = c.bg_alt },
     RenderMarkdownBullet = { fg = c.ochre },
     RenderMarkdownQuote = { fg = c.fg_muted },

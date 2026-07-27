@@ -4,36 +4,44 @@ function M.get(c, options)
   local styles = options.styles
 
   return {
-    -- Neutral structure and active identity
+    -- Variables and ordinary data
     ColdText = { fg = c.fg },
-    ColdVariable = vim.tbl_extend("force", { fg = c.fg }, styles.variables),
-    ColdFunction = vim.tbl_extend("force", { fg = c.fg_bright }, styles.functions),
+    ColdVariable = vim.tbl_extend("force", { fg = c.variable_color }, styles.variables),
     ColdMuted = { fg = c.fg_dim },
     ColdPunctuation = { fg = c.fg_muted },
+
+    -- Functions and callables
+    ColdFunction = vim.tbl_extend("force", { fg = c.function_color }, styles.functions),
+
+    -- Comments and documentation
     ColdComment = vim.tbl_extend("force", { fg = c.fg_muted }, styles.comments),
     ColdDocComment = { fg = c.fg_dim },
 
-    -- Language structure, transformation, and navigation
-    ColdKeyword = vim.tbl_extend("force", { fg = c.fg_dim }, styles.keywords),
-    ColdDeclaration = vim.tbl_extend("force", { fg = c.clay }, styles.keywords),
-    ColdControl = { fg = c.fg_dim },
+    -- Keywords and language structure
+    ColdKeyword = vim.tbl_extend("force", { fg = c.keyword_color }, styles.keywords),
+    ColdDeclaration = vim.tbl_extend("force", { fg = c.keyword_color }, styles.keywords),
+    ColdControl = { fg = c.keyword_color },
     ColdException = { fg = c.brick },
-    ColdReturn = { fg = c.fg_dim },
+    ColdReturn = { fg = c.keyword_color },
     ColdImport = { fg = c.ochre },
     ColdRegex = { fg = c.rust },
     ColdSpecial = { fg = c.rust },
 
-    -- Literal content, logic, constants, and types
-    ColdString = { fg = c.sage },
-    ColdEscape = { fg = c.wheat },
-    ColdNumber = { fg = c.amber },
+    -- Strings and textual literals
+    ColdString = { fg = c.string_color },
+    ColdEscape = { fg = c.type_color },
+
+    -- Numbers, logic, and symbolic identity
+    ColdNumber = { fg = c.number_color },
     ColdBoolean = { fg = c.olive },
-    ColdConstant = { fg = c.faded_lavender },
-    ColdBuiltinConstant = { fg = c.amber },
-    ColdType = { fg = c.wheat },
-    ColdBuiltinType = { fg = c.ochre },
-    ColdClass = { fg = c.clay },
+    ColdConstant = { fg = c.constant_color },
+    ColdBuiltinConstant = { fg = c.constant_color },
     ColdEnum = { fg = c.olive },
+
+    -- Types, schemas, and secondary structure
+    ColdType = { fg = c.type_color },
+    ColdBuiltinType = { fg = c.type_color },
+    ColdClass = { fg = c.type_color },
     ColdNamespace = { fg = c.fg_dim },
 
     -- State and urgency

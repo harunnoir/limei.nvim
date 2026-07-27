@@ -3,9 +3,9 @@ local M = {}
 function M.get(c)
   return {
     -- fzf-lua
-    FzfLuaNormal = { fg = c.fg, bg = c.bg_surface },
-    FzfLuaBorder = { fg = c.border, bg = c.bg_surface },
-    FzfLuaTitle = { fg = c.fg_bright, bg = c.bg_surface, bold = true },
+    FzfLuaNormal = { fg = c.fg, bg = c.bg_popup },
+    FzfLuaBorder = { fg = c.border, bg = c.bg_popup },
+    FzfLuaTitle = { fg = c.fg_bright, bg = c.bg_popup, bold = true },
     FzfLuaPreviewNormal = { fg = c.fg, bg = c.bg_alt },
     FzfLuaPreviewBorder = { fg = c.border, bg = c.bg_alt },
     FzfLuaPreviewTitle = { fg = c.fg_bright, bg = c.bg_alt, bold = true },

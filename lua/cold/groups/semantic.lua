@@ -15,7 +15,11 @@ function M.get(c)
     ["@lsp.type.enumMember"] = { link = "ColdEnum" },
     ["@lsp.type.function"] = { link = "ColdFunction" },
     ["@lsp.type.method"] = { link = "ColdFunction" },
-    ["@lsp.type.macro"] = { link = "ColdDeclaration" },
+    ["@lsp.type.keyword"] = { link = "ColdKeyword" },
+    ["@lsp.type.string"] = { link = "ColdString" },
+    ["@lsp.type.number"] = { link = "ColdNumber" },
+    ["@lsp.type.module"] = { link = "ColdNamespace" },
+    ["@lsp.type.macro"] = { link = "ColdConstant" },
     ["@lsp.type.decorator"] = { link = "ColdDeclaration" },
 
     -- Modifiers intentionally preserve the base semantic role.

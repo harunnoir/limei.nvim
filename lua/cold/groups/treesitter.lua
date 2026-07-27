@@ -2,31 +2,23 @@ local M = {}
 
 function M.get(c)
   return {
-    -- Identifiers
+    -- Variables and data
     ["@variable"] = { link = "ColdVariable" },
     ["@variable.builtin"] = { link = "@variable" },
     ["@variable.parameter"] = { link = "ColdMuted" },
     ["@variable.member"] = { link = "@variable" },
     ["@property"] = { link = "@variable" },
-    ["@constant"] = { link = "ColdConstant" },
-    ["@constant.builtin"] = { link = "ColdBuiltinConstant" },
     ["@label"] = { link = "ColdMuted" },
-    ["@module"] = { link = "ColdNamespace" },
-    ["@module.builtin"] = { link = "@module" },
 
-    -- Functions
+    -- Functions and callables
     ["@function"] = { link = "ColdFunction" },
     ["@function.builtin"] = { link = "@function" },
     ["@function.call"] = { link = "@function" },
     ["@function.method"] = { link = "@function" },
     ["@function.method.call"] = { link = "@function" },
-    ["@constructor"] = { link = "ColdClass" },
+    ["@constructor"] = { link = "ColdDeclaration" },
 
-    -- Types and keywords
-    ["@type"] = { link = "ColdType" },
-    ["@type.builtin"] = { link = "ColdBuiltinType" },
-    ["@type.definition"] = { link = "@type" },
-    ["@type.qualifier"] = { link = "ColdMuted" },
+    -- Keywords and structure
     ["@attribute"] = { link = "ColdDeclaration" },
     ["@keyword"] = { link = "ColdKeyword" },
     ["@keyword.function"] = { link = "ColdDeclaration" },
@@ -37,24 +29,40 @@ function M.get(c)
     ["@keyword.conditional"] = { link = "ColdControl" },
     ["@keyword.repeat"] = { link = "ColdControl" },
     ["@keyword.exception"] = { link = "ColdException" },
-    ["@operator"] = { link = "ColdMuted" },
 
-    -- Literals
+    -- Strings and literals
     ["@string"] = { link = "ColdString" },
     ["@string.documentation"] = { link = "ColdDocComment" },
     ["@string.regexp"] = { link = "ColdRegex" },
     ["@string.escape"] = { link = "ColdEscape" },
     ["@character"] = { link = "ColdString" },
+
+    -- Numbers and logic
     ["@boolean"] = { link = "ColdBoolean" },
     ["@number"] = { link = "ColdNumber" },
     ["@number.float"] = { link = "@number" },
 
-    -- Punctuation
+    -- Types and schemas
+    ["@type"] = { link = "ColdType" },
+    ["@type.builtin"] = { link = "ColdBuiltinType" },
+    ["@type.definition"] = { link = "@type" },
+    ["@type.qualifier"] = { link = "ColdMuted" },
+
+    -- Constants and symbolic values
+    ["@constant"] = { link = "ColdConstant" },
+    ["@constant.builtin"] = { link = "ColdBuiltinConstant" },
+
+    -- Modules and namespaces
+    ["@module"] = { link = "ColdNamespace" },
+    ["@module.builtin"] = { link = "@module" },
+
+    -- Operators and punctuation
+    ["@operator"] = { link = "ColdMuted" },
     ["@punctuation.delimiter"] = { link = "ColdPunctuation" },
     ["@punctuation.bracket"] = { link = "ColdMuted" },
     ["@punctuation.special"] = { link = "ColdPunctuation" },
 
-    -- Documentation
+    -- Comments and documentation
     ["@comment"] = { link = "ColdComment" },
     ["@comment.documentation"] = { link = "ColdDocComment" },
     ["@comment.error"] = { fg = c.rose, bold = true },
