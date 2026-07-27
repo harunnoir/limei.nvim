@@ -7,8 +7,10 @@ foregrounds, distinct semantic syntax identities, and quiet plugin surfaces.
 The goal is not maximum contrast or screenshot impact. The goal is an editor
 that remains readable and comfortable after ten hours.
 
-> Screenshot placeholder — add representative code, picker, and explorer
-> screenshots before publishing.
+<img width="1323" height="745" alt="image" src="https://github.com/user-attachments/assets/52ed072a-5d06-49b6-98f5-bb3d49b5e8fe" />
+<img width="1323" height="745" alt="image" src="https://github.com/user-attachments/assets/b67890df-cc8d-4493-9a25-5115c38e2013" />
+<img width="1323" height="745" alt="image" src="https://github.com/user-attachments/assets/f3aca5f3-14b4-4080-9d8c-1fafef0a1350" />
+<img width="1323" height="745" alt="image" src="https://github.com/user-attachments/assets/3472a270-22c9-479a-811b-7215e156f572" />
 
 ## Cold does not mean blue
 
