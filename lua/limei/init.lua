@@ -32,6 +32,8 @@ function M.load()
   if config.options.terminal_colors then
     require("limei.groups.terminal").apply(colors)
   end
+
+  require("limei.matching").setup(config.options.matching)
 end
 
 return M

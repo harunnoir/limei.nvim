@@ -128,6 +128,10 @@ Calling `setup()` is optional:
 require("limei").setup({
   transparent = false,
   terminal_colors = true,
+  matching = {
+    brackets = true,
+    quotes = true,
+  },
 
   styles = {
     comments = { italic = false },
@@ -145,6 +149,24 @@ vim.cmd.colorscheme("limei")
 
 Configuration is reset to defaults on every `setup()` call. Reapply the
 colorscheme after changing it.
+
+### Matching pairs
+
+Limei preserves the existing syntax colors of all delimiters.
+
+For asymmetric pairs such as parentheses, square brackets, and braces,
+Neovim’s built-in matching system emphasizes both endpoints. Limei loads that
+runtime matcher when `matching.brackets` is enabled, even when a plugin manager
+has omitted it from startup.
+
+For Tree-sitter-aware same-character delimiters, Limei emphasizes the opening
+and closing spans of single quotes, double quotes, backticks, and triple quotes.
+Unsupported or incomplete syntax is left untouched rather than guessed.
+
+Matching emphasis is bold-only. Limei adds no foreground, background,
+underline, or semantic accent. Disable quote extmarks with
+`matching.quotes = false`; disable Limei’s built-in matcher activation with
+`matching.brackets = false`.
 
 ### Transparency and split presentation
 

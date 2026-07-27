@@ -6,6 +6,10 @@ M.defaults = {
   -- one background regardless of its value.
   dim_inactive = false,
   terminal_colors = true,
+  matching = {
+    brackets = true,
+    quotes = true,
+  },
   styles = {
     comments = { italic = false },
     keywords = { italic = false },

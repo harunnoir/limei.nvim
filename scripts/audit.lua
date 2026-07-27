@@ -143,6 +143,10 @@ check(groups.LineNrAbove.link == "LineNr", "LineNrAbove does not inherit LineNr"
 check(groups.LineNrBelow.link == "LineNr", "LineNrBelow does not inherit LineNr")
 check(groups.CursorLineNr.fg == colors.fg_dim and groups.CursorLineNr.bold, "CursorLineNr hierarchy is incorrect")
 check(groups.MatchParen.bold and vim.tbl_count(groups.MatchParen) == 1, "MatchParen must contain only bold emphasis")
+check(
+  groups.LimeiMatchDelimiter.bold and vim.tbl_count(groups.LimeiMatchDelimiter) == 1,
+  "LimeiMatchDelimiter must contain only bold emphasis"
+)
 for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
   check(groups[name].fg == colors.fg_hidden, name .. " does not use the hidden foreground")
   check(groups[name].bg == nil and not groups[name].bold, name .. " contains distracting attributes")

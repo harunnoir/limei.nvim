@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.0.5]
+
+### Added
+
+- Added Tree-sitter-aware matching for single quotes, double quotes, backticks, and triple-quoted string delimiters.
+- Added bold-only emphasis for both endpoints of same-character delimiter pairs.
+
+### Fixed
+
+- Restored Neovim’s built-in matching-pair runtime when enabled through Limei, including configurations that omit it during startup.
+- Ensured both opening and closing brackets receive bold-only emphasis.
+- Preserved the original syntax foreground and background of all matched delimiters.
+- Prevented escaped quotes, apostrophes in comments, and incomplete strings from being treated as matching boundaries in verified cases.
+
 ## [1.0.4]
 
 ### Changed

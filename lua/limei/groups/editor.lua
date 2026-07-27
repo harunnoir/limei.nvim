@@ -47,6 +47,7 @@ function M.get(c, options)
     IncSearch = { fg = c.bg, bg = c.warning, bold = true },
     Substitute = { fg = c.bg, bg = c.transform, bold = true },
     MatchParen = { bold = true },
+    LimeiMatchDelimiter = { bold = true },
 
     -- Tabs and statusline
     StatusLine = { fg = c.fg, bg = c.bg_surface },

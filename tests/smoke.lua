@@ -41,6 +41,12 @@ for _, attribute in ipairs({ "fg", "bg", "sp", "underline", "undercurl", "revers
   assert(match_paren[attribute] == nil or match_paren[attribute] == false)
 end
 
+local quote_match = vim.api.nvim_get_hl(0, { name = "LimeiMatchDelimiter", link = false })
+assert(quote_match.bold == true)
+for _, attribute in ipairs({ "fg", "bg", "sp", "underline", "undercurl", "reverse", "standout", "italic", "nocombine" }) do
+  assert(quote_match[attribute] == nil or quote_match[attribute] == false)
+end
+
 for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
   local group = vim.api.nvim_get_hl(0, { name = name, link = false })
   assert(group.fg == tonumber(limei.get_palette().fg_hidden:sub(2), 16))
@@ -130,4 +136,5 @@ for filetype, line in pairs(samples) do
 end
 
 limei.load()
+dofile("tests/matching.lua")
 print("limei.nvim smoke tests passed")
