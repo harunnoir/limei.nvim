@@ -1,16 +1,16 @@
-local cold = require("cold")
+local limei = require("limei")
 
 local function load(options)
-  cold.setup(options)
-  cold.load()
-  assert(vim.g.colors_name == "cold")
+  limei.setup(options)
+  limei.load()
+  assert(vim.g.colors_name == "limei")
 end
 
-vim.cmd.colorscheme("cold")
-assert(vim.g.colors_name == "cold")
+vim.cmd.colorscheme("limei")
+assert(vim.g.colors_name == "limei")
 
 load()
-assert(require("cold.config").options.dim_inactive == true)
+assert(require("limei.config").options.dim_inactive == true)
 
 load({ transparent = true })
 assert(vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil)
@@ -18,21 +18,21 @@ assert(vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg ~= nil)
 
 load({ dim_inactive = false })
 load({ palette = { bg = "#0e0e0e", callable = "#99887b" } })
-assert(cold.get_palette().bg == "#0e0e0e")
-assert(cold.get_palette().callable == "#99887b")
+assert(limei.get_palette().bg == "#0e0e0e")
+assert(limei.get_palette().callable == "#99887b")
 
 load({ palette = { function_color = "#97877a" } })
-assert(cold.get_palette().callable == "#97877a")
+assert(limei.get_palette().callable == "#97877a")
 
 load({ highlights = { Comment = { fg = "#706c66", italic = true } } })
 assert(vim.api.nvim_get_hl(0, { name = "Comment" }).italic == true)
 
 load({
   highlights = function(colors)
-    return { TestColdOverride = { fg = colors.warning } }
+    return { TestLimeiOverride = { fg = colors.warning } }
   end,
 })
-assert(vim.api.nvim_get_hl(0, { name = "TestColdOverride" }).fg ~= nil)
+assert(vim.api.nvim_get_hl(0, { name = "TestLimeiOverride" }).fg ~= nil)
 
 for _, module in ipairs({
   "completion",
@@ -48,7 +48,7 @@ for _, module in ipairs({
   "testing",
   "ui",
 }) do
-  local groups = require("cold.groups.plugins." .. module).get(cold.get_palette())
+  local groups = require("limei.groups.plugins." .. module).get(limei.get_palette())
   assert(type(groups) == "table" and next(groups) ~= nil)
 end
 
@@ -89,5 +89,5 @@ for filetype, line in pairs(samples) do
   vim.cmd.syntax("on")
 end
 
-cold.load()
-print("cold.nvim smoke tests passed")
+limei.load()
+print("limei.nvim smoke tests passed")

@@ -84,11 +84,11 @@ function M.get(c, options)
     SpecialKey = { fg = c.fg_hidden },
 
     -- Messages and lists
-    ErrorMsg = { link = "ColdError" },
-    WarningMsg = { link = "ColdWarning" },
-    MoreMsg = { link = "ColdInfo" },
+    ErrorMsg = { link = "LimeiError" },
+    WarningMsg = { link = "LimeiWarning" },
+    MoreMsg = { link = "LimeiInfo" },
     ModeMsg = { fg = c.fg_bright, bold = true },
-    Question = { link = "ColdInfo" },
+    Question = { link = "LimeiInfo" },
     QuickFixLine = { fg = c.fg_bright, bg = c.bg_selection },
 
     -- Diff and spelling
@@ -96,9 +96,9 @@ function M.get(c, options)
     DiffChange = { fg = c.warning, bg = c.bg_alt },
     DiffDelete = { fg = c.error, bg = c.bg_alt },
     DiffText = { fg = c.fg_bright, bg = c.bg_selection, bold = true },
-    Added = { link = "ColdAdded" },
-    Changed = { link = "ColdChanged" },
-    Removed = { link = "ColdRemoved" },
+    Added = { link = "LimeiAdded" },
+    Changed = { link = "LimeiChanged" },
+    Removed = { link = "LimeiRemoved" },
     SpellBad = { sp = c.error, undercurl = true },
     SpellCap = { sp = c.fg_dim, undercurl = true },
     SpellLocal = { sp = c.fg_dim, undercurl = true },

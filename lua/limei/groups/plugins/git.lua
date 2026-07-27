@@ -3,14 +3,14 @@ local M = {}
 function M.get(c)
   return {
     -- gitsigns.nvim
-    GitSignsAdd = { link = "ColdAdded" },
-    GitSignsAddNr = { link = "ColdAdded" },
+    GitSignsAdd = { link = "LimeiAdded" },
+    GitSignsAddNr = { link = "LimeiAdded" },
     GitSignsAddLn = { link = "DiffAdd" },
     GitSignsChange = { fg = c.warning },
     GitSignsChangeNr = { fg = c.warning },
     GitSignsChangeLn = { link = "DiffChange" },
-    GitSignsDelete = { link = "ColdRemoved" },
-    GitSignsDeleteNr = { link = "ColdRemoved" },
+    GitSignsDelete = { link = "LimeiRemoved" },
+    GitSignsDeleteNr = { link = "LimeiRemoved" },
     GitSignsDeleteLn = { link = "DiffDelete" },
     GitSignsCurrentLineBlame = { fg = c.fg_muted },
 

@@ -1,18 +1,18 @@
 local M = {}
 
-local config = require("cold.config")
+local config = require("limei.config")
 
 function M.setup(options)
   config.setup(options)
 end
 
 function M.get_palette()
-  return require("cold.palette").get(config.options.palette)
+  return require("limei.palette").get(config.options.palette)
 end
 
 function M.load()
   if vim.fn.has("nvim-0.10") ~= 1 then
-    vim.notify("cold.nvim requires Neovim 0.10 or newer", vim.log.levels.ERROR)
+    vim.notify("limei.nvim requires Neovim 0.10 or newer", vim.log.levels.ERROR)
     return
   end
 
@@ -23,14 +23,14 @@ function M.load()
   end
 
   vim.o.termguicolors = true
-  vim.g.colors_name = "cold"
+  vim.g.colors_name = "limei"
 
   local colors = M.get_palette()
-  local groups = require("cold.groups").get(colors, config.options)
-  require("cold.utils").set_highlights(groups)
+  local groups = require("limei.groups").get(colors, config.options)
+  require("limei.utils").set_highlights(groups)
 
   if config.options.terminal_colors then
-    require("cold.groups.terminal").apply(colors)
+    require("limei.groups.terminal").apply(colors)
   end
 end
 

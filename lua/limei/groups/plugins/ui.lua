@@ -57,9 +57,9 @@ function M.get(c)
     SatelliteDiagnosticWarn = { link = "DiagnosticWarn" },
     SatelliteDiagnosticInfo = { link = "DiagnosticInfo" },
     SatelliteDiagnosticHint = { link = "DiagnosticHint" },
-    SatelliteGitSignsAdd = { link = "ColdAdded" },
-    SatelliteGitSignsChange = { link = "ColdChanged" },
-    SatelliteGitSignsDelete = { link = "ColdRemoved" },
+    SatelliteGitSignsAdd = { link = "LimeiAdded" },
+    SatelliteGitSignsChange = { link = "LimeiChanged" },
+    SatelliteGitSignsDelete = { link = "LimeiRemoved" },
     VirtColumn = { fg = c.fg_hidden },
 
     -- grug-far.nvim
@@ -69,8 +69,8 @@ function M.get(c)
     GrugFarCurrentMatch = { link = "CurSearch" },
     GrugFarResultsPath = { fg = c.fg_dim },
     GrugFarResultsLineNr = { link = "LineNr" },
-    GrugFarResultsAddIndicator = { link = "ColdAdded" },
-    GrugFarResultsRemoveIndicator = { link = "ColdRemoved" },
+    GrugFarResultsAddIndicator = { link = "LimeiAdded" },
+    GrugFarResultsRemoveIndicator = { link = "LimeiRemoved" },
 
     -- Marks, Harpoon, Yanky, hardtime, ToggleTerm, and nvim-ufo
     HauntAnnotation = { link = "DiagnosticVirtualTextHint" },

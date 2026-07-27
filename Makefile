@@ -9,9 +9,9 @@ format:
 
 check:
 	$(STYLUA) --check $(LUA_PATHS)
-	NVIM_LOG_FILE=/tmp/cold-nvim-audit.log $(NVIM) --clean --headless -u tests/minimal_init.lua \
+	NVIM_LOG_FILE=/tmp/limei-nvim-audit.log $(NVIM) --clean --headless -u tests/minimal_init.lua \
 		-c "lua dofile('scripts/audit.lua')" -c "qa!"
 
 test:
-	NVIM_LOG_FILE=/tmp/cold-nvim-smoke.log $(NVIM) --clean --headless -u tests/minimal_init.lua \
+	NVIM_LOG_FILE=/tmp/limei-nvim-smoke.log $(NVIM) --clean --headless -u tests/minimal_init.lua \
 		-c "lua dofile('tests/smoke.lua')" -c "qa!"

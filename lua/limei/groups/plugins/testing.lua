@@ -40,9 +40,9 @@ function M.get(c)
     leetcode_calendar_100 = { fg = c.literal },
 
     -- Standard health groups also cover formatter and lint health surfaces.
-    healthError = { link = "ColdError" },
-    healthWarning = { link = "ColdWarning" },
-    healthSuccess = { link = "ColdSuccess" },
+    healthError = { link = "LimeiError" },
+    healthWarning = { link = "LimeiWarning" },
+    healthSuccess = { link = "LimeiSuccess" },
   }
 end
 

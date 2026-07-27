@@ -1,39 +1,39 @@
-*cold.txt* *cold.nvim*      cold.nvim
+*limei.txt* *limei.nvim*      limei.nvim
 
 ==============================================================================
-CONTENTS                                                        *cold-contents*
+CONTENTS                                                        *limei-contents*
 
-1. Introduction ................................................ |cold|
-2. Setup .................................................. |cold-setup|
-3. Options .............................................. |cold-options|
-4. Commands ............................................ |cold-commands|
-
-==============================================================================
-INTRODUCTION                                                          *cold*
-
-cold.nvim is a deeply dark, muted colorscheme for Neovim 0.10 and newer.
-"Cold" describes an emotionally neutral, quiet interface; it does not mean
-blue. Major code categories have distinct semantic identities while ordinary
-structure and plugin surfaces remain neutral.
+1. Introduction ................................................ |limei|
+2. Setup .................................................. |limei-setup|
+3. Options .............................................. |limei-options|
+4. Commands ............................................ |limei-commands|
 
 ==============================================================================
-SETUP                                                            *cold-setup*
+INTRODUCTION                                                          *limei*
+
+limei.nvim is a deeply dark, muted colorscheme for Neovim 0.10 and newer.
+Its interface is emotionally neutral and quiet, without blue or cool-color
+dominance. Major code categories have distinct semantic identities while
+ordinary structure and plugin surfaces remain neutral.
+
+==============================================================================
+SETUP                                                            *limei-setup*
 
 The colorscheme works without configuration: >
 
-  :colorscheme cold
+  :colorscheme limei
 <
 Optional Lua setup: >
 
-  require("cold").setup({
+  require("limei").setup({
     transparent = false,
     dim_inactive = true,
     terminal_colors = true,
   })
-  vim.cmd.colorscheme("cold")
+  vim.cmd.colorscheme("limei")
 <
 ==============================================================================
-OPTIONS                                                        *cold-options*
+OPTIONS                                                        *limei-options*
 
 transparent       Remove active and inactive editor canvas backgrounds.
                   Floating windows and popup menus remain opaque.
@@ -51,7 +51,7 @@ palette           Palette overrides applied before highlights are generated.
 highlights        A table or function returning final highlight overrides.
 
 ==============================================================================
-COMMANDS                                                      *cold-commands*
+COMMANDS                                                      *limei-commands*
 
 There are no custom commands. Use |:colorscheme| and the Lua setup API.
 

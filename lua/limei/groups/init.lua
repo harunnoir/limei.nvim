@@ -13,12 +13,12 @@ function M.get(colors, options)
 
   -- Core sections load in this explicit order.
   for _, name in ipairs(sections) do
-    groups = vim.tbl_extend("force", groups, require("cold.groups." .. name).get(colors, options))
+    groups = vim.tbl_extend("force", groups, require("limei.groups." .. name).get(colors, options))
   end
 
   -- Plugin groups only contain plain highlight tables and are safe when their
   -- plugins are absent.
-  groups = vim.tbl_extend("force", groups, require("cold.groups.plugins").get(colors, options))
+  groups = vim.tbl_extend("force", groups, require("limei.groups.plugins").get(colors, options))
 
   -- User overrides always run last.
   local overrides = options.highlights

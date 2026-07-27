@@ -31,9 +31,9 @@ function M.get(c)
     SnacksPickerPrompt = { fg = c.warning },
     SnacksPickerDir = { fg = c.fg_dim },
     SnacksPickerFile = { fg = c.fg },
-    SnacksPickerGitStatusAdded = { link = "ColdAdded" },
+    SnacksPickerGitStatusAdded = { link = "LimeiAdded" },
     SnacksPickerGitStatusModified = { fg = c.warning },
-    SnacksPickerGitStatusDeleted = { link = "ColdRemoved" },
+    SnacksPickerGitStatusDeleted = { link = "LimeiRemoved" },
     SnacksPickerPathHidden = { fg = c.fg_muted },
     SnacksPickerPathIgnored = { fg = c.fg_hidden },
 

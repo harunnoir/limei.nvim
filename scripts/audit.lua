@@ -1,4 +1,4 @@
-local palette = require("cold.palette")
+local palette = require("limei.palette")
 local colors = palette.get()
 
 local required = {
@@ -105,7 +105,7 @@ check(luminance(colors.bg_inactive) < luminance(colors.bg), "inactive background
 check(math.abs(luminance(colors.bg_popup) - luminance(colors.bg)) < 0.01, "popup background is too far from the editor")
 check(colors.separator == "#000000" or colors.separator == colors.bg_deep, "separator is not black or bg_deep")
 
-local groups = require("cold.groups").get(colors, require("cold.config").defaults)
+local groups = require("limei.groups").get(colors, require("limei.config").defaults)
 local allowed = {
   altfont = true,
   bg = true,
@@ -140,7 +140,7 @@ for role, meaning in pairs(palette.semantic) do
 end
 
 if #failures > 0 then
-  error("cold.nvim audit failed:\n- " .. table.concat(failures, "\n- "))
+  error("limei.nvim audit failed:\n- " .. table.concat(failures, "\n- "))
 end
 
-print("cold.nvim audit passed")
+print("limei.nvim audit passed")

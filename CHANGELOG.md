@@ -4,7 +4,7 @@
 
 ### Added
 
-- Added the first stable release of cold.nvim.
+- Added the first stable release of limei.nvim.
 - Added a complete semantic color-language system.
 - Added distinct identities for variables, callables, keywords, literals, numbers, types, constants, and logical values.
 - Added quiet active, inactive, popup, and floating-window surface hierarchies.

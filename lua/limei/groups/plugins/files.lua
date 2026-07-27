@@ -27,11 +27,11 @@ function M.get(c)
     OilPreviewCursor = { link = "CursorLine" },
 
     -- oil-git.nvim
-    OilGitAdded = { link = "ColdAdded" },
+    OilGitAdded = { link = "LimeiAdded" },
     OilGitModified = { fg = c.warning },
     OilGitRenamed = { fg = c.transform },
     OilGitUntracked = { fg = c.literal },
-    OilGitIgnored = { link = "ColdPunctuation" },
+    OilGitIgnored = { link = "LimeiPunctuation" },
     -- oil-lsp-diagnostics.nvim uses the central Diagnostic groups directly.
   }
 end

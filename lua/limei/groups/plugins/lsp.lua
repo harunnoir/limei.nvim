@@ -14,7 +14,7 @@ function M.get(c)
     SagaFinderFname = { fg = c.fg },
     SagaSelect = { link = "PmenuSel" },
     SagaSearch = { link = "Search" },
-    SagaSep = { link = "ColdPunctuation" },
+    SagaSep = { link = "LimeiPunctuation" },
     ActionPreviewNormal = { link = "NormalFloat" },
     ActionPreviewBorder = { link = "FloatBorder" },
     ActionPreviewTitle = { link = "FloatTitle" },

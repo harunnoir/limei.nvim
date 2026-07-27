@@ -1,6 +1,6 @@
-# cold.nvim
+# limei.nvim
 
-`cold.nvim` is a deeply dark, muted Neovim colorscheme designed for long
+`limei.nvim` is a deeply dark, muted Neovim colorscheme designed for long
 programming sessions. It combines a neutral `#101010` charcoal canvas, soft
 foregrounds, distinct semantic syntax identities, and quiet plugin surfaces.
 
@@ -12,11 +12,11 @@ that remains readable and comfortable after ten hours.
 <img width="1323" height="745" alt="image" src="https://github.com/user-attachments/assets/f3aca5f3-14b4-4080-9d8c-1fafef0a1350" />
 <img width="1323" height="745" alt="image" src="https://github.com/user-attachments/assets/3472a270-22c9-479a-811b-7215e156f572" />
 
-## Cold does not mean blue
+## A quiet, neutral palette
 
-“Cold” means emotionally neutral: calm, precise, detached from visual noise,
-and timeless. It does not mean blue, cyan, icy, or metallic. Cool color is
-reserved for occasional links, references, and informational states.
+Limei is calm, precise, and detached from visual noise. The palette avoids
+blue, cyan, icy, or metallic dominance; cool color is reserved for occasional
+links, references, and informational states.
 
 ## Colors have meaning
 
@@ -86,12 +86,12 @@ With lazy.nvim:
 
 ```lua
 {
-  "your-name/cold.nvim",
+  "your-name/limei.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    require("cold").setup()
-    vim.cmd.colorscheme("cold")
+    require("limei").setup()
+    vim.cmd.colorscheme("limei")
   end,
 }
 ```
@@ -99,19 +99,19 @@ With lazy.nvim:
 For local development, replace the repository name with:
 
 ```lua
-dir = "/path/to/cold.nvim"
+dir = "/path/to/limei.nvim"
 ```
 
 Calling `setup()` is optional:
 
 ```vim
-:colorscheme cold
+:colorscheme limei
 ```
 
 ## Configuration
 
 ```lua
-require("cold").setup({
+require("limei").setup({
   transparent = false,
   dim_inactive = true,
   terminal_colors = true,
@@ -127,7 +127,7 @@ require("cold").setup({
   highlights = {},
 })
 
-vim.cmd.colorscheme("cold")
+vim.cmd.colorscheme("limei")
 ```
 
 Configuration is reset to defaults on every `setup()` call. Reapply the
@@ -136,7 +136,7 @@ colorscheme after changing it.
 ### Transparency and inactive splits
 
 ```lua
-require("cold").setup({
+require("limei").setup({
   transparent = true,
   dim_inactive = true,
 })
@@ -149,7 +149,7 @@ background and dim foreground for inactive windows.
 ### Palette overrides
 
 ```lua
-require("cold").setup({
+require("limei").setup({
   palette = {
     bg = "#0e0e0e",
     callable = "#99887b",
@@ -157,7 +157,7 @@ require("cold").setup({
 })
 ```
 
-The resolved palette is available through `require("cold").get_palette()`.
+The resolved palette is available through `require("limei").get_palette()`.
 Legacy v0.x palette role names remain accepted where practical.
 
 ### Highlight overrides
@@ -165,7 +165,7 @@ Legacy v0.x palette role names remain accepted where practical.
 Use a table:
 
 ```lua
-require("cold").setup({
+require("limei").setup({
   highlights = {
     Comment = { fg = "#706c66", italic = true },
   },
@@ -175,7 +175,7 @@ require("cold").setup({
 Or a function:
 
 ```lua
-require("cold").setup({
+require("limei").setup({
   highlights = function(colors)
     return {
       CursorLineNr = { fg = colors.warning, bold = true },
@@ -218,11 +218,11 @@ make test
 
 `make check` runs StyLua and the palette/semantic audit. `make test` loads the
 theme headlessly in default, transparent, override, and reload configurations.
-See `:help cold.nvim` for concise in-editor documentation.
+See `:help limei.nvim` for concise in-editor documentation.
 
 ## Design lineage
 
 The grayscale-first restraint is inspired by
 [nendix/zen.nvim](https://github.com/nendix/zen.nvim), while the pigment
 relationships take broad inspiration from Gruvbox. The palette,
-implementation, semantic model, and integrations are original to `cold.nvim`.
+implementation, semantic model, and integrations are original to `limei.nvim`.
