@@ -7,7 +7,7 @@ function M.get(c)
     LazyButton = { link = "Pmenu" },
     LazyButtonActive = { link = "PmenuSel" },
     LazyH1 = { link = "FloatTitle" },
-    LazySpecial = { fg = c.wheat },
+    LazySpecial = { fg = c.fg_dim },
     LazyComment = { link = "Comment" },
     MasonNormal = { link = "NormalFloat" },
     MasonHeader = { fg = c.fg_bright, bg = c.bg_surface, bold = true },
@@ -37,15 +37,15 @@ function M.get(c)
     SlimlineModeNormal = { fg = c.fg_bright, bold = true },
     SlimlineModeInsert = { fg = c.sage, bold = true },
     SlimlineModeVisual = { fg = c.faded_lavender, bold = true },
-    SlimlineModeReplace = { fg = c.rose, bold = true },
-    SlimlineModeCommand = { fg = c.wheat, bold = true },
+    SlimlineModeReplace = { fg = c.rust, bold = true },
+    SlimlineModeCommand = { fg = c.fg_bright, bold = true },
     SlimlineInactive = { fg = c.fg_muted },
     BufferLineFill = { link = "TabLineFill" },
     BufferLineBackground = { link = "TabLine" },
     BufferLineBufferVisible = { link = "TabLine" },
     BufferLineBufferSelected = { link = "TabLineSel" },
     BufferLineSeparator = { link = "WinSeparator" },
-    BufferLineModified = { fg = c.ochre },
+    BufferLineModified = { fg = c.amber },
 
     -- satellite.nvim and columns
     SatelliteBackground = { fg = c.fg_hidden },
@@ -63,7 +63,7 @@ function M.get(c)
     VirtColumn = { fg = c.fg_hidden },
 
     -- overseer.nvim
-    OverseerSUCCESS = { fg = c.sage },
+    OverseerSUCCESS = { fg = c.moss },
     OverseerRUNNING = { fg = c.amber },
     OverseerFAILURE = { fg = c.rose },
     OverseerPENDING = { fg = c.fg_dim },
@@ -74,11 +74,11 @@ function M.get(c)
     -- Flash and todo-comments.nvim
     FlashLabel = { fg = c.bg, bg = c.amber, bold = true },
     FlashMatch = { fg = c.wheat },
-    FlashCurrent = { fg = c.clay },
+    FlashCurrent = { fg = c.amber },
     FlashBackdrop = { fg = c.fg_muted },
     TodoFgFIX = { fg = c.rose, bold = true },
     TodoFgWARN = { fg = c.amber, bold = true },
-    TodoFgTODO = { fg = c.wheat, bold = true },
+    TodoFgTODO = { fg = c.amber, bold = true },
     TodoFgNOTE = { fg = c.sage, bold = true },
     TodoFgPERF = { fg = c.faded_lavender, bold = true },
     TodoSignFIX = { link = "TodoFgFIX" },
@@ -98,9 +98,9 @@ function M.get(c)
     GrugFarResultsRemoveIndicator = { link = "ColdRemoved" },
 
     -- Marks, Harpoon, Yanky, hardtime, ToggleTerm, and nvim-ufo
-    MarkSignHL = { fg = c.wheat },
+    MarkSignHL = { fg = c.ochre },
     MarkSignNumHL = { fg = c.fg_dim },
-    HarpoonCurrentFile = { fg = c.wheat, bold = true },
+    HarpoonCurrentFile = { fg = c.fg_bright, bold = true },
     YankyPut = { link = "Search" },
     YankyYanked = { link = "IncSearch" },
     HardtimeGroup = { fg = c.amber },
@@ -116,10 +116,16 @@ function M.get(c)
     -- leetcode.nvim
     leetcode_easy = { fg = c.sage },
     leetcode_medium = { fg = c.amber },
-    leetcode_hard = { fg = c.rose },
+    leetcode_hard = { fg = c.brick },
     leetcode_easy_alt = { fg = c.sage_dim },
     leetcode_medium_alt = { fg = c.amber_dim },
-    leetcode_hard_alt = { fg = c.rose_dim },
+    leetcode_hard_alt = { fg = c.fg_muted },
+    leetcode_ok = { fg = c.moss },
+    leetcode_info = { fg = c.slate },
+    leetcode_hint = { fg = c.sage },
+    leetcode_error = { fg = c.rose },
+    leetcode_case_ok = { fg = c.moss, bg = c.bg, bold = true },
+    leetcode_case_err = { fg = c.rose, bg = c.bg, bold = true },
     leetcode_calendar_0 = { fg = c.fg_hidden },
     leetcode_calendar_10 = { fg = c.sage_dim },
     leetcode_calendar_20 = { fg = c.sage_dim },
@@ -135,7 +141,7 @@ function M.get(c)
     -- Generic health groups
     healthError = { link = "ColdError" },
     healthWarning = { link = "ColdWarning" },
-    healthSuccess = { link = "ColdAdded" },
+    healthSuccess = { link = "ColdSuccess" },
   }
 end
 

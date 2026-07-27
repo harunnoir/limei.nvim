@@ -34,8 +34,11 @@ function M.get(c)
     BlinkCmpKindProperty = { link = "BlinkCmpKindField" },
     BlinkCmpKindVariable = { link = "BlinkCmpKindField" },
     BlinkCmpKindKeyword = { fg = c.clay, bg = c.bg_popup },
-    BlinkCmpKindConstant = { fg = c.amber, bg = c.bg_popup },
-    BlinkCmpKindValue = { link = "BlinkCmpKindConstant" },
+    BlinkCmpKindConstant = { fg = c.faded_lavender, bg = c.bg_popup },
+    BlinkCmpKindValue = { fg = c.amber, bg = c.bg_popup },
+    BlinkCmpKindNumber = { link = "BlinkCmpKindValue" },
+    BlinkCmpKindBoolean = { fg = c.olive, bg = c.bg_popup },
+    BlinkCmpKindEnum = { link = "BlinkCmpKindBoolean" },
     BlinkCmpKindEnumMember = { fg = c.olive, bg = c.bg_popup },
     BlinkCmpKindText = { fg = c.sage, bg = c.bg_popup },
     BlinkCmpKindSnippet = { link = "BlinkCmpKindText" },
@@ -43,6 +46,7 @@ function M.get(c)
     BlinkCmpKindFolder = { fg = c.ochre, bg = c.bg_popup },
     BlinkCmpKindFile = { fg = c.fg, bg = c.bg_popup },
     BlinkCmpKindReference = { fg = c.slate, bg = c.bg_popup },
+    BlinkCmpKindOperator = { fg = c.fg_dim, bg = c.bg_popup },
 
     -- nvim-cmp
     CmpItemAbbr = { link = "Pmenu" },
@@ -58,13 +62,19 @@ function M.get(c)
     CmpItemKindField = { fg = c.fg },
     CmpItemKindProperty = { link = "CmpItemKindField" },
     CmpItemKindKeyword = { fg = c.clay },
-    CmpItemKindConstant = { fg = c.amber },
+    CmpItemKindConstant = { fg = c.faded_lavender },
+    CmpItemKindValue = { fg = c.amber },
+    CmpItemKindNumber = { link = "CmpItemKindValue" },
+    CmpItemKindBoolean = { fg = c.olive },
+    CmpItemKindEnum = { link = "CmpItemKindBoolean" },
+    CmpItemKindEnumMember = { link = "CmpItemKindBoolean" },
     CmpItemKindText = { fg = c.sage },
     CmpItemKindSnippet = { link = "CmpItemKindText" },
     CmpItemKindModule = { fg = c.fg_dim },
     CmpItemKindFolder = { fg = c.ochre },
     CmpItemKindFile = { fg = c.fg },
     CmpItemKindReference = { fg = c.slate },
+    CmpItemKindOperator = { fg = c.fg_dim },
   }
 end
 

@@ -29,7 +29,7 @@ function M.get(c)
 
     -- undotree
     UndotreeNode = { fg = c.ochre },
-    UndotreeCurrent = { fg = c.sage, bold = true },
+    UndotreeCurrent = { fg = c.fg_bright, bold = true },
     UndotreeSeq = { fg = c.fg_dim },
     UndotreeTimeStamp = { fg = c.fg_muted },
   }

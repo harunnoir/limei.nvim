@@ -19,7 +19,7 @@ function M.get(c)
     DiagnosticVirtualTextWarn = { fg = c.amber_dim },
     DiagnosticVirtualTextInfo = { fg = c.fg_dim },
     DiagnosticVirtualTextHint = { fg = c.sage_dim },
-    DiagnosticVirtualTextOk = { fg = c.sage_dim },
+    DiagnosticVirtualTextOk = { fg = c.moss },
 
     -- Undercurls never paint the buffer.
     DiagnosticUnderlineError = { sp = c.rose, undercurl = true },

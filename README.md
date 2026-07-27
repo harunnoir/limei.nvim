@@ -10,8 +10,31 @@ earthy, natural, and rare slate accents provide quiet semantic structure.
 The goal is not maximum contrast or an impressive screenshot. The goal is an
 editor that remains comfortable after ten hours.
 
+“Cold” means emotionally neutral and visually calm—not blue.
+
 > Screenshot placeholder — add a representative code and plugin screenshot
 > before publishing.
+
+## Colors have meaning
+
+`cold.nvim` uses color as a semantic language rather than decoration.
+
+- Rose represents failure, deletion, and destructive state.
+- Brick represents conflict, exception, and interruption.
+- Clay represents declaration, construction, and language structure.
+- Rust represents patterns, transformation, and replacement.
+- Amber represents warnings, attention, active processes, and numbers.
+- Wheat represents types, schemas, and stable definitions.
+- Ochre represents imports, paths, directories, and navigation.
+- Sage represents literal content, creation, and valid data.
+- Moss represents completed success and accepted state.
+- Olive represents booleans, alternatives, and logical state.
+- Slate represents information, references, and links.
+- Faded lavender represents constants and symbolic identity.
+
+Most code remains neutral. Color is used only when it improves recognition.
+The same meanings apply across syntax, diagnostics, Git, completion, LSP, file
+explorers, DAP, tasks, and plugin interfaces.
 
 ## Requirements
 
@@ -141,7 +164,7 @@ Highlight overrides are applied after all built-in and plugin groups.
 The theme includes dedicated groups for:
 
 - Treesitter and LSP semantic tokens
-- Native diagnostics and Tiny Inline Diagnostic
+- Native diagnostics, Tiny Inline Diagnostic, and norminette42
 - Blink, blink-cmp-words, and nvim-cmp
 - fzf-lua and the combined fzf-oil workflow
 - Oil, oil-git, and oil-lsp-diagnostics

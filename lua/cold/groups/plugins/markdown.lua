@@ -20,9 +20,9 @@ function M.get(c)
     RenderMarkdownCodeInfo = { fg = c.fg_muted, bg = c.bg_alt },
     RenderMarkdownBullet = { fg = c.ochre },
     RenderMarkdownQuote = { fg = c.fg_muted },
-    RenderMarkdownChecked = { fg = c.sage },
+    RenderMarkdownChecked = { fg = c.moss },
     RenderMarkdownUnchecked = { fg = c.amber },
-    RenderMarkdownSuccess = { fg = c.sage },
+    RenderMarkdownSuccess = { fg = c.moss },
     RenderMarkdownWarn = { fg = c.amber },
     RenderMarkdownError = { fg = c.rose },
     RenderMarkdownInfo = { fg = c.slate },
@@ -32,10 +32,10 @@ function M.get(c)
     RenderMarkdownTableRow = { fg = c.fg_dim },
     RenderMarkdownTableFill = { fg = c.fg_hidden },
 
-    -- csvview.nvim: three quiet tones repeat instead of rainbow columns.
+    -- csvview.nvim: neutral tones repeat instead of rainbow columns.
     CsvViewCol0 = { fg = c.fg },
-    CsvViewCol1 = { fg = c.sage },
-    CsvViewCol2 = { fg = c.wheat },
+    CsvViewCol1 = { fg = c.fg_dim },
+    CsvViewCol2 = { fg = c.fg_muted },
     CsvViewCol3 = { link = "CsvViewCol0" },
     CsvViewCol4 = { link = "CsvViewCol1" },
     CsvViewCol5 = { link = "CsvViewCol2" },

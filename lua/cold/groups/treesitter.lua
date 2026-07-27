@@ -10,7 +10,7 @@ function M.get(c)
     ["@property"] = { link = "@variable" },
     ["@constant"] = { link = "ColdConstant" },
     ["@constant.builtin"] = { link = "ColdBuiltinConstant" },
-    ["@label"] = { link = "ColdKeyword" },
+    ["@label"] = { link = "ColdMuted" },
     ["@module"] = { link = "ColdNamespace" },
     ["@module.builtin"] = { link = "@module" },
 
@@ -27,16 +27,16 @@ function M.get(c)
     ["@type.builtin"] = { link = "ColdBuiltinType" },
     ["@type.definition"] = { link = "@type" },
     ["@type.qualifier"] = { link = "ColdMuted" },
-    ["@attribute"] = { link = "ColdType" },
+    ["@attribute"] = { link = "ColdDeclaration" },
     ["@keyword"] = { link = "ColdKeyword" },
-    ["@keyword.function"] = { link = "@keyword" },
+    ["@keyword.function"] = { link = "ColdDeclaration" },
     ["@keyword.modifier"] = { link = "ColdMuted" },
     ["@keyword.operator"] = { link = "@keyword" },
     ["@keyword.return"] = { link = "ColdReturn" },
     ["@keyword.import"] = { link = "ColdImport" },
     ["@keyword.conditional"] = { link = "ColdControl" },
     ["@keyword.repeat"] = { link = "ColdControl" },
-    ["@keyword.exception"] = { link = "ColdControl" },
+    ["@keyword.exception"] = { link = "ColdException" },
     ["@operator"] = { link = "ColdMuted" },
 
     -- Literals
@@ -59,7 +59,7 @@ function M.get(c)
     ["@comment.documentation"] = { link = "ColdDocComment" },
     ["@comment.error"] = { fg = c.rose, bold = true },
     ["@comment.warning"] = { fg = c.amber, bold = true },
-    ["@comment.todo"] = { fg = c.wheat, bold = true },
+    ["@comment.todo"] = { fg = c.amber, bold = true },
     ["@comment.note"] = { fg = c.sage, bold = true },
 
     -- Markup

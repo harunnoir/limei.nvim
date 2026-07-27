@@ -17,7 +17,7 @@ local defaults = {
   fg_muted = "#65615c",
   fg_hidden = "#3a3734",
 
-  -- Warm earthy accents
+  -- Warm semantic accents
   rose = "#9b797a",
   brick = "#987269",
   clay = "#9e816d",
@@ -26,16 +26,16 @@ local defaults = {
   wheat = "#a09776",
   ochre = "#918862",
 
-  -- Natural accents
+  -- Natural semantic accents
   sage = "#838f7a",
   moss = "#78866e",
   olive = "#898764",
 
-  -- Rare cool accents
+  -- Rare cool semantic accents
   slate = "#7b8184",
   faded_lavender = "#898187",
 
-  -- UI neutrals
+  -- Neutral UI colors
   border = "#34312f",
   separator = "#292725",
   whitespace = "#373431",
@@ -46,6 +46,22 @@ local defaults = {
   rose_dim = "#795f60",
   amber_dim = "#7d6b4d",
   sage_dim = "#626b5c",
+}
+
+-- Stable semantic language used throughout core and plugin highlights.
+M.semantic = {
+  failure = "rose",
+  conflict = "brick",
+  structure = "clay",
+  transform = "rust",
+  attention = "amber",
+  type = "wheat",
+  navigation = "ochre",
+  content = "sage",
+  success = "moss",
+  logic = "olive",
+  information = "slate",
+  constant = "faded_lavender",
 }
 
 function M.get(overrides)

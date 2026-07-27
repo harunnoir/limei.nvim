@@ -6,7 +6,7 @@ function M.get(c)
     SagaNormal = { link = "NormalFloat" },
     SagaBorder = { link = "FloatBorder" },
     SagaTitle = { link = "FloatTitle" },
-    SagaBeacon = { fg = c.rose, bg = c.bg_alt },
+    SagaBeacon = { fg = c.amber, bg = c.bg_alt },
     SagaVirtLine = { fg = c.fg_hidden },
     SagaCount = { fg = c.fg_bright, bg = c.bg_selection, bold = true },
     SagaText = { fg = c.fg },
@@ -25,7 +25,7 @@ function M.get(c)
     HoverBorder = { link = "FloatBorder" },
     RenameNormal = { link = "NormalFloat" },
     RenameBorder = { link = "FloatBorder" },
-    RenameMatch = { fg = c.clay, underline = true },
+    RenameMatch = { fg = c.rust, underline = true },
     DiagnosticNormal = { link = "NormalFloat" },
     DiagnosticBorder = { link = "FloatBorder" },
     SagaLightBulb = { fg = c.amber },
@@ -69,10 +69,10 @@ function M.get(c)
     TroubleDirectory = { fg = c.fg_dim },
 
     -- tiny-inline-diagnostic.nvim
-    TinyInlineDiagnosticVirtualTextError = { fg = c.rose_dim },
-    TinyInlineDiagnosticVirtualTextWarn = { fg = c.amber_dim },
-    TinyInlineDiagnosticVirtualTextInfo = { fg = c.fg_dim },
-    TinyInlineDiagnosticVirtualTextHint = { fg = c.sage_dim },
+    TinyInlineDiagnosticVirtualTextError = { link = "DiagnosticVirtualTextError" },
+    TinyInlineDiagnosticVirtualTextWarn = { link = "DiagnosticVirtualTextWarn" },
+    TinyInlineDiagnosticVirtualTextInfo = { link = "DiagnosticVirtualTextInfo" },
+    TinyInlineDiagnosticVirtualTextHint = { link = "DiagnosticVirtualTextHint" },
     TinyInlineDiagnosticVirtualTextArrow = { fg = c.fg_hidden },
     TinyInlineDiagnosticVirtualTextArrowNoBg = { fg = c.fg_hidden },
 

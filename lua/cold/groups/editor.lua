@@ -34,9 +34,9 @@ function M.get(c, options)
     -- Selection and search
     Visual = { bg = c.bg_selection },
     VisualNOS = { link = "Visual" },
-    Search = { fg = c.fg_bright, bg = c.bg_selection },
+    Search = { fg = c.wheat, bg = c.bg_selection },
     CurSearch = { fg = c.bg, bg = c.amber, bold = true },
-    IncSearch = { fg = c.bg, bg = c.clay, bold = true },
+    IncSearch = { fg = c.bg, bg = c.amber, bold = true },
     Substitute = { fg = c.bg, bg = c.rust, bold = true },
     MatchParen = { fg = c.wheat, bold = true, underline = true },
 
@@ -83,16 +83,16 @@ function M.get(c, options)
 
     -- Diff and spelling
     DiffAdd = { fg = c.sage, bg = c.bg_alt },
-    DiffChange = { fg = c.ochre, bg = c.bg_alt },
+    DiffChange = { fg = c.amber, bg = c.bg_alt },
     DiffDelete = { fg = c.rose, bg = c.bg_alt },
     DiffText = { fg = c.fg_bright, bg = c.bg_selection, bold = true },
     Added = { link = "ColdAdded" },
     Changed = { link = "ColdChanged" },
     Removed = { link = "ColdRemoved" },
     SpellBad = { sp = c.rose, undercurl = true },
-    SpellCap = { sp = c.slate, undercurl = true },
-    SpellLocal = { sp = c.sage, undercurl = true },
-    SpellRare = { sp = c.faded_lavender, undercurl = true },
+    SpellCap = { sp = c.fg_dim, undercurl = true },
+    SpellLocal = { sp = c.fg_dim, undercurl = true },
+    SpellRare = { sp = c.fg_dim, undercurl = true },
   }
 end
 

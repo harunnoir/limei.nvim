@@ -14,8 +14,7 @@ function M.get(c)
     OilCreate = { fg = c.sage },
     OilDelete = { fg = c.rose },
     OilChange = { fg = c.amber },
-    OilRename = { fg = c.wheat },
-    OilRestore = { fg = c.sage },
+    OilRestore = { fg = c.moss },
     OilPurge = { fg = c.rose },
     OilTrash = { fg = c.rose },
     OilTrashSourcePath = { fg = c.fg_muted },
@@ -30,12 +29,10 @@ function M.get(c)
     -- oil-git.nvim
     OilGitAdded = { link = "ColdAdded" },
     OilGitModified = { fg = c.amber },
-    OilGitRenamed = { fg = c.wheat },
+    OilGitRenamed = { fg = c.rust },
     OilGitUntracked = { fg = c.moss },
     OilGitIgnored = { link = "ColdPunctuation" },
-
-    -- oil-lsp-diagnostics.nvim
-    OilLspDiagnostics = { link = "DiagnosticInfo" },
+    -- oil-lsp-diagnostics.nvim uses the central Diagnostic groups directly.
   }
 end
 
