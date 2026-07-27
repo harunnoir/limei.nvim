@@ -16,5 +16,5 @@ jobs:
       - uses: MunifTanjim/setup-neovim-action@v1
         with:
           tag: stable
-      - run: make check
       - run: make test
+      - run: nvim --clean --headless -u tests/minimal_init.lua -c "lua dofile('scripts/audit.lua')" -c "qa!"

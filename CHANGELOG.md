@@ -1,56 +1,5 @@
 # Changelog
 
-## [1.1.1]
-
-### Added
-
-- Added a controlled soft-light foreground hierarchy.
-- Added pearl, ivory, silver, and highest-focus foreground colors.
-- Added perceptual role-distance and near-white frequency validation.
-- Added realistic syntax fixtures for twelve languages and structured formats.
-
-### Changed
-
-- Restored lighter syntax anchors to improve code depth and recognition.
-- Refined function declarations, calls, built-ins, active signatures, and completion identities with restrained near-white values.
-- Improved contrast rhythm without brightening editor or popup surfaces.
-- Preserved balanced full-spectrum semantic colors and long-session comfort.
-- Updated role validation, smoke coverage, fixtures, and palette documentation.
-
-### Fixed
-
-- Fixed syntax appearing uniformly dim or visually flat.
-- Fixed the absence of lighter textual anchors in normal code.
-
-## [1.1.0]
-
-### Added
-
-- Added a raw-palette and semantic-role separation.
-- Added configurable role mappings for major code categories and editor states.
-- Added balanced support for the complete color spectrum without banning blue or other hues.
-- Added validation for repetitive high-frequency code-role colors and hue-family dominance.
-- Added a plugin highlight discovery helper.
-- Added the final full palette, role map, and ANSI palette documentation.
-
-### Changed
-
-- Refined color balancing so no hue family dominates the editor.
-- Reworked major syntax identities so unrelated high-frequency categories use distinct colors.
-- Allowed blue, cyan, teal, violet, and other cool hues to participate normally when logically appropriate.
-- Replaced the fully black split separator with a simple low-contrast neutral separator.
-- Refined inactive split backgrounds without aggressively dimming their content.
-- Kept floating and Snacks windows dark, bordered, and visually integrated.
-- Unified syntax, Treesitter, semantic tokens, completion, LSP, diagnostics, Git, testing, and plugin interfaces through the role map.
-- Improved long-session visual comfort and maintainability.
-
-### Removed
-
-- Removed hue-ban logic and anti-blue special cases.
-- Removed fixed assumptions that specific hues must always represent specific concepts.
-- Removed repetitive color assignments between unrelated important code categories.
-- Removed the fully black split-separator treatment.
-
 ## [1.0.0]
 
 ### Added

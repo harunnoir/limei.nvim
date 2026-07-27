@@ -1,76 +1,104 @@
 local M = {}
 
 local defaults = {
-  -- Backgrounds
-  bg_deep = "#08090a",
-  bg_inactive = "#0c0d0e",
-  bg = "#101112",
-  bg_alt = "#141516",
-  bg_cursorline = "#161719",
-  bg_surface = "#18191b",
-  bg_elevated = "#1d1e21",
-  bg_overlay = "#232428",
-  bg_selection = "#2b2c30",
-  bg_active = "#303136",
-  bg_popup = "#141516",
+  -- Background hierarchy
+  bg_deep = "#080808",
+  bg = "#101010",
+  bg_inactive = "#0c0c0c",
+  bg_alt = "#141414",
+  bg_surface = "#171717",
+  bg_popup = "#141414",
+  bg_selection = "#292724",
+  bg_active = "#302d29",
 
-  -- Soft-light foreground hierarchy
-  fg_highest = "#d2cdc4",
-  fg_bright = "#c5c0b7",
-  pearl = "#c1bbb1",
-  ivory = "#bbb5aa",
-  silver = "#b4b6b3",
+  -- Foreground hierarchy
+  fg = "#ada9a3",
+  fg_bright = "#c0bbb3",
+  fg_dim = "#837f78",
+  fg_muted = "#64605a",
+  fg_hidden = "#393632",
 
-  -- Primary and secondary foregrounds
-  fg = "#b2afa9",
-  fg_soft = "#9c9993",
-  fg_dim = "#85827d",
-  fg_muted = "#686560",
-  fg_subtle = "#56534f",
-  fg_hidden = "#3d3b38",
+  -- Major code identities
+  variable = "#ada9a3",
+  callable = "#9a897c",
+  structure = "#9a7869",
+  literal = "#7f8c77",
+  numeric = "#a38762",
+  type = "#97916f",
+  symbol = "#8d818a",
+  logic = "#898661",
 
-  -- Warm spectrum
-  rose = "#a8797d",
-  brick = "#a57b74",
-  coral = "#a77f72",
-  clay = "#a08472",
-  copper = "#a68767",
-  amber = "#a28e67",
-  sand = "#9d936d",
+  -- State and relationship colors
+  error = "#9a7477",
+  conflict = "#9b7469",
+  transform = "#9c795e",
+  warning = "#a38762",
+  success = "#768569",
+  information = "#788184",
+  navigation = "#918862",
 
-  -- Green and earth spectrum
-  olive = "#8b916c",
-  fern = "#849276",
-  moss = "#7f9278",
-  sage = "#80947f",
-  mint = "#7d9386",
+  -- Neutral UI colors
+  border = "#373330",
+  separator = "#000000",
+  whitespace = "#34312f",
+  indent = "#272522",
+  indent_scope = "#514940",
+}
 
-  -- Cool spectrum
-  teal = "#79918e",
-  cyan = "#7e9096",
-  sky = "#7e8e9a",
-  blue = "#7e899b",
-  indigo = "#88859b",
+-- Compatibility aliases remain centralized here. New highlight code uses the
+-- canonical semantic roles above.
+local aliases = {
+  variable_color = "variable",
+  function_color = "callable",
+  keyword_color = "structure",
+  string_color = "literal",
+  number_color = "numeric",
+  type_color = "type",
+  constant_color = "symbol",
+  rose = "error",
+  brick = "conflict",
+  rust = "transform",
+  amber = "warning",
+  wheat = "type",
+  ochre = "navigation",
+  sage = "literal",
+  moss = "success",
+  olive = "logic",
+  slate = "information",
+  clay = "structure",
+  faded_lavender = "symbol",
+}
 
-  -- Purple and red-purple spectrum
-  lavender = "#91839a",
-  violet = "#968196",
-  magenta = "#9a8290",
-  plum = "#967d87",
-
-  -- UI neutrals
-  border = "#36383a",
-  border_focus = "#4a4b4e",
-  separator = "#27282b",
-  whitespace = "#343537",
-  indent = "#27282a",
-  indent_scope = "#4d4b47",
-  scrollbar = "#46474a",
-  scrollbar_track = "#252629",
+M.semantic = {
+  variable = "ordinary data",
+  callable = "callable behavior and execution",
+  structure = "language grammar and construction",
+  literal = "literal textual content",
+  numeric = "numeric quantity",
+  type = "shape, schema, and data category",
+  symbol = "fixed or symbolic identity",
+  logic = "logical state and bounded choice",
+  error = "failure, deletion, and destructive state",
+  conflict = "conflict, exception, and interruption",
+  transform = "pattern, replacement, and transformation",
+  warning = "attention, warning, and active process",
+  success = "completed success and accepted state",
+  information = "reference, link, and non-urgent information",
+  navigation = "path, directory, import, and external target",
 }
 
 function M.get(overrides)
-  return vim.tbl_extend("force", vim.deepcopy(defaults), overrides or {})
+  overrides = overrides or {}
+  local colors = vim.tbl_extend("force", vim.deepcopy(defaults), overrides)
+
+  for alias, canonical in pairs(aliases) do
+    if overrides[alias] ~= nil and overrides[canonical] == nil then
+      colors[canonical] = overrides[alias]
+    end
+    colors[alias] = colors[canonical]
+  end
+
+  return colors
 end
 
 return M

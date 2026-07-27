@@ -1,6 +1,3 @@
--- SPDX-License-Identifier: GPL-2.0-or-later
--- Copyright (C) 2026 limei.nvim contributors
-
 local M = {}
 
 local config = require("limei.config")
@@ -11,11 +8,6 @@ end
 
 function M.get_palette()
   return require("limei.palette").get(config.options.palette)
-end
-
-function M.get_roles()
-  local roles = require("limei.roles").get(M.get_palette(), config.options.roles)
-  return roles
 end
 
 function M.load()
@@ -33,8 +25,7 @@ function M.load()
   vim.o.termguicolors = true
   vim.g.colors_name = "limei"
 
-  local roles = M.get_roles()
-  local colors = vim.tbl_extend("force", M.get_palette(), roles)
+  local colors = M.get_palette()
   local groups = require("limei.groups").get(colors, config.options)
   require("limei.utils").set_highlights(groups)
 

@@ -6,12 +6,12 @@ function M.get(c)
     DiagnosticError = { fg = c.error },
     DiagnosticWarn = { fg = c.warning },
     DiagnosticInfo = { fg = c.information },
-    DiagnosticHint = { fg = c.hint },
+    DiagnosticHint = { fg = c.literal },
     DiagnosticOk = { fg = c.success },
     DiagnosticSignError = { fg = c.error, bold = true },
     DiagnosticSignWarn = { fg = c.warning, bold = true },
     DiagnosticSignInfo = { fg = c.information, bold = true },
-    DiagnosticSignHint = { fg = c.hint, bold = true },
+    DiagnosticSignHint = { fg = c.literal, bold = true },
     DiagnosticSignOk = { fg = c.success, bold = true },
 
     -- Virtual text is deliberately quieter than signs.
@@ -25,7 +25,7 @@ function M.get(c)
     DiagnosticUnderlineError = { sp = c.error, undercurl = true },
     DiagnosticUnderlineWarn = { sp = c.warning, undercurl = true },
     DiagnosticUnderlineInfo = { sp = c.information, undercurl = true },
-    DiagnosticUnderlineHint = { sp = c.hint, undercurl = true },
+    DiagnosticUnderlineHint = { sp = c.literal, undercurl = true },
     DiagnosticUnderlineOk = { sp = c.success, undercurl = true },
 
     -- Diagnostic floats reuse the central palette.

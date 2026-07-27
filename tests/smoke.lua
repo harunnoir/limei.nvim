@@ -11,28 +11,18 @@ assert(vim.g.colors_name == "limei")
 
 load()
 assert(require("limei.config").options.dim_inactive == true)
-local palette = limei.get_palette()
-assert(vim.api.nvim_get_hl(0, { name = "Normal" }).bg == tonumber(palette.bg:sub(2), 16))
-assert(vim.api.nvim_get_hl(0, { name = "NormalNC" }).bg == tonumber(palette.bg_inactive:sub(2), 16))
-assert(vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg == tonumber(palette.bg_popup:sub(2), 16))
-assert(vim.api.nvim_get_hl(0, { name = "WinSeparator" }).bg == nil)
-assert(vim.g.terminal_color_4 == palette.blue)
-assert(vim.g.terminal_color_6 == palette.teal)
-assert(vim.g.terminal_color_12 == palette.sky)
-assert(vim.g.terminal_color_14 == palette.cyan)
 
 load({ transparent = true })
 assert(vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil)
 assert(vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg ~= nil)
 
 load({ dim_inactive = false })
-load({ palette = { bg = "#0e0f10", ivory = "#c0b9ae" } })
-assert(limei.get_palette().bg == "#0e0f10")
-assert(limei.get_roles().callable == "#c0b9ae")
+load({ palette = { bg = "#0e0e0e", callable = "#99887b" } })
+assert(limei.get_palette().bg == "#0e0e0e")
+assert(limei.get_palette().callable == "#99887b")
 
-load({ roles = { callable = "violet", variable = "#aa8174" } })
-assert(limei.get_roles().callable == limei.get_palette().violet)
-assert(limei.get_roles().variable == "#aa8174")
+load({ palette = { function_color = "#97877a" } })
+assert(limei.get_palette().callable == "#97877a")
 
 load({ highlights = { Comment = { fg = "#706c66", italic = true } } })
 assert(vim.api.nvim_get_hl(0, { name = "Comment" }).italic == true)
@@ -44,9 +34,7 @@ load({
 })
 assert(vim.api.nvim_get_hl(0, { name = "TestLimeiOverride" }).fg ~= nil)
 
-local colors = vim.tbl_extend("force", limei.get_palette(), limei.get_roles())
 for _, module in ipairs({
-  "ai",
   "completion",
   "dap",
   "files",
@@ -60,7 +48,7 @@ for _, module in ipairs({
   "testing",
   "ui",
 }) do
-  local groups = require("limei.groups.plugins." .. module).get(colors)
+  local groups = require("limei.groups.plugins." .. module).get(limei.get_palette())
   assert(type(groups) == "table" and next(groups) ~= nil)
 end
 
@@ -80,54 +68,26 @@ for _, group in ipairs({
   assert(next(vim.api.nvim_get_hl(0, { name = group })) ~= nil, "missing highlight: " .. group)
 end
 
-local fixtures = {
-  lua = "sample.lua",
-  c = "sample.c",
-  cpp = "sample.cpp",
-  python = "sample.py",
-  javascript = "sample.js",
-  typescript = "sample.ts",
-  rust = "sample.rs",
-  go = "sample.go",
-  sh = "sample.sh",
-  json = "sample.json",
-  yaml = "sample.yaml",
-  markdown = "sample.md",
+local samples = {
+  lua = "local answer = compute(42, 'quiet') -- note",
+  c = "const int answer = compute(42); /* note */",
+  cpp = "const auto answer = compute(42); // note",
+  python = "answer = compute(42, 'quiet')  # note",
+  javascript = "const answer = compute(42, 'quiet'); // note",
+  typescript = "const answer: Result = compute(42);",
+  rust = "let answer: usize = compute(42);",
+  go = "answer := compute(42)",
+  sh = "answer=$(compute 42) # note",
+  json = '{"answer": 42, "valid": true}',
+  yaml = "answer: 42\nvalid: true",
+  markdown = "# Heading\n\n`compute(42)` [reference](https://example.com)",
 }
-for filetype, fixture in pairs(fixtures) do
+for filetype, line in pairs(samples) do
   vim.cmd.enew()
   vim.bo.filetype = filetype
-  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.readfile("tests/fixtures/" .. fixture))
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(line, "\n"))
   vim.cmd.syntax("on")
 end
-
-local seen = {}
-for _, role in ipairs({
-  "variable",
-  "callable",
-  "keyword",
-  "string",
-  "number",
-  "type",
-  "constant",
-  "boolean",
-  "comment",
-}) do
-  local value = limei.get_roles()[role]
-  assert(seen[value] == nil, role .. " duplicates " .. tostring(seen[value]))
-  seen[value] = role
-end
-
-load()
-local function highlight_foreground(name)
-  return vim.api.nvim_get_hl(0, { name = name }).fg
-end
-assert(limei.get_roles().callable == limei.get_palette().ivory)
-assert(highlight_foreground("LimeiFunctionDeclaration") == tonumber(limei.get_palette().pearl:sub(2), 16))
-assert(highlight_foreground("LimeiFunctionCall") == tonumber(limei.get_palette().ivory:sub(2), 16))
-assert(highlight_foreground("LimeiBuiltinFunction") == tonumber(limei.get_palette().silver:sub(2), 16))
-assert(highlight_foreground("LimeiVariable") ~= highlight_foreground("LimeiFunctionCall"))
-assert(highlight_foreground("LimeiComment") ~= highlight_foreground("LimeiFunctionCall"))
 
 limei.load()
 print("limei.nvim smoke tests passed")

@@ -12,10 +12,9 @@ CONTENTS                                                        *limei-contents*
 INTRODUCTION                                                          *limei*
 
 limei.nvim is a deeply dark, muted colorscheme for Neovim 0.10 and newer.
-Its interface is emotionally neutral and quiet, without blue or cool-color
-dominance. Major code categories have distinct semantic identities while
-ordinary structure and plugin surfaces remain neutral. Pearl, ivory, and
-silver callable highlights add controlled depth without brightening surfaces.
+Its interface is emotionally neutral and quiet without blue dominance. Major
+code categories have distinct semantic identities while ordinary structure
+and plugin surfaces remain neutral.
 
 ==============================================================================
 SETUP                                                            *limei-setup*
@@ -30,9 +29,6 @@ Optional Lua setup: >
     transparent = false,
     dim_inactive = true,
     terminal_colors = true,
-    palette = {},
-    roles = {},
-    highlights = {},
   })
   vim.cmd.colorscheme("limei")
 <
@@ -51,9 +47,6 @@ styles            Optional attributes for comments, keywords, functions, and
                   variables.
 
 palette           Palette overrides applied before highlights are generated.
-
-roles             Semantic role overrides. Values may be palette keys or
-                  #RRGGBB colors. Resolved after palette overrides.
 
 highlights        A table or function returning final highlight overrides.
 

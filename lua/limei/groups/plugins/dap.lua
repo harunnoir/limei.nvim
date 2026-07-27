@@ -24,7 +24,7 @@ function M.get(c)
     DapUISource = { fg = c.fg },
     DapUILineNumber = { link = "LineNr" },
     DapUIWatchesEmpty = { fg = c.fg_muted },
-    DapUIWatchesValue = { fg = c.string },
+    DapUIWatchesValue = { fg = c.literal },
     DapUIWatchesError = { fg = c.error },
     DapUIBreakpointsPath = { fg = c.fg_dim },
     DapUIBreakpointsInfo = { fg = c.information },

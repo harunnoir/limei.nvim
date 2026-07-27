@@ -36,9 +36,9 @@ function M.get(c)
 
     LspReferenceText = { bg = c.bg_alt },
     LspReferenceRead = { link = "LspReferenceText" },
-    LspReferenceWrite = { bg = c.bg_alt, sp = c.transformation, underline = true },
+    LspReferenceWrite = { bg = c.bg_alt, sp = c.transform, underline = true },
     LspReferenceTarget = { bg = c.bg_selection },
-    LspSignatureActiveParameter = { fg = c.pearl, underline = true },
+    LspSignatureActiveParameter = { fg = c.callable, underline = true },
     LspCodeLens = { link = "LimeiMuted" },
     LspCodeLensSeparator = { link = "LimeiPunctuation" },
     LspInlayHint = { fg = c.fg_muted, bg = c.bg_alt },

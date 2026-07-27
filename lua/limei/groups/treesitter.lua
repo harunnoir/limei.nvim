@@ -11,12 +11,12 @@ function M.get(c)
     ["@label"] = { link = "LimeiMuted" },
 
     -- Functions and callables
-    ["@function"] = { link = "LimeiFunctionDeclaration" },
-    ["@function.builtin"] = { link = "LimeiBuiltinFunction" },
-    ["@function.call"] = { link = "LimeiFunctionCall" },
-    ["@function.method"] = { link = "LimeiFunctionDeclaration" },
-    ["@function.method.call"] = { link = "LimeiFunctionCall" },
-    ["@constructor"] = { link = "LimeiFunctionDeclaration" },
+    ["@function"] = { link = "LimeiFunction" },
+    ["@function.builtin"] = { link = "@function" },
+    ["@function.call"] = { link = "@function" },
+    ["@function.method"] = { link = "@function" },
+    ["@function.method.call"] = { link = "@function" },
+    ["@constructor"] = { link = "LimeiDeclaration" },
 
     -- Keywords and structure
     ["@attribute"] = { link = "LimeiDeclaration" },
@@ -68,7 +68,7 @@ function M.get(c)
     ["@comment.error"] = { fg = c.error, bold = true },
     ["@comment.warning"] = { fg = c.warning, bold = true },
     ["@comment.todo"] = { fg = c.warning, bold = true },
-    ["@comment.note"] = { fg = c.string, bold = true },
+    ["@comment.note"] = { fg = c.literal, bold = true },
 
     -- Markup
     ["@markup.heading"] = { link = "Title" },

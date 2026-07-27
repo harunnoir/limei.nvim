@@ -1,7 +1,6 @@
 local M = {}
 
 local modules = {
-  "ai",
   "completion",
   "dap",
   "finder",
