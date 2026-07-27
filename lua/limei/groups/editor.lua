@@ -28,7 +28,7 @@ function M.get(c, options)
     TermCursorNC = { fg = c.bg, bg = c.fg_dim },
     CursorLine = { bg = c.bg_alt },
     CursorColumn = { bg = c.bg_alt },
-    ColorColumn = { bg = c.bg_alt },
+    ColorColumn = { link = "WinSeparator" },
     LineNr = { fg = c.fg_hidden },
     LineNrAbove = { link = "LineNr" },
     LineNrBelow = { link = "LineNr" },
