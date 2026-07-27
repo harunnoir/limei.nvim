@@ -26,9 +26,9 @@ assert(vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil)
 assert(vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg ~= nil)
 
 load({ dim_inactive = false })
-load({ palette = { bg = "#0e0f10", blue = "#8290a4" } })
+load({ palette = { bg = "#0e0f10", ivory = "#c0b9ae" } })
 assert(limei.get_palette().bg == "#0e0f10")
-assert(limei.get_roles().callable == "#8290a4")
+assert(limei.get_roles().callable == "#c0b9ae")
 
 load({ roles = { callable = "violet", variable = "#aa8174" } })
 assert(limei.get_roles().callable == limei.get_palette().violet)
@@ -80,24 +80,24 @@ for _, group in ipairs({
   assert(next(vim.api.nvim_get_hl(0, { name = group })) ~= nil, "missing highlight: " .. group)
 end
 
-local samples = {
-  lua = "local answer = compute(42, 'quiet') -- note",
-  c = "const int answer = compute(42); /* note */",
-  cpp = "const auto answer = compute(42); // note",
-  python = "answer = compute(42, 'quiet')  # note",
-  javascript = "const answer = compute(42, 'quiet'); // note",
-  typescript = "const answer: Result = compute(42);",
-  rust = "let answer: usize = compute(42);",
-  go = "answer := compute(42)",
-  sh = "answer=$(compute 42) # note",
-  json = '{"answer": 42, "valid": true}',
-  yaml = "answer: 42\nvalid: true",
-  markdown = "# Heading\n\n`compute(42)` [reference](https://example.com)",
+local fixtures = {
+  lua = "sample.lua",
+  c = "sample.c",
+  cpp = "sample.cpp",
+  python = "sample.py",
+  javascript = "sample.js",
+  typescript = "sample.ts",
+  rust = "sample.rs",
+  go = "sample.go",
+  sh = "sample.sh",
+  json = "sample.json",
+  yaml = "sample.yaml",
+  markdown = "sample.md",
 }
-for filetype, line in pairs(samples) do
+for filetype, fixture in pairs(fixtures) do
   vim.cmd.enew()
   vim.bo.filetype = filetype
-  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(line, "\n"))
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.readfile("tests/fixtures/" .. fixture))
   vim.cmd.syntax("on")
 end
 
@@ -117,6 +117,17 @@ for _, role in ipairs({
   assert(seen[value] == nil, role .. " duplicates " .. tostring(seen[value]))
   seen[value] = role
 end
+
+load()
+local function highlight_foreground(name)
+  return vim.api.nvim_get_hl(0, { name = name }).fg
+end
+assert(limei.get_roles().callable == limei.get_palette().ivory)
+assert(highlight_foreground("LimeiFunctionDeclaration") == tonumber(limei.get_palette().pearl:sub(2), 16))
+assert(highlight_foreground("LimeiFunctionCall") == tonumber(limei.get_palette().ivory:sub(2), 16))
+assert(highlight_foreground("LimeiBuiltinFunction") == tonumber(limei.get_palette().silver:sub(2), 16))
+assert(highlight_foreground("LimeiVariable") ~= highlight_foreground("LimeiFunctionCall"))
+assert(highlight_foreground("LimeiComment") ~= highlight_foreground("LimeiFunctionCall"))
 
 limei.load()
 print("limei.nvim smoke tests passed")

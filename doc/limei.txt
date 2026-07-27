@@ -14,7 +14,8 @@ INTRODUCTION                                                          *limei*
 limei.nvim is a deeply dark, muted colorscheme for Neovim 0.10 and newer.
 Its interface is emotionally neutral and quiet, without blue or cool-color
 dominance. Major code categories have distinct semantic identities while
-ordinary structure and plugin surfaces remain neutral.
+ordinary structure and plugin surfaces remain neutral. Pearl, ivory, and
+silver callable highlights add controlled depth without brightening surfaces.
 
 ==============================================================================
 SETUP                                                            *limei-setup*

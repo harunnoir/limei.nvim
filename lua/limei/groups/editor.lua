@@ -24,7 +24,7 @@ function M.get(c, options)
     VertSplit = { link = "WinSeparator" },
 
     -- Cursor and current line
-    Cursor = { fg = c.bg, bg = c.fg_bright },
+    Cursor = { fg = c.bg, bg = c.fg },
     lCursor = { link = "Cursor" },
     CursorIM = { link = "Cursor" },
     TermCursor = { link = "Cursor" },
@@ -35,7 +35,7 @@ function M.get(c, options)
     LineNr = { fg = c.fg_muted },
     LineNrAbove = { link = "LineNr" },
     LineNrBelow = { link = "LineNr" },
-    CursorLineNr = { fg = c.fg_bright, bold = true },
+    CursorLineNr = { fg = c.fg_highest, bold = true },
     CursorLineSign = { fg = c.fg_dim, bg = c.bg_alt },
     CursorLineFold = { fg = c.fg_dim, bg = c.bg_alt },
     SignColumn = { fg = c.fg_muted, bg = bg },
@@ -67,9 +67,9 @@ function M.get(c, options)
 
     -- Popup menus
     Pmenu = { fg = c.fg, bg = c.bg_popup },
-    PmenuSel = { fg = c.fg_bright, bg = c.bg_selection, bold = true },
+    PmenuSel = { fg = c.fg_highest, bg = c.bg_selection, bold = true },
     PmenuKind = { fg = c.fg_dim, bg = c.bg_popup },
-    PmenuKindSel = { fg = c.fg_bright, bg = c.bg_selection },
+    PmenuKindSel = { fg = c.fg_highest, bg = c.bg_selection },
     PmenuExtra = { fg = c.fg_muted, bg = c.bg_popup },
     PmenuExtraSel = { fg = c.fg_dim, bg = c.bg_selection },
     PmenuMatch = { fg = c.type, bg = c.bg_popup },

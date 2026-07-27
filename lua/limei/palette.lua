@@ -14,14 +14,20 @@ local defaults = {
   bg_active = "#303136",
   bg_popup = "#141516",
 
-  -- Foregrounds
-  fg_bright = "#c0beb8",
-  fg = "#aaa8a2",
-  fg_soft = "#979590",
-  fg_dim = "#85837e",
-  fg_muted = "#6f6d68",
-  fg_subtle = "#565450",
-  fg_hidden = "#3d3c39",
+  -- Soft-light foreground hierarchy
+  fg_highest = "#d2cdc4",
+  fg_bright = "#c5c0b7",
+  pearl = "#c1bbb1",
+  ivory = "#bbb5aa",
+  silver = "#b4b6b3",
+
+  -- Primary and secondary foregrounds
+  fg = "#b2afa9",
+  fg_soft = "#9c9993",
+  fg_dim = "#85827d",
+  fg_muted = "#686560",
+  fg_subtle = "#56534f",
+  fg_hidden = "#3d3b38",
 
   -- Warm spectrum
   rose = "#a8797d",

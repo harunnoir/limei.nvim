@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+worker:
+  name: limei
+  active: true
+  limit: 42
+  pattern: '^task:\d+$'
+  tasks:
+    - name: task:1
+      complete: false
+    - name: task:2
+      complete: true

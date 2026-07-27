@@ -2,7 +2,7 @@ local M = {}
 
 M.defaults = {
   variable = "coral",
-  callable = "blue",
+  callable = "ivory",
   keyword = "lavender",
   string = "sage",
   number = "amber",

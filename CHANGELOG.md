@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.1.1]
+
+### Added
+
+- Added a controlled soft-light foreground hierarchy.
+- Added pearl, ivory, silver, and highest-focus foreground colors.
+- Added perceptual role-distance and near-white frequency validation.
+- Added realistic syntax fixtures for twelve languages and structured formats.
+
+### Changed
+
+- Restored lighter syntax anchors to improve code depth and recognition.
+- Refined function declarations, calls, built-ins, active signatures, and completion identities with restrained near-white values.
+- Improved contrast rhythm without brightening editor or popup surfaces.
+- Preserved balanced full-spectrum semantic colors and long-session comfort.
+- Updated role validation, smoke coverage, fixtures, and palette documentation.
+
+### Fixed
+
+- Fixed syntax appearing uniformly dim or visually flat.
+- Fixed the absence of lighter textual anchors in normal code.
+
 ## [1.1.0]
 
 ### Added

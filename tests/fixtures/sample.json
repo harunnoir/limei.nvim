@@ -1,0 +1,10 @@
+{
+  "name": "limei",
+  "active": true,
+  "limit": 42,
+  "tasks": [
+    { "name": "task:1", "complete": false },
+    { "name": "task:2", "complete": true }
+  ],
+  "pattern": "^task:\\d+$"
+}

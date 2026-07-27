@@ -11,12 +11,12 @@ function M.get(c)
     ["@label"] = { link = "LimeiMuted" },
 
     -- Functions and callables
-    ["@function"] = { link = "LimeiFunction" },
-    ["@function.builtin"] = { link = "@function" },
-    ["@function.call"] = { link = "@function" },
-    ["@function.method"] = { link = "@function" },
-    ["@function.method.call"] = { link = "@function" },
-    ["@constructor"] = { link = "LimeiDeclaration" },
+    ["@function"] = { link = "LimeiFunctionDeclaration" },
+    ["@function.builtin"] = { link = "LimeiBuiltinFunction" },
+    ["@function.call"] = { link = "LimeiFunctionCall" },
+    ["@function.method"] = { link = "LimeiFunctionDeclaration" },
+    ["@function.method.call"] = { link = "LimeiFunctionCall" },
+    ["@constructor"] = { link = "LimeiFunctionDeclaration" },
 
     -- Keywords and structure
     ["@attribute"] = { link = "LimeiDeclaration" },

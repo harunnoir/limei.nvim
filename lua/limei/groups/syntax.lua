@@ -12,6 +12,9 @@ function M.get(c, options)
 
     -- Functions and callables
     LimeiFunction = vim.tbl_extend("force", { fg = c.callable }, styles.functions),
+    LimeiFunctionDeclaration = vim.tbl_extend("force", { fg = c.pearl }, styles.functions),
+    LimeiFunctionCall = vim.tbl_extend("force", { fg = c.callable }, styles.functions),
+    LimeiBuiltinFunction = vim.tbl_extend("force", { fg = c.silver }, styles.functions),
 
     -- Comments and documentation
     LimeiComment = vim.tbl_extend("force", { fg = c.comment }, styles.comments),

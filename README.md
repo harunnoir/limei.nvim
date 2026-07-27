@@ -7,7 +7,8 @@ neutral UI and readable text first, then balanced semantic color.
 Long-session comfort is the deciding constraint. Limei avoids bright surfaces,
 pure-white text, neon accents, decorative color, and screenshot-driven
 contrast. Important code categories remain recognizable without turning the
-editor into rainbow syntax.
+editor into rainbow syntax. A controlled layer of pearl-like callable text
+keeps normal code crisp without making the screen white-heavy.
 
 <img width="1323" height="745" alt="Limei code view" src="https://github.com/user-attachments/assets/52ed072a-5d06-49b6-98f5-bb3d49b5e8fe" />
 <img width="1323" height="745" alt="Limei picker view" src="https://github.com/user-attachments/assets/b67890df-cc8d-4493-9a25-5115c38e2013" />
@@ -36,7 +37,7 @@ groups third, and user highlights last.
 | Role | Palette key | Meaning |
 | --- | --- | --- |
 | `variable` | `coral` | Variables, fields, and properties |
-| `callable` | `blue` | Functions, methods, and calls |
+| `callable` | `ivory` | Functions, methods, and calls |
 | `keyword` | `lavender` | Keywords, declarations, and control |
 | `string` | `sage` | Strings and characters |
 | `number` | `amber` | Numbers and quantities |
@@ -57,6 +58,24 @@ The nine high-frequency identities—variables, callables, keywords, strings,
 numbers, types, constants, booleans, and comments—resolve to nine different hex
 values. Related concepts keep the same identity in syntax, Treesitter, semantic
 tokens, completion, LSP symbol views, and plugins.
+
+## Soft-light hierarchy
+
+Limei uses a small amount of pearl, ivory, and silver-like text to create depth
+inside a deeply dark editor. Function declarations use `pearl`, function calls
+and the shared callable role use `ivory`, and built-in functions use `silver`.
+They remain one warm-neutral identity family while differing gently in
+lightness.
+
+The light hierarchy is also available to focused titles, the current line
+number, active signatures, headings, and selected completion text. It is never
+used for comments, ordinary variables, punctuation, operators, indentation,
+borders, inactive metadata, or large surfaces.
+
+The audit limits near-white to one of the nine high-frequency semantic roles,
+at most 20% of explicit foreground definitions, and less than 5% for
+`fg_highest`. Pure white and near-white backgrounds are rejected. This restores
+code rhythm without glowing text or high-contrast UI.
 
 ## Quiet surfaces
 
@@ -129,7 +148,7 @@ Each `setup()` call starts from defaults. Reapply the colorscheme afterward.
 require("limei").setup({
   palette = {
     bg = "#0e0f10",
-    blue = "#8290a4",
+    ivory = "#c0b9ae",
   },
   roles = {
     callable = "violet", -- palette key
@@ -207,9 +226,13 @@ bg_alt #141516  bg_cursorline #161719  bg_surface #18191b
 bg_elevated #1d1e21  bg_overlay #232428  bg_selection #2b2c30
 bg_active #303136  bg_popup #141516
 
-Foregrounds
-fg_bright #c0beb8  fg #aaa8a2  fg_soft #979590  fg_dim #85837e
-fg_muted #6f6d68  fg_subtle #565450  fg_hidden #3d3c39
+Soft-light foregrounds
+fg_highest #d2cdc4  fg_bright #c5c0b7  pearl #c1bbb1
+ivory #bbb5aa  silver #b4b6b3
+
+Standard foregrounds
+fg #b2afa9  fg_soft #9c9993  fg_dim #85827d
+fg_muted #686560  fg_subtle #56534f  fg_hidden #3d3b38
 
 Warm
 rose #a8797d  brick #a57b74  coral #a77f72  clay #a08472
@@ -234,17 +257,17 @@ scrollbar #46474a  scrollbar_track #252629
 
 | Slot | Value | Slot | Value |
 | --- | --- | --- | --- |
-| 0 black | `#08090a` | 8 bright black | `#3d3c39` |
+| 0 black | `#08090a` | 8 bright black | `#3d3b38` |
 | 1 red | `#a8797d` | 9 bright red | `#a77f72` |
 | 2 green | `#7f9278` | 10 bright green | `#80947f` |
 | 3 yellow | `#a28e67` | 11 bright yellow | `#9d936d` |
 | 4 blue | `#7e899b` | 12 bright blue | `#7e8e9a` |
 | 5 magenta | `#91839a` | 13 bright magenta | `#9a8290` |
 | 6 cyan | `#79918e` | 14 bright cyan | `#7e9096` |
-| 7 white | `#aaa8a2` | 15 bright white | `#c0beb8` |
+| 7 white | `#b2afa9` | 15 bright white | `#c5c0b7` |
 
-Terminal background is `#101112`, foreground is `#aaa8a2`, and Neovim’s
-terminal cursor uses the normal `#c0beb8` cursor identity.
+Terminal background is `#101112`, foreground is `#b2afa9`, and Neovim’s
+terminal cursor uses the normal foreground identity.
 
 ## Development
 
@@ -254,10 +277,11 @@ make check
 make test
 ```
 
-`make check` runs StyLua and the palette/role audit. `make test` loads defaults,
-transparency, inactive splits, palette/role overrides, plugin modules, sample
-language buffers, and reload behavior headlessly. To inspect locally installed
-plugin highlight definitions:
+`make check` runs StyLua and the palette/role audit, including CIE Lab role
+distance and soft-light frequency checks. `make test` loads defaults,
+transparency, inactive splits, palette/role overrides, plugin modules, twelve
+realistic language fixtures, and reload behavior headlessly. To inspect locally
+installed plugin highlight definitions:
 
 ```sh
 nvim --clean --headless -u tests/minimal_init.lua \
