@@ -1,3 +1,5 @@
+**Heyyy... Shuush IT’S NIGHT... CODE doesn’t have to be noisy. let’s listen to the rain... drops... and our heartbeats... isn’t it Limei...**
+
 # limei.nvim
 
 `limei.nvim` is a deeply dark, muted Neovim colorscheme designed for long
