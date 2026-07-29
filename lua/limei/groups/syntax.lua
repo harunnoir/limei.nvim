@@ -31,7 +31,7 @@ function M.get(c, options)
 
     -- Strings and textual literals
     LimeiString = { fg = c.literal },
-    LimeiEscape = { fg = c.type },
+    LimeiEscape = { fg = c.navigation },
 
     -- Numbers, logic, and symbolic identity
     LimeiNumber = { fg = c.numeric },
@@ -110,8 +110,13 @@ function M.get(c, options)
     bashStatement = { link = "LimeiFunction" },
     shCommandSub = { link = "LimeiFunction" },
     shOption = { link = "LimeiInfo" },
-    shQuote = { link = "LimeiPunctuation" },
+    shQuote = { link = "LimeiStringDelimiter" },
     shEchoDelim = { link = "LimeiPunctuation" },
+    shEscape = { link = "LimeiEscape" },
+    shCtrlSeq = { link = "LimeiEscape" },
+    shSpecialDQ = { link = "LimeiEscape" },
+    shSpecialSQ = { link = "LimeiEscape" },
+    shStringSpecial = { link = "LimeiEscape" },
     shLoop = { link = "LimeiKeyword" },
     shConditional = { link = "LimeiControl" },
     shTestOpr = { link = "LimeiOperator" },

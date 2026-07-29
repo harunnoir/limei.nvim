@@ -9,6 +9,8 @@ M.defaults = {
   matching = {
     brackets = true,
     quotes = true,
+    -- Retained for configuration compatibility. Static delimiter recoloring
+    -- requires a stable parser capture and is not synthesized with extmarks.
     string_delimiters = true,
   },
   styles = {

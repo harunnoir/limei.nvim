@@ -240,7 +240,7 @@ check(
     and vim.tbl_count(groups.LimeiMatchDelimiter) == 2,
   "LimeiMatchDelimiter must use bold warning emphasis"
 )
-check(groups.LimeiStringDelimiter.link == "LimeiMuted", "string delimiters do not use muted neutral emphasis")
+check(groups.LimeiStringDelimiter.link == "LimeiString", "unsupported quote captures do not retain coherent strings")
 check(groups.LimeiSignature.fg == colors.conflict, "signature highlight does not use locked #9B7469")
 check(groups.LimeiDeclaration.fg == colors.conflict, "selected declarations do not use the signature identity")
 check(
@@ -296,6 +296,10 @@ end
 uses_foreground("@variable.builtin", colors.symbol, "built-in variables do not use symbolic identity")
 uses_foreground("@function.builtin", colors.information, "built-in functions do not use technical identity")
 uses_foreground("@constructor", colors.type, "constructors do not use type identity")
+for _, name in ipairs({ "SpecialChar", "@string.escape", "@string.special", "@character.special" }) do
+  uses_foreground(name, colors.navigation, name .. " does not use string-special navigation identity")
+end
+uses_foreground("@string.documentation", colors.literal, "documentation strings do not use literal identity")
 
 local broad_legacy_groups = {
   "Identifier",
@@ -386,6 +390,11 @@ local shell_roles = {
   bashStatement = "callable",
   shCommandSub = "callable",
   shOption = "information",
+  shEscape = "navigation",
+  shCtrlSeq = "navigation",
+  shSpecialDQ = "navigation",
+  shSpecialSQ = "navigation",
+  shStringSpecial = "navigation",
   shLoop = "structure",
   shConditional = "transform",
   shTestOpr = "logic",
@@ -395,6 +404,7 @@ local shell_roles = {
 for name, role in pairs(shell_roles) do
   uses_foreground(name, colors[role], name .. " contradicts the shell semantic hierarchy")
 end
+uses_foreground("shQuote", colors.literal, "shell quotes do not remain connected to string content")
 
 for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
   check(groups[name].fg == colors.fg_hidden, name .. " does not use the hidden foreground")
@@ -516,6 +526,14 @@ end
 check(groups["@tag"].link == "LimeiKeyword", "tags do not use general clay structure")
 check(groups.Tag.link == "LimeiKeyword", "legacy tags do not use general clay structure")
 check(groups.SlimlineModeNormal.fg == colors.conflict, "slimline normal mode does not use compact signature emphasis")
+
+local matching_source = table.concat(vim.fn.readfile("lua/limei/matching.lua"), "\n")
+check(
+  not matching_source:find("refresh_string_delimiters", 1, true),
+  "matching adds runtime buffer scanning for static quote colors"
+)
+check(not matching_source:find("WinScrolled", 1, true), "matching recolors static quotes while scrolling")
+check(not matching_source:find("string%-delimiters"), "matching creates a static quote-delimiter namespace")
 
 local standard_captures = {
   "@variable",

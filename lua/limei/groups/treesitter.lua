@@ -41,10 +41,10 @@ function M.get(c)
 
     -- Strings and literals
     ["@string"] = { link = "LimeiString" },
-    ["@string.documentation"] = { link = "LimeiDocComment" },
+    ["@string.documentation"] = { link = "LimeiString" },
     ["@string.regexp"] = { link = "LimeiRegex" },
     ["@string.escape"] = { link = "LimeiEscape" },
-    ["@string.special"] = { link = "LimeiString" },
+    ["@string.special"] = { link = "LimeiEscape" },
     ["@string.special.symbol"] = { link = "LimeiConstant" },
     ["@string.special.path"] = { link = "LimeiImport" },
     ["@string.special.url"] = { fg = c.information, underline = true },

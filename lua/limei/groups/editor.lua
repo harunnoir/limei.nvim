@@ -48,7 +48,7 @@ function M.get(c, options)
     Substitute = { fg = c.bg, bg = c.transform, bold = true },
     MatchParen = { fg = c.warning, bold = true },
     LimeiMatchDelimiter = { fg = c.warning, bold = true },
-    LimeiStringDelimiter = { link = "LimeiMuted" },
+    LimeiStringDelimiter = { link = "LimeiString" },
 
     -- Tabs and statusline
     StatusLine = { fg = c.fg, bg = bg },

@@ -1,7 +1,6 @@
 local M = {}
 
 local namespace = vim.api.nvim_create_namespace("limei.matching")
-local delimiter_namespace = vim.api.nvim_create_namespace("limei.string-delimiters")
 local group_name = "LimeiMatching"
 local active_buffer
 
@@ -127,69 +126,6 @@ local function add_endpoint(bufnr, endpoint)
   })
 end
 
-local function add_string_endpoint(bufnr, endpoint, seen)
-  local key = table.concat(endpoint, ":")
-  if seen[key] then
-    return
-  end
-  seen[key] = true
-  vim.api.nvim_buf_set_extmark(bufnr, delimiter_namespace, endpoint[1], endpoint[2], {
-    end_row = endpoint[1],
-    end_col = endpoint[3],
-    hl_group = "LimeiStringDelimiter",
-    hl_mode = "replace",
-    priority = 110,
-  })
-end
-
-local function visible_ranges(bufnr)
-  local ranges = {}
-  for _, winid in ipairs(vim.fn.win_findbuf(bufnr)) do
-    local first = vim.fn.line("w0", winid) - 1
-    local last = vim.fn.line("w$", winid) - 1
-    ranges[#ranges + 1] = { math.max(first, 0), math.max(last, first) }
-  end
-  return ranges
-end
-
-function M.refresh_string_delimiters(bufnr)
-  if not bufnr or bufnr == 0 then
-    bufnr = vim.api.nvim_get_current_buf()
-  end
-  if not vim.api.nvim_buf_is_valid(bufnr) then
-    return
-  end
-  vim.api.nvim_buf_clear_namespace(bufnr, delimiter_namespace, 0, -1)
-  if vim.bo[bufnr].buftype ~= "" then
-    return
-  end
-
-  local seen = {}
-  for _, range in ipairs(visible_ranges(bufnr)) do
-    local lines = vim.api.nvim_buf_get_lines(bufnr, range[1], range[2] + 1, false)
-    for index, line in ipairs(lines) do
-      local row = range[1] + index - 1
-      for col = 0, #line - 1 do
-        local character = line:sub(col + 1, col + 1)
-        if character == "'" or character == '"' or character == "`" then
-          local node = node_at(bufnr, row, col)
-          local depth = 0
-          while node and depth < 12 do
-            local pair = delimiter_pair(bufnr, node)
-            if pair then
-              add_string_endpoint(bufnr, pair.opening, seen)
-              add_string_endpoint(bufnr, pair.closing, seen)
-              break
-            end
-            node = node:parent()
-            depth = depth + 1
-          end
-        end
-      end
-    end
-  end
-end
-
 function M.update(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
   if active_buffer and active_buffer ~= bufnr then
@@ -232,51 +168,29 @@ function M.setup(options)
 
   pcall(vim.api.nvim_del_augroup_by_name, group_name)
   clear(active_buffer)
-  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_valid(bufnr) then
-      vim.api.nvim_buf_clear_namespace(bufnr, delimiter_namespace, 0, -1)
-    end
-  end
 
   if options.brackets then
     enable_builtin_matchparen()
   end
-  if not options.quotes and not options.string_delimiters then
+  if not options.quotes then
     return
   end
 
   local group = vim.api.nvim_create_augroup(group_name, { clear = true })
-  if options.quotes then
-    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "TextChanged", "TextChangedI", "InsertLeave" }, {
-      group = group,
-      callback = function(args)
-        M.update(args.buf)
-      end,
-    })
-  end
-  if options.string_delimiters then
-    vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType", "TextChanged", "TextChangedI", "WinScrolled" }, {
-      group = group,
-      callback = function(args)
-        M.refresh_string_delimiters(args.buf)
-      end,
-    })
-    vim.schedule(function()
-      M.refresh_string_delimiters()
-    end)
-  end
+  vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "TextChanged", "TextChangedI", "InsertLeave" }, {
+    group = group,
+    callback = function(args)
+      M.update(args.buf)
+    end,
+  })
   vim.api.nvim_create_autocmd({ "BufLeave", "BufWipeout" }, {
     group = group,
     callback = function(args)
       clear(args.buf)
-      if vim.api.nvim_buf_is_valid(args.buf) then
-        vim.api.nvim_buf_clear_namespace(args.buf, delimiter_namespace, 0, -1)
-      end
     end,
   })
 end
 
 M.namespace = namespace
-M.delimiter_namespace = delimiter_namespace
 
 return M

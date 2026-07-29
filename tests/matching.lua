@@ -70,10 +70,6 @@ local function extmarks(bufnr)
   return vim.api.nvim_buf_get_extmarks(bufnr, matching.namespace, 0, -1, { details = true })
 end
 
-local function delimiter_extmarks(bufnr)
-  return vim.api.nvim_buf_get_extmarks(bufnr, matching.delimiter_namespace, 0, -1, { details = true })
-end
-
 local function parser_available(language)
   local ok, parser = pcall(vim.treesitter.get_parser, 0, language)
   return ok and parser or nil
@@ -181,32 +177,11 @@ if lua_parser then
   assert(#extmarks(0) == 0, "incomplete string produced a false delimiter pair")
 end
 
-matching.setup({ brackets = true, quotes = true, string_delimiters = true })
-vim.cmd.enew()
-vim.bo.filetype = "lua"
-vim.api.nvim_buf_set_lines(0, 0, -1, false, {
-  [[local double = "quiet"]],
-  [[local single = 'soft']],
-  [[-- don't color this apostrophe]],
-})
-lua_parser = parser_available("lua")
-if lua_parser then
-  lua_parser:parse()
-  matching.refresh_string_delimiters(0)
-  local marks = delimiter_extmarks(0)
-  assert(#marks == 4, "string delimiter shading did not create exactly four quote extmarks")
-  for _, mark in ipairs(marks) do
-    assert(mark[4].hl_group == "LimeiStringDelimiter")
-    assert(mark[4].priority == 110)
-  end
-end
-
 local string_delimiter = vim.api.nvim_get_hl(0, { name = "LimeiStringDelimiter", link = false })
-assert(string_delimiter.fg == tonumber(require("limei").get_palette().fg_dim:sub(2), 16))
+assert(string_delimiter.fg == tonumber(require("limei").get_palette().literal:sub(2), 16))
 
 matching.setup({ brackets = true, quotes = false, string_delimiters = false })
 assert(#extmarks(vim.api.nvim_get_current_buf()) == 0, "disabling quote matching left stale extmarks")
-assert(#delimiter_extmarks(vim.api.nvim_get_current_buf()) == 0, "disabling delimiter shading left stale extmarks")
 local has_group, quote_autocmds = pcall(vim.api.nvim_get_autocmds, { group = "LimeiMatching" })
 assert(not has_group or #quote_autocmds == 0, "disabling quote matching left active autocommands")
 

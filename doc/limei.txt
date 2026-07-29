@@ -51,9 +51,11 @@ matching          Enable Neovim's built-in asymmetric bracket matcher,
                   including angle brackets, and Limei's Tree-sitter-aware
                   same-character delimiter matcher.
                   Both use bold muted-warning emphasis without a background.
-                  String opening and closing quotes use a quieter neutral
-                  foreground than their literal contents. Disable this with
-                  matching.string_delimiters = false.
+                  Static quote colors follow stable parser captures only.
+                  Bundled Lua and C queries include quotes in @string, so Limei
+                  keeps those literals coherently sage rather than scanning
+                  buffer text. matching.string_delimiters remains accepted for
+                  compatibility and currently has no effect.
                   Set matching.brackets or matching.quotes to false to disable
                   Limei's activation.
 

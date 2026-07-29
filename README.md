@@ -247,12 +247,17 @@ adds no background, underline, or undercurl. Disable quote extmarks with
 `matching.quotes = false`; disable Limei’s built-in matcher activation with
 `matching.brackets = false`.
 
-Ordinary opening and closing string quotes use a secondary neutral foreground,
-separating delimiters from literal text without making strings busier. The
-parser-aware layer scans visible lines on buffer entry, edits, and scrolling;
-ordinary cursor movement performs no work. It ignores apostrophes in comments
-and quote-like characters that are not syntax delimiters. Disable it with
-`matching.string_delimiters = false`.
+Static quote coloring follows parser captures only. Neovim's bundled Lua and C
+queries include their quotes in the complete `@string` capture, so those
+literals remain coherently sage; Markdown exposes fenced-code delimiters but
+does not expose inline-code delimiters as a string-specific capture. Limei does
+not scan buffer text or add per-character extmarks to manufacture a static
+quote distinction. `matching.string_delimiters` remains accepted for
+configuration compatibility but currently has no effect.
+
+Escapes and special string content use the canonical navigation role when a
+parser exposes them separately. Active quote matching remains independent: it
+uses the cursor-triggered bold pair emphasis described above.
 
 ### Transparency and split presentation
 

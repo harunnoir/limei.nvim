@@ -4,6 +4,10 @@
 
 ### Changed
 
+- Removed visible-line scanning and per-character extmarks for static string
+  quote colors. Parsers without stable delimiter captures now keep coherent
+  sage strings, while separately captured escapes and special content use the
+  canonical navigation role.
 - Established locked `#9b7469` as a focused signature accent for selected
   declarations, primary Markdown headings, and compact normal-mode labels,
   supported by clay, orange, taupe, amber, and neutral high-frequency syntax.
