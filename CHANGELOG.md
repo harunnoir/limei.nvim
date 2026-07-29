@@ -4,10 +4,15 @@
 
 ### Changed
 
-- Rebalanced the semantic spectrum so numeric, structural, error, conflict,
-  and transformation roles remain distinct without becoming louder.
-- Corrected additions, untracked files, hints, and file operations to use
-  success, neutral, and transformation roles according to their meaning.
+- Rebalanced canonical color usage without changing the Limei palette.
+  Additions, untracked files, hints, and file operations now use success,
+  neutral, and transformation roles according to their meaning.
+- Gave parser-verified string delimiters a quiet neutral shade distinct from
+  their literal contents without adding work to ordinary cursor movement.
+- Extended built-in matching to angle brackets while preserving existing
+  `matchpairs` entries across repeated colorscheme loads.
+- Flattened the core statusline and bundled lualine theme onto the editor
+  background for a quieter, more minimal presentation.
 
 ### Added
 

@@ -48,10 +48,11 @@ function M.get(c, options)
     Substitute = { fg = c.bg, bg = c.transform, bold = true },
     MatchParen = { fg = c.warning, bold = true },
     LimeiMatchDelimiter = { fg = c.warning, bold = true },
+    LimeiStringDelimiter = { link = "LimeiMuted" },
 
     -- Tabs and statusline
-    StatusLine = { fg = c.fg, bg = c.bg_surface },
-    StatusLineNC = { fg = c.fg_muted, bg = c.bg_surface },
+    StatusLine = { fg = c.fg, bg = bg },
+    StatusLineNC = { fg = c.fg_muted, bg = bg },
     TabLine = { fg = c.fg_dim, bg = c.bg_alt },
     TabLineFill = { bg = deep },
     TabLineSel = { fg = c.fg_bright, bg = c.bg_surface, bold = true },

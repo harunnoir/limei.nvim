@@ -37,7 +37,7 @@ local required = {
   "indent_scope",
 }
 
-local semantic_roles = {
+local code_identities = {
   "variable",
   "callable",
   "structure",
@@ -46,13 +46,6 @@ local semantic_roles = {
   "type",
   "symbol",
   "logic",
-  "error",
-  "conflict",
-  "transform",
-  "warning",
-  "success",
-  "information",
-  "navigation",
 }
 
 local locked_palette = {
@@ -71,15 +64,15 @@ local locked_palette = {
   fg_hidden = "#393632",
   variable = "#ada9a3",
   callable = "#9a897c",
-  structure = "#967a70",
+  structure = "#9a7869",
   literal = "#7f8c77",
-  numeric = "#9b8a6d",
+  numeric = "#a38762",
   type = "#97916f",
   symbol = "#8d818a",
   logic = "#898661",
-  error = "#96747d",
-  conflict = "#9d7461",
-  transform = "#9c805e",
+  error = "#9a7477",
+  conflict = "#9b7469",
+  transform = "#9c795e",
   warning = "#a38762",
   success = "#768569",
   information = "#788184",
@@ -132,7 +125,7 @@ for key, expected in pairs(locked_palette) do
 end
 
 local seen = {}
-for _, key in ipairs(semantic_roles) do
+for _, key in ipairs(code_identities) do
   local value = colors[key]
   check(not seen[value], key .. " duplicates " .. tostring(seen[value]))
   seen[value] = key
@@ -206,6 +199,8 @@ for _, path in ipairs(vim.fn.glob("lua/limei/groups/**/*.lua", false, true)) do
 end
 
 check(groups.NormalNC.link == "Normal", "NormalNC does not inherit Normal")
+check(groups.StatusLine.bg == groups.Normal.bg, "StatusLine does not share the editor background")
+check(groups.StatusLineNC.bg == groups.Normal.bg, "StatusLineNC does not share the editor background")
 check(groups.WinSeparator.fg == "#000000" and groups.WinSeparator.bg == nil, "separator is not black foreground-only")
 check(groups.VertSplit.link == "WinSeparator", "VertSplit does not inherit WinSeparator")
 check(groups.VirtColumn.link == "WinSeparator", "VirtColumn does not inherit WinSeparator")
@@ -225,6 +220,7 @@ check(
     and vim.tbl_count(groups.LimeiMatchDelimiter) == 2,
   "LimeiMatchDelimiter must use bold warning emphasis"
 )
+check(groups.LimeiStringDelimiter.link == "LimeiMuted", "string delimiters do not use muted neutral emphasis")
 for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
   check(groups[name].fg == colors.fg_hidden, name .. " does not use the hidden foreground")
   check(groups[name].bg == nil and not groups[name].bold, name .. " contains distracting attributes")

@@ -9,6 +9,7 @@ M.defaults = {
   matching = {
     brackets = true,
     quotes = true,
+    string_delimiters = true,
   },
   styles = {
     comments = { italic = false },

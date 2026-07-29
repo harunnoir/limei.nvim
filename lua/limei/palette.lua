@@ -21,17 +21,17 @@ local defaults = {
   -- Major code identities
   variable = "#ada9a3",
   callable = "#9a897c",
-  structure = "#967a70",
+  structure = "#9a7869",
   literal = "#7f8c77",
-  numeric = "#9b8a6d",
+  numeric = "#a38762",
   type = "#97916f",
   symbol = "#8d818a",
   logic = "#898661",
 
   -- State and relationship colors
-  error = "#96747d",
-  conflict = "#9d7461",
-  transform = "#9c805e",
+  error = "#9a7477",
+  conflict = "#9b7469",
+  transform = "#9c795e",
   warning = "#a38762",
   success = "#768569",
   information = "#788184",

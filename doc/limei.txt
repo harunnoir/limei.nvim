@@ -28,10 +28,11 @@ Optional Lua setup: >
   require("limei").setup({
     transparent = false,
     terminal_colors = true,
-    matching = {
-      brackets = true,
-      quotes = true,
-    },
+      matching = {
+        brackets = true,
+        quotes = true,
+        string_delimiters = true,
+      },
   })
   vim.cmd.colorscheme("limei")
 <
@@ -46,9 +47,13 @@ dim_inactive      Deprecated compatibility option. Accepted but visually
 
 terminal_colors   Install the muted 16-color terminal palette. Default: true.
 
-matching          Enable Neovim's built-in asymmetric bracket matcher and
-                  Limei's Tree-sitter-aware same-character delimiter matcher.
+matching          Enable Neovim's built-in asymmetric bracket matcher,
+                  including angle brackets, and Limei's Tree-sitter-aware
+                  same-character delimiter matcher.
                   Both use bold muted-warning emphasis without a background.
+                  String opening and closing quotes use a quieter neutral
+                  foreground than their literal contents. Disable this with
+                  matching.string_delimiters = false.
                   Set matching.brackets or matching.quotes to false to disable
                   Limei's activation.
 
