@@ -261,7 +261,7 @@ tested environment:
 - Neotest, Overseer, and Leetcode
 - CodeCompanion
 - indent-blankline.nvim and Mini Indentscope, Starter, Hipatterns, and Surround
-- render-markdown and CSVView
+- render-markdown.nvim 8.13 and CSVView
 - Snacks picker, explorer, dashboard, notifier, input, terminal, indent, and diff
 - lazy.nvim, Mason, WhichKey, Noice, Notify, lualine, Slimline, Bufferline, Satellite, virt-column.nvim, and ToggleTerm
 - Flash, todo-comments, grug-far, Marks, Harpoon, Yanky, hardtime, Haunt, and nvim-ufo

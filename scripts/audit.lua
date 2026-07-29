@@ -196,6 +196,64 @@ check(groups.AerialFunctionIcon.fg == colors.callable, "Aerial functions do not 
 check(groups.NavicIconsClass.fg == colors.type, "Navic classes do not use type identity")
 check(groups.IblIndent.fg == colors.indent, "indent-blankline does not use the indent hierarchy")
 
+local render_markdown_groups = {
+  "RenderMarkdownH1",
+  "RenderMarkdownH2",
+  "RenderMarkdownH3",
+  "RenderMarkdownH4",
+  "RenderMarkdownH5",
+  "RenderMarkdownH6",
+  "RenderMarkdownH1Bg",
+  "RenderMarkdownH2Bg",
+  "RenderMarkdownH3Bg",
+  "RenderMarkdownH4Bg",
+  "RenderMarkdownH5Bg",
+  "RenderMarkdownH6Bg",
+  "RenderMarkdownCode",
+  "RenderMarkdownCodeInfo",
+  "RenderMarkdownCodeBorder",
+  "RenderMarkdownCodeFallback",
+  "RenderMarkdownCodeInline",
+  "RenderMarkdownQuote",
+  "RenderMarkdownQuote1",
+  "RenderMarkdownQuote2",
+  "RenderMarkdownQuote3",
+  "RenderMarkdownQuote4",
+  "RenderMarkdownQuote5",
+  "RenderMarkdownQuote6",
+  "RenderMarkdownInlineHighlight",
+  "RenderMarkdownBullet",
+  "RenderMarkdownDash",
+  "RenderMarkdownSign",
+  "RenderMarkdownMath",
+  "RenderMarkdownIndent",
+  "RenderMarkdownHtmlComment",
+  "RenderMarkdownLink",
+  "RenderMarkdownLinkTitle",
+  "RenderMarkdownWikiLink",
+  "RenderMarkdownUnchecked",
+  "RenderMarkdownChecked",
+  "RenderMarkdownTodo",
+  "RenderMarkdownTableHead",
+  "RenderMarkdownTableRow",
+  "RenderMarkdownSuccess",
+  "RenderMarkdownInfo",
+  "RenderMarkdownHint",
+  "RenderMarkdownWarn",
+  "RenderMarkdownError",
+}
+for _, name in ipairs(render_markdown_groups) do
+  check(type(groups[name]) == "table", "missing render-markdown.nvim highlight: " .. name)
+end
+check(groups.RenderMarkdownTableFill == nil, "removed render-markdown.nvim TableFill highlight is still defined")
+check(groups.RenderMarkdownCodeBorder.link == "RenderMarkdownCode", "render-markdown code border is inconsistent")
+check(groups.RenderMarkdownBullet.link == "LimeiPunctuation", "render-markdown bullets do not use punctuation identity")
+check(groups.RenderMarkdownMath.link == "@markup.math", "render-markdown math does not inherit Tree-sitter math")
+check(groups.RenderMarkdownLinkTitle.link == "RenderMarkdownLink", "render-markdown link title is inconsistent")
+check(groups.RenderMarkdownChecked.fg == colors.success, "render-markdown checked state is inconsistent")
+check(groups.RenderMarkdownUnchecked.fg == colors.warning, "render-markdown unchecked state is inconsistent")
+check(groups.RenderMarkdownError.fg == colors.error, "render-markdown error callout is inconsistent")
+
 local standard_captures = {
   "@variable",
   "@variable.builtin",

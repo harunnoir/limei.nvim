@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- Completed semantic highlight coverage for render-markdown.nvim 8.13,
+  including code borders, nested quotes, links, math, checkbox states, signs,
+  indentation, and inline rendering.
+
 ## [1.2.0] - 2026-07-29
 
 ### Changed
