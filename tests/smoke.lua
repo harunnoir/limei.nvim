@@ -68,6 +68,54 @@ local directory = vim.api.nvim_get_hl(0, { name = "Directory", link = false })
 local oil_dir = vim.api.nvim_get_hl(0, { name = "OilDir", link = false })
 local oil_dir_icon = vim.api.nvim_get_hl(0, { name = "OilDirIcon", link = false })
 assert(oil_dir.fg == directory.fg and oil_dir_icon.fg == directory.fg)
+
+local function assert_foreground(name, role)
+  local group = vim.api.nvim_get_hl(0, { name = name, link = false })
+  assert(group.fg == tonumber(limei.get_palette()[role]:sub(2), 16), name .. " does not resolve to " .. role)
+end
+
+local effective_roles = {
+  Identifier = "variable",
+  Function = "callable",
+  String = "literal",
+  Number = "numeric",
+  Constant = "symbol",
+  Keyword = "structure",
+  Conditional = "transform",
+  Repeat = "transform",
+  Operator = "logic",
+  Type = "type",
+  Delimiter = "fg_muted",
+  Comment = "fg_muted",
+  ["@variable"] = "variable",
+  ["@variable.parameter"] = "fg_dim",
+  ["@variable.builtin"] = "symbol",
+  ["@function"] = "callable",
+  ["@function.call"] = "callable",
+  ["@function.builtin"] = "information",
+  ["@string"] = "literal",
+  ["@number"] = "numeric",
+  ["@constant"] = "symbol",
+  ["@keyword"] = "structure",
+  ["@keyword.conditional"] = "transform",
+  ["@operator"] = "logic",
+  ["@punctuation.bracket"] = "fg_dim",
+  ["@punctuation.delimiter"] = "fg_muted",
+  ["@comment"] = "fg_muted",
+  ["@lsp.type.variable"] = "variable",
+  ["@lsp.type.parameter"] = "fg_dim",
+  ["@lsp.type.function"] = "callable",
+  ["@lsp.type.method"] = "callable",
+  ["@lsp.type.property"] = "variable",
+  DiagnosticError = "error",
+  DiagnosticWarn = "warning",
+  DiagnosticInfo = "information",
+  DiagnosticHint = "fg_dim",
+}
+for name, role in pairs(effective_roles) do
+  assert_foreground(name, role)
+end
+
 load({ palette = { bg = "#0e0e0e", callable = "#99887b" } })
 assert(limei.get_palette().bg == "#0e0e0e")
 assert(limei.get_palette().callable == "#99887b")
@@ -180,5 +228,6 @@ end
 
 limei.load()
 dofile("tests/matching.lua")
+dofile("tests/syntax.lua")
 dofile("tests/treesitter.lua")
 print("limei.nvim smoke tests passed")

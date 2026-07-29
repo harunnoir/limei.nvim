@@ -150,6 +150,26 @@ check(luminance(colors.separator) < luminance(colors.bg), "separator is not dark
 check(colors.separator ~= "#000000", "separator must not be pure black")
 
 local groups = require("limei.groups").get(colors, require("limei.config").defaults)
+
+local function resolve(name, seen_links)
+  seen_links = seen_links or {}
+  check(not seen_links[name], "highlight link cycle at " .. name)
+  if seen_links[name] then
+    return {}
+  end
+  seen_links[name] = true
+
+  local group = groups[name] or {}
+  if group.link then
+    return resolve(group.link, seen_links)
+  end
+  return group
+end
+
+local function uses_foreground(name, expected, message)
+  check(resolve(name).fg == expected, message or (name .. " has the wrong effective foreground"))
+end
+
 local allowed_colors = {
   NONE = true,
   ["#000000"] = true,
@@ -221,6 +241,153 @@ check(
   "LimeiMatchDelimiter must use bold warning emphasis"
 )
 check(groups.LimeiStringDelimiter.link == "LimeiMuted", "string delimiters do not use muted neutral emphasis")
+
+-- Frequency-aware syntax invariants. Ordinary data and punctuation stay
+-- neutral, while medium-frequency identities resolve to distinct palette roles.
+for _, name in ipairs({
+  "Identifier",
+  "@variable",
+  "@variable.member",
+  "@property",
+  "@lsp.type.variable",
+  "@lsp.type.property",
+}) do
+  uses_foreground(name, colors.variable, name .. " does not use neutral variable identity")
+end
+for _, name in ipairs({ "@variable.parameter", "@variable.parameter.builtin", "@lsp.type.parameter" }) do
+  uses_foreground(name, colors.fg_dim, name .. " does not use dim parameter identity")
+end
+for _, name in ipairs({ "Delimiter", "@punctuation", "@punctuation.delimiter" }) do
+  uses_foreground(name, colors.fg_muted, name .. " is not quiet punctuation")
+end
+uses_foreground("@punctuation.bracket", colors.fg_dim, "brackets are not neutral")
+
+local semantic_agreement = {
+  {
+    role = "callable",
+    names = { "Function", "@function", "@function.call", "@lsp.type.function", "@lsp.type.method" },
+  },
+  { role = "literal", names = { "String", "Character", "@string", "@character", "@lsp.type.string" } },
+  { role = "numeric", names = { "Number", "Float", "@number", "@number.float", "@lsp.type.number" } },
+  { role = "symbol", names = { "Constant", "@constant", "@constant.macro", "@lsp.type.macro" } },
+  { role = "structure", names = { "Statement", "Keyword", "@keyword", "@lsp.type.keyword" } },
+  { role = "transform", names = { "Conditional", "Repeat", "@keyword.conditional", "@keyword.repeat" } },
+  { role = "logic", names = { "Operator", "@operator", "@keyword.operator", "@lsp.type.operator" } },
+  { role = "type", names = { "Type", "@type", "@type.builtin", "@lsp.type.type", "@lsp.type.class" } },
+  {
+    role = "information",
+    names = { "@module", "@attribute", "@tag.attribute", "@lsp.type.namespace", "@lsp.type.decorator" },
+  },
+}
+for _, identity in ipairs(semantic_agreement) do
+  for _, name in ipairs(identity.names) do
+    uses_foreground(name, colors[identity.role], name .. " disagrees with the " .. identity.role .. " hierarchy")
+  end
+end
+
+uses_foreground("@variable.builtin", colors.symbol, "built-in variables do not use symbolic identity")
+uses_foreground("@function.builtin", colors.information, "built-in functions do not use technical identity")
+uses_foreground("@constructor", colors.type, "constructors do not use type identity")
+
+local broad_legacy_groups = {
+  "Identifier",
+  "Function",
+  "String",
+  "Number",
+  "Constant",
+  "Statement",
+  "Conditional",
+  "Operator",
+  "Type",
+  "Delimiter",
+}
+local broad_colors = {}
+for _, name in ipairs(broad_legacy_groups) do
+  local foreground = resolve(name).fg
+  check(
+    not broad_colors[foreground],
+    name .. " duplicates broad legacy identity " .. tostring(broad_colors[foreground])
+  )
+  broad_colors[foreground] = name
+end
+
+local neutral_surface_backgrounds = {
+  NONE = true,
+  [colors.bg] = true,
+  [colors.bg_alt] = true,
+  [colors.bg_surface] = true,
+  [colors.bg_popup] = true,
+  [colors.bg_selection] = true,
+  [colors.bg_active] = true,
+  [colors.bg_deep] = true,
+}
+for _, name in ipairs({
+  "Normal",
+  "NormalNC",
+  "NormalFloat",
+  "Pmenu",
+  "StatusLine",
+  "StatusLineNC",
+  "TabLine",
+  "TabLineFill",
+  "WinBar",
+  "WinBarNC",
+}) do
+  check(neutral_surface_backgrounds[resolve(name).bg or "NONE"], name .. " uses an accent background")
+end
+for _, name in ipairs({ "Visual", "PmenuSel", "TabLineSel", "QuickFixLine", "TelescopeSelection" }) do
+  check(neutral_surface_backgrounds[resolve(name).bg or "NONE"], name .. " selection uses an accent background")
+end
+
+-- Red is intentionally absent from ordinary syntax identities.
+for _, name in ipairs({
+  "Normal",
+  "Identifier",
+  "Function",
+  "String",
+  "Number",
+  "Constant",
+  "Statement",
+  "Conditional",
+  "Operator",
+  "Type",
+  "Delimiter",
+  "Comment",
+  "@variable",
+  "@function",
+  "@string",
+  "@number",
+  "@constant",
+  "@keyword",
+  "@operator",
+  "@type",
+  "@punctuation",
+  "@comment",
+}) do
+  check(resolve(name).fg ~= colors.error, name .. " incorrectly uses the error color")
+end
+
+-- Neovim's legacy shell fallback must not collapse frequent shell concepts.
+local shell_roles = {
+  shShellVariables = "variable",
+  shDeref = "fg_muted",
+  shDerefVar = "variable",
+  shDerefSimple = "variable",
+  bashSpecialVariables = "symbol",
+  shStatement = "callable",
+  bashStatement = "callable",
+  shCommandSub = "callable",
+  shOption = "information",
+  shLoop = "transform",
+  shConditional = "transform",
+  shTestOpr = "logic",
+  shOperator = "logic",
+  shCmdSubRegion = "fg_muted",
+}
+for name, role in pairs(shell_roles) do
+  uses_foreground(name, colors[role], name .. " contradicts the shell semantic hierarchy")
+end
+
 for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
   check(groups[name].fg == colors.fg_hidden, name .. " does not use the hidden foreground")
   check(groups[name].bg == nil and not groups[name].bold, name .. " contains distracting attributes")
@@ -251,6 +418,12 @@ check(groups.CodeCompanionChatToolSuccess.fg == colors.success, "CodeCompanion s
 check(groups.AerialFunctionIcon.fg == colors.callable, "Aerial functions do not use callable identity")
 check(groups.NavicIconsClass.fg == colors.type, "Navic classes do not use type identity")
 check(groups.IblIndent.fg == colors.indent, "indent-blankline does not use the indent hierarchy")
+check(groups.BlinkCmpKindConstructor.fg == colors.type, "Blink constructors do not use type identity")
+check(groups.BlinkCmpKindModule.fg == colors.information, "Blink modules do not use information identity")
+check(groups.BlinkCmpKindOperator.fg == colors.logic, "Blink operators do not use logic identity")
+check(groups.AerialConstructorIcon.fg == colors.type, "Aerial constructors do not use type identity")
+check(groups.AerialModuleIcon.fg == colors.information, "Aerial modules do not use information identity")
+check(groups.AerialOperatorIcon.fg == colors.logic, "Aerial operators do not use logic identity")
 
 local render_markdown_groups = {
   "RenderMarkdownH1",
@@ -420,7 +593,7 @@ check(groups["@constant.macro"].link == "LimeiConstant", "Tree-sitter constant m
 check(groups["@function.macro"].link == "@function", "Tree-sitter function macros do not use callable identity")
 check(groups["@comment.note"].fg == colors.information, "Tree-sitter notes do not use information identity")
 check(groups["@markup.list.checked"].fg == colors.success, "checked markup does not use success identity")
-check(groups["@tag.attribute"].link == "LimeiVariable", "tag attributes do not use variable identity")
+check(groups["@tag.attribute"].link == "LimeiInfo", "tag attributes do not use information identity")
 
 local readme = table.concat(vim.fn.readfile("README.md"), "\n"):lower()
 for role, meaning in pairs(palette.semantic) do

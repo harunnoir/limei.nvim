@@ -8,7 +8,7 @@ function M.get(c)
     ["@lsp.type.enum"] = { link = "LimeiEnum" },
     ["@lsp.type.interface"] = { link = "@lsp.type.type" },
     ["@lsp.type.struct"] = { link = "LimeiClass" },
-    ["@lsp.type.typeParameter"] = { link = "LimeiMuted" },
+    ["@lsp.type.typeParameter"] = { link = "LimeiType" },
     ["@lsp.type.parameter"] = { link = "LimeiMuted" },
     ["@lsp.type.variable"] = { link = "LimeiVariable" },
     ["@lsp.type.property"] = { link = "LimeiVariable" },
@@ -18,9 +18,10 @@ function M.get(c)
     ["@lsp.type.keyword"] = { link = "LimeiKeyword" },
     ["@lsp.type.string"] = { link = "LimeiString" },
     ["@lsp.type.number"] = { link = "LimeiNumber" },
+    ["@lsp.type.operator"] = { link = "LimeiOperator" },
     ["@lsp.type.module"] = { link = "LimeiNamespace" },
     ["@lsp.type.macro"] = { link = "LimeiConstant" },
-    ["@lsp.type.decorator"] = { link = "LimeiDeclaration" },
+    ["@lsp.type.decorator"] = { link = "LimeiInfo" },
 
     -- Modifiers intentionally preserve the base semantic role.
     ["@lsp.mod.defaultLibrary"] = {},

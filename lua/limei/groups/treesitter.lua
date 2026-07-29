@@ -4,7 +4,7 @@ function M.get(c)
   return {
     -- Variables and data
     ["@variable"] = { link = "LimeiVariable" },
-    ["@variable.builtin"] = { link = "@variable" },
+    ["@variable.builtin"] = { link = "LimeiBuiltinConstant" },
     ["@variable.parameter"] = { link = "LimeiMuted" },
     ["@variable.parameter.builtin"] = { link = "@variable.parameter" },
     ["@variable.member"] = { link = "@variable" },
@@ -13,21 +13,21 @@ function M.get(c)
 
     -- Functions and callables
     ["@function"] = { link = "LimeiFunction" },
-    ["@function.builtin"] = { link = "@function" },
+    ["@function.builtin"] = { link = "LimeiInfo" },
     ["@function.call"] = { link = "@function" },
     ["@function.macro"] = { link = "@function" },
     ["@function.method"] = { link = "@function" },
     ["@function.method.call"] = { link = "@function" },
-    ["@constructor"] = { link = "LimeiDeclaration" },
+    ["@constructor"] = { link = "LimeiType" },
 
     -- Keywords and structure
-    ["@attribute"] = { link = "LimeiDeclaration" },
+    ["@attribute"] = { link = "LimeiInfo" },
     ["@attribute.builtin"] = { link = "@attribute" },
     ["@keyword"] = { link = "LimeiKeyword" },
     ["@keyword.coroutine"] = { link = "LimeiControl" },
     ["@keyword.function"] = { link = "LimeiDeclaration" },
     ["@keyword.modifier"] = { link = "LimeiMuted" },
-    ["@keyword.operator"] = { link = "@keyword" },
+    ["@keyword.operator"] = { link = "LimeiOperator" },
     ["@keyword.type"] = { link = "LimeiDeclaration" },
     ["@keyword.return"] = { link = "LimeiReturn" },
     ["@keyword.import"] = { link = "LimeiImport" },
@@ -72,11 +72,11 @@ function M.get(c)
     ["@module.builtin"] = { link = "@module" },
 
     -- Operators and punctuation
-    ["@operator"] = { link = "LimeiMuted" },
+    ["@operator"] = { link = "LimeiOperator" },
     ["@punctuation"] = { link = "LimeiPunctuation" },
     ["@punctuation.delimiter"] = { link = "LimeiPunctuation" },
     ["@punctuation.bracket"] = { link = "LimeiMuted" },
-    ["@punctuation.special"] = { link = "LimeiPunctuation" },
+    ["@punctuation.special"] = { link = "LimeiOperator" },
 
     -- Comments and documentation
     ["@comment"] = { link = "LimeiComment" },
@@ -117,7 +117,7 @@ function M.get(c)
     -- Tags
     ["@tag"] = { link = "LimeiDeclaration" },
     ["@tag.builtin"] = { link = "@tag" },
-    ["@tag.attribute"] = { link = "LimeiVariable" },
+    ["@tag.attribute"] = { link = "LimeiInfo" },
     ["@tag.delimiter"] = { link = "LimeiPunctuation" },
 
     -- Query controls intentionally carry no visual styling.

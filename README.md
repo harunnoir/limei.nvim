@@ -91,10 +91,10 @@ their values.
 Limei explicitly maps Neovim's complete standard Tree-sitter capture taxonomy.
 Specialized captures retain their actual meaning: paths use navigation, URLs
 use information, function-like macros use callable identity, constant macros
-and symbols use symbolic identity, checked items use success, and tag
-attributes use variable identity. Tree-sitter query-control captures remain
-unstyled. Parser-backed tests verify representative captures emitted by
-Neovim's Lua, C, and Markdown queries.
+and symbols use symbolic identity, checked items use success, and attributes
+use information identity. Tree-sitter query-control captures remain unstyled.
+Parser-backed tests verify representative captures emitted by Neovim's Lua, C,
+and Markdown queries.
 
 ## Distinct semantic identities
 
@@ -113,8 +113,14 @@ Important categories are recognizable without rainbow syntax:
 | Comments | Secondary neutral |
 
 Related elements share an identity; unrelated high-frequency categories do not
-reuse the same visible color. Parameters, modules, namespaces, operators,
-punctuation, paths, and metadata stay neutral or dim.
+reuse the same visible color. Parameters and punctuation stay neutral or dim;
+modules and attributes use restrained information, operators use logic, and
+paths use navigation.
+
+Neovim's legacy Bash and POSIX shell syntax is normalized when a Tree-sitter
+parser is unavailable: ordinary variables remain neutral, expansion punctuation
+recedes, commands use callable emphasis, control flow uses transformation,
+special variables use symbolic identity, and operators use logic.
 
 Added content uses success, changed content uses warning, removed content uses
 error, and untracked content stays neutral until its state becomes meaningful.

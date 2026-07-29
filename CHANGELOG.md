@@ -4,6 +4,10 @@
 
 ### Changed
 
+- Balanced legacy shell, Tree-sitter, semantic-token, completion, and symbol
+  highlights so frequent variables and punctuation remain neutral while
+  commands, control flow, built-ins, operators, modules, and attributes retain
+  distinct semantic identities.
 - Rebalanced canonical color usage without changing the Limei palette.
   Additions, untracked files, hints, and file operations now use success,
   neutral, and transformation roles according to their meaning.

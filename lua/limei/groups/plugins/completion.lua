@@ -25,7 +25,7 @@ function M.get(c)
     BlinkCmpScrollBarThumb = { link = "PmenuThumb" },
     BlinkCmpKindFunction = { fg = c.callable, bg = c.bg_popup },
     BlinkCmpKindMethod = { link = "BlinkCmpKindFunction" },
-    BlinkCmpKindConstructor = { fg = c.structure, bg = c.bg_popup },
+    BlinkCmpKindConstructor = { fg = c.type, bg = c.bg_popup },
     BlinkCmpKindClass = { fg = c.type, bg = c.bg_popup },
     BlinkCmpKindInterface = { link = "BlinkCmpKindClass" },
     BlinkCmpKindStruct = { link = "BlinkCmpKindClass" },
@@ -42,11 +42,11 @@ function M.get(c)
     BlinkCmpKindEnumMember = { fg = c.logic, bg = c.bg_popup },
     BlinkCmpKindText = { fg = c.literal, bg = c.bg_popup },
     BlinkCmpKindSnippet = { link = "BlinkCmpKindText" },
-    BlinkCmpKindModule = { fg = c.fg_dim, bg = c.bg_popup },
+    BlinkCmpKindModule = { fg = c.information, bg = c.bg_popup },
     BlinkCmpKindFolder = { fg = c.navigation, bg = c.bg_popup },
     BlinkCmpKindFile = { fg = c.fg, bg = c.bg_popup },
     BlinkCmpKindReference = { fg = c.information, bg = c.bg_popup },
-    BlinkCmpKindOperator = { fg = c.fg_dim, bg = c.bg_popup },
+    BlinkCmpKindOperator = { fg = c.logic, bg = c.bg_popup },
 
     -- nvim-cmp
     CmpItemAbbr = { link = "Pmenu" },
@@ -57,7 +57,7 @@ function M.get(c)
     CmpItemMenu = { link = "PmenuExtra" },
     CmpItemKindFunction = { fg = c.callable },
     CmpItemKindMethod = { link = "CmpItemKindFunction" },
-    CmpItemKindConstructor = { fg = c.structure },
+    CmpItemKindConstructor = { fg = c.type },
     CmpItemKindClass = { fg = c.type },
     CmpItemKindInterface = { link = "CmpItemKindClass" },
     CmpItemKindStruct = { link = "CmpItemKindClass" },
@@ -74,11 +74,11 @@ function M.get(c)
     CmpItemKindEnumMember = { link = "CmpItemKindBoolean" },
     CmpItemKindText = { fg = c.literal },
     CmpItemKindSnippet = { link = "CmpItemKindText" },
-    CmpItemKindModule = { fg = c.fg_dim },
+    CmpItemKindModule = { fg = c.information },
     CmpItemKindFolder = { fg = c.navigation },
     CmpItemKindFile = { fg = c.fg },
     CmpItemKindReference = { fg = c.information },
-    CmpItemKindOperator = { fg = c.fg_dim },
+    CmpItemKindOperator = { fg = c.logic },
   }
 end
 

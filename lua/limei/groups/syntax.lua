@@ -20,12 +20,13 @@ function M.get(c, options)
     -- Keywords and language structure
     LimeiKeyword = vim.tbl_extend("force", { fg = c.structure }, styles.keywords),
     LimeiDeclaration = vim.tbl_extend("force", { fg = c.structure }, styles.keywords),
-    LimeiControl = { fg = c.structure },
+    LimeiControl = { fg = c.transform },
     LimeiException = { fg = c.conflict },
     LimeiReturn = { fg = c.structure },
     LimeiImport = { fg = c.navigation },
     LimeiRegex = { fg = c.transform },
     LimeiSpecial = { fg = c.transform },
+    LimeiOperator = { fg = c.logic },
 
     -- Strings and textual literals
     LimeiString = { fg = c.literal },
@@ -42,7 +43,7 @@ function M.get(c, options)
     LimeiType = { fg = c.type },
     LimeiBuiltinType = { fg = c.type },
     LimeiClass = { fg = c.type },
-    LimeiNamespace = { fg = c.fg_dim },
+    LimeiNamespace = { fg = c.information },
 
     -- State and urgency
     LimeiError = { fg = c.error },
@@ -69,14 +70,16 @@ function M.get(c, options)
     Conditional = { link = "LimeiControl" },
     Repeat = { link = "LimeiControl" },
     Label = { link = "LimeiImport" },
-    Operator = { link = "LimeiMuted" },
+    Operator = { link = "LimeiOperator" },
     Keyword = { link = "LimeiKeyword" },
     Exception = { link = "LimeiException" },
-    PreProc = { link = "LimeiKeyword" },
+    -- Keep the broad fallback neutral; language-specific Include, Define,
+    -- Macro, and PreCondit groups retain their semantic identities below.
+    PreProc = { link = "LimeiMuted" },
     Include = { link = "LimeiImport" },
     Define = { link = "LimeiDeclaration" },
     Macro = { link = "LimeiConstant" },
-    PreCondit = { link = "LimeiKeyword" },
+    PreCondit = { link = "LimeiInfo" },
     Type = { link = "LimeiType" },
     StorageClass = { link = "LimeiMuted" },
     Structure = { link = "LimeiClass" },
@@ -90,6 +93,30 @@ function M.get(c, options)
     Ignore = { fg = c.fg_hidden },
     Error = { link = "LimeiError" },
     Todo = { fg = c.warning, bold = true },
+
+    -- Neovim's legacy shell syntax funnels expansions, commands, and control
+    -- flow through broad Vim groups. Keep those frequent concepts distinct
+    -- when a Bash/POSIX shell Tree-sitter parser is unavailable.
+    shShellVariables = { link = "LimeiVariable" },
+    shDeref = { link = "LimeiPunctuation" },
+    shDerefVar = { link = "LimeiVariable" },
+    shDerefSimple = { link = "LimeiVariable" },
+    shDerefSpecial = { link = "LimeiConstant" },
+    shDerefDelim = { link = "LimeiPunctuation" },
+    shPosnParm = { link = "LimeiConstant" },
+    bashSpecialVariables = { link = "LimeiConstant" },
+    shStatement = { link = "LimeiFunction" },
+    bashStatement = { link = "LimeiFunction" },
+    shCommandSub = { link = "LimeiFunction" },
+    shOption = { link = "LimeiInfo" },
+    shQuote = { link = "LimeiPunctuation" },
+    shEchoDelim = { link = "LimeiPunctuation" },
+    shLoop = { link = "LimeiControl" },
+    shConditional = { link = "LimeiControl" },
+    shTestOpr = { link = "LimeiOperator" },
+    shOperator = { link = "LimeiOperator" },
+    shCmdSubRegion = { link = "LimeiPunctuation" },
+    shArithRegion = { link = "LimeiPunctuation" },
   }
 end
 

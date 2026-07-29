@@ -31,7 +31,7 @@ function M.get(c)
     TelescopeResultsField = { link = "LimeiVariable" },
     TelescopeResultsFunction = { link = "LimeiFunction" },
     TelescopeResultsMethod = { link = "LimeiFunction" },
-    TelescopeResultsOperator = { link = "LimeiMuted" },
+    TelescopeResultsOperator = { link = "LimeiOperator" },
     TelescopeResultsStruct = { link = "LimeiType" },
     TelescopeResultsVariable = { link = "LimeiVariable" },
     TelescopeResultsLineNr = { link = "LineNr" },
