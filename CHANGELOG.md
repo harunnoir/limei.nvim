@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- Linked virt-column.nvim guides to the same quiet black structural highlight
+  used by split separators and color columns.
+- Updated the README installation example, screenshots, and plugin support list.
+
 ## [1.0.5]
 
 ### Added

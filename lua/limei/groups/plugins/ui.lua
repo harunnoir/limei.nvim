@@ -60,7 +60,7 @@ function M.get(c)
     SatelliteGitSignsAdd = { link = "LimeiAdded" },
     SatelliteGitSignsChange = { link = "LimeiChanged" },
     SatelliteGitSignsDelete = { link = "LimeiRemoved" },
-    VirtColumn = { fg = "#000000" },
+    VirtColumn = { link = "WinSeparator" },
 
     -- grug-far.nvim
     GrugFarInputLabel = { fg = c.fg_bright, bold = true },

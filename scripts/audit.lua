@@ -136,6 +136,7 @@ end
 check(groups.NormalNC.link == "Normal", "NormalNC does not inherit Normal")
 check(groups.WinSeparator.fg == "#000000" and groups.WinSeparator.bg == nil, "separator is not black foreground-only")
 check(groups.VertSplit.link == "WinSeparator", "VertSplit does not inherit WinSeparator")
+check(groups.VirtColumn.link == "WinSeparator", "VirtColumn does not inherit WinSeparator")
 check(groups.OilDir.link == "Directory", "OilDir does not inherit Directory")
 check(groups.OilDirIcon.link == "Directory", "OilDirIcon does not inherit Directory")
 check(groups.LineNr.fg == colors.fg_hidden, "LineNr does not use the hidden foreground")

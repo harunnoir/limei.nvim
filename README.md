@@ -9,9 +9,12 @@ foregrounds, distinct semantic syntax identities, and quiet plugin surfaces.
 The goal is not maximum contrast or screenshot impact. The goal is an editor
 that remains readable and comfortable after ten hours.
 
-> Screenshot placeholder — add representative code, picker, and explorer
-> screenshots before publishing.
+### Editor
+
 <img width="1340" height="726" alt="image" src="https://github.com/user-attachments/assets/7e918655-6d03-470e-a9ee-d3817bcfde64" />
+
+### Explorer
+
 <img width="1340" height="726" alt="image" src="https://github.com/user-attachments/assets/325867c0-45f1-4666-a4f8-d435ba52a4b6" />
 
 ## A quiet, neutral palette
@@ -104,7 +107,7 @@ With lazy.nvim:
 
 ```lua
 {
-  "your-name/limei.nvim",
+  "harunnoir/limei.nvim",
   lazy = false,
   priority = 1000,
   config = function()
@@ -250,7 +253,7 @@ tested environment:
 - Mini Indentscope, Starter, Hipatterns, and Surround
 - render-markdown and CSVView
 - Snacks picker, explorer, dashboard, notifier, input, terminal, indent, and diff
-- lazy.nvim, Mason, WhichKey, Noice, Notify, Slimline, Bufferline, Satellite, and ToggleTerm
+- lazy.nvim, Mason, WhichKey, Noice, Notify, Slimline, Bufferline, Satellite, virt-column.nvim, and ToggleTerm
 - Overseer, Leetcode, Flash, todo-comments, grug-far, Marks, Harpoon, Yanky, hardtime, Haunt, and nvim-ufo
 
 Plugins without dedicated highlight groups inherit standard editor, syntax,

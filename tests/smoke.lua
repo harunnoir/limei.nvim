@@ -25,6 +25,7 @@ local separator = vim.api.nvim_get_hl(0, { name = "WinSeparator", link = false }
 assert(separator.fg == tonumber("000000", 16))
 assert(separator.bg == nil)
 assert(vim.api.nvim_get_hl(0, { name = "VertSplit" }).link == "WinSeparator")
+assert(vim.api.nvim_get_hl(0, { name = "VirtColumn" }).link == "WinSeparator")
 
 local line_nr = vim.api.nvim_get_hl(0, { name = "LineNr", link = false })
 local cursor_line_nr = vim.api.nvim_get_hl(0, { name = "CursorLineNr", link = false })
