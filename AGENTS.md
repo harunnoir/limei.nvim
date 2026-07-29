@@ -25,6 +25,18 @@ Every change should preserve:
 - integrated editor and plugin surfaces;
 - long-session visual comfort.
 
+## Immutable Palette
+
+The canonical hex values in `lua/limei/palette.lua` are locked.
+
+- Do not change, derive, brighten, darken, blend, or replace them.
+- New integrations must reference existing palette roles.
+- Do not update the locked palette assertions in `scripts/audit.lua`.
+- Regenerate files under `extras/` with `make extras`.
+
+Changing canonical hex values requires an explicit request from the repository
+owner that specifically authorizes changing the palette itself.
+
 ## Color Is Semantic Language
 
 Do not choose colors because they merely look attractive in isolation. Map the

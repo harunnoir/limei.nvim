@@ -55,6 +55,42 @@ local semantic_roles = {
   "navigation",
 }
 
+local locked_palette = {
+  bg_deep = "#080808",
+  bg = "#101010",
+  bg_inactive = "#0c0c0c",
+  bg_alt = "#141414",
+  bg_surface = "#171717",
+  bg_popup = "#141414",
+  bg_selection = "#292724",
+  bg_active = "#302d29",
+  fg = "#ada9a3",
+  fg_bright = "#c0bbb3",
+  fg_dim = "#837f78",
+  fg_muted = "#64605a",
+  fg_hidden = "#393632",
+  variable = "#ada9a3",
+  callable = "#9a897c",
+  structure = "#967a70",
+  literal = "#7f8c77",
+  numeric = "#9b8a6d",
+  type = "#97916f",
+  symbol = "#8d818a",
+  logic = "#898661",
+  error = "#96747d",
+  conflict = "#9d7461",
+  transform = "#9c805e",
+  warning = "#a38762",
+  success = "#768569",
+  information = "#788184",
+  navigation = "#918862",
+  border = "#373330",
+  separator = "#090909",
+  whitespace = "#34312f",
+  indent = "#272522",
+  indent_scope = "#514940",
+}
+
 local failures = {}
 
 local function check(ok, message)
@@ -89,6 +125,10 @@ end
 
 for _, key in ipairs(required) do
   check(type(colors[key]) == "string", "missing palette key: " .. key)
+end
+
+for key, expected in pairs(locked_palette) do
+  check(colors[key] == expected, ("%s changed from locked value %s to %s"):format(key, expected, tostring(colors[key])))
 end
 
 local seen = {}

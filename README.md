@@ -49,6 +49,45 @@ These meanings remain stable across syntax, Treesitter, semantic tokens,
 diagnostics, Git, completion, LSP, file explorers, DAP, tasks, and plugins.
 Most code and UI remain neutral.
 
+## Locked palette
+
+The canonical palette is immutable. Integrations and generated terminal themes
+must reuse these roles without modifying, deriving, brightening, or darkening
+their values.
+
+### Surfaces and foregrounds
+
+| Role | Value | Role | Value |
+| --- | --- | --- | --- |
+| `bg_deep` | `#080808` | `bg` | `#101010` |
+| `bg_inactive` | `#0c0c0c` | `bg_alt` | `#141414` |
+| `bg_surface` | `#171717` | `bg_popup` | `#141414` |
+| `bg_selection` | `#292724` | `bg_active` | `#302d29` |
+| `fg` | `#ada9a3` | `fg_bright` | `#c0bbb3` |
+| `fg_dim` | `#837f78` | `fg_muted` | `#64605a` |
+| `fg_hidden` | `#393632` | | |
+
+### Semantic colors
+
+| Role | Value | Role | Value |
+| --- | --- | --- | --- |
+| `variable` | `#ada9a3` | `callable` | `#9a897c` |
+| `structure` | `#967a70` | `literal` | `#7f8c77` |
+| `numeric` | `#9b8a6d` | `type` | `#97916f` |
+| `symbol` | `#8d818a` | `logic` | `#898661` |
+| `error` | `#96747d` | `conflict` | `#9d7461` |
+| `transform` | `#9c805e` | `warning` | `#a38762` |
+| `success` | `#768569` | `information` | `#788184` |
+| `navigation` | `#918862` | | |
+
+### Structural colors
+
+| Role | Value | Role | Value |
+| --- | --- | --- | --- |
+| `border` | `#373330` | `separator` | `#090909` |
+| `whitespace` | `#34312f` | `indent` | `#272522` |
+| `indent_scope` | `#514940` | | |
+
 Limei explicitly maps Neovim's complete standard Tree-sitter capture taxonomy.
 Specialized captures retain their actual meaning: paths use navigation, URLs
 use information, function-like macros use callable identity, constant macros
