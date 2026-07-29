@@ -77,6 +77,10 @@ Related elements share an identity; unrelated high-frequency categories do not
 reuse the same visible color. Parameters, modules, namespaces, operators,
 punctuation, paths, and metadata stay neutral or dim.
 
+Code identities and state colors remain distinct from one another. Added
+content uses success, changed content uses warning, removed content uses error,
+and untracked content stays neutral until its state becomes meaningful.
+
 ## Quiet surfaces
 
 Floating windows, completion menus, and plugin popups stay close to the editor

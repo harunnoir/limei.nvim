@@ -26,7 +26,7 @@ function M.get(c)
     MiniHipatternsFixme = { fg = c.error, bold = true },
     MiniHipatternsHack = { fg = c.conflict, bold = true },
     MiniHipatternsTodo = { fg = c.warning, bold = true },
-    MiniHipatternsNote = { fg = c.literal, bold = true },
+    MiniHipatternsNote = { fg = c.information, bold = true },
 
     -- mini.surround
     MiniSurround = { fg = c.bg, bg = c.warning },

@@ -37,7 +37,7 @@ local required = {
   "indent_scope",
 }
 
-local identities = {
+local semantic_roles = {
   "variable",
   "callable",
   "structure",
@@ -46,6 +46,13 @@ local identities = {
   "type",
   "symbol",
   "logic",
+  "error",
+  "conflict",
+  "transform",
+  "warning",
+  "success",
+  "information",
+  "navigation",
 }
 
 local failures = {}
@@ -85,7 +92,7 @@ for _, key in ipairs(required) do
 end
 
 local seen = {}
-for _, key in ipairs(identities) do
+for _, key in ipairs(semantic_roles) do
   local value = colors[key]
   check(not seen[value], key .. " duplicates " .. tostring(seen[value]))
   seen[value] = key
@@ -97,6 +104,10 @@ end
 
 check(contrast(colors.fg, colors.bg) >= 7, "primary foreground contrast is below 7:1")
 for _, key in ipairs({ "callable", "structure", "literal", "numeric", "type", "symbol", "logic" }) do
+  local ratio = contrast(colors[key], colors.bg)
+  check(ratio >= 4.5 and ratio <= 6.5, key .. " contrast is outside 4.5:1-6.5:1")
+end
+for _, key in ipairs({ "error", "conflict", "transform", "warning", "success", "information", "navigation" }) do
   local ratio = contrast(colors[key], colors.bg)
   check(ratio >= 4.5 and ratio <= 6.5, key .. " contrast is outside 4.5:1-6.5:1")
 end
@@ -191,6 +202,15 @@ check(groups.GitSignsChange.link == "LimeiChanged", "Gitsigns changes do not use
 check(groups.GitSignsDelete.link == "LimeiRemoved", "Gitsigns deletions do not use the removed identity")
 check(groups.GitSignsChangedelete.fg == colors.transform, "Gitsigns combined changes do not use transform")
 check(groups.GitSignsUntracked.fg == colors.fg_dim, "Gitsigns untracked state is too prominent")
+check(groups.LimeiAdded.fg == colors.success, "added content does not use success")
+check(groups.DiffAdd.fg == colors.success, "diff additions do not use success")
+check(groups.NeoTreeGitUntracked.fg == colors.fg_dim, "Neo-tree untracked state is too prominent")
+check(groups.DiffviewStatusUntracked.fg == colors.fg_dim, "Diffview untracked state is too prominent")
+check(groups.OilGitUntracked.fg == colors.fg_dim, "Oil untracked state is too prominent")
+check(groups.OilCopy.fg == colors.transform, "Oil copy does not use transform")
+check(groups.OilMove.fg == colors.transform, "Oil move does not use transform")
+check(groups.OilCreate.fg == colors.success, "Oil create does not use success")
+check(groups.LimeiHint.fg == colors.fg_dim, "hints do not use the secondary neutral hierarchy")
 check(groups.CodeCompanionChatToolSuccess.fg == colors.success, "CodeCompanion success state is inconsistent")
 check(groups.AerialFunctionIcon.fg == colors.callable, "Aerial functions do not use callable identity")
 check(groups.NavicIconsClass.fg == colors.type, "Navic classes do not use type identity")

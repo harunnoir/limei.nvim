@@ -48,9 +48,9 @@ function M.get(c, options)
     LimeiError = { fg = c.error },
     LimeiWarning = { fg = c.warning },
     LimeiInfo = { fg = c.information },
-    LimeiHint = { fg = c.literal },
+    LimeiHint = { fg = c.fg_dim },
     LimeiSuccess = { fg = c.success },
-    LimeiAdded = { fg = c.literal },
+    LimeiAdded = { fg = c.success },
     LimeiChanged = { fg = c.warning },
     LimeiRemoved = { fg = c.error },
 

@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Rebalanced the semantic spectrum so numeric, structural, error, conflict,
+  and transformation roles remain distinct without becoming louder.
+- Corrected additions, untracked files, hints, and file operations to use
+  success, neutral, and transformation roles according to their meaning.
+
 ### Added
 
 - Completed semantic highlight coverage for render-markdown.nvim 8.13,

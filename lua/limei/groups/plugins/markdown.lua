@@ -44,7 +44,7 @@ function M.get(c)
     RenderMarkdownWarn = { fg = c.warning },
     RenderMarkdownError = { fg = c.error },
     RenderMarkdownInfo = { fg = c.information },
-    RenderMarkdownHint = { fg = c.literal },
+    RenderMarkdownHint = { link = "LimeiHint" },
     RenderMarkdownTableHead = { fg = c.fg_bright },
     RenderMarkdownTableRow = { fg = c.fg_dim },
 

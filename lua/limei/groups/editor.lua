@@ -90,7 +90,7 @@ function M.get(c, options)
     QuickFixLine = { fg = c.fg_bright, bg = c.bg_selection },
 
     -- Diff and spelling
-    DiffAdd = { fg = c.literal, bg = c.bg_alt },
+    DiffAdd = { fg = c.success, bg = c.bg_alt },
     DiffChange = { fg = c.warning, bg = c.bg_alt },
     DiffDelete = { fg = c.error, bg = c.bg_alt },
     DiffText = { fg = c.fg_bright, bg = c.bg_selection, bold = true },
