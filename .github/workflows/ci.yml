@@ -4,14 +4,18 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: JohnnyMorganz/stylua-action@v4
+      - uses: actions/checkout@v5
+      - uses: JohnnyMorganz/stylua-action@v5
         with:
-          version: latest
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: 2.5.2
           args: --check lua colors scripts tests
       - uses: MunifTanjim/setup-neovim-action@v1
         with:
