@@ -15,6 +15,8 @@ assert(require("limei.config").options.dim_inactive == false)
 load({ transparent = true })
 assert(vim.api.nvim_get_hl(0, { name = "Normal" }).bg == nil)
 assert(vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg ~= nil)
+assert(vim.api.nvim_get_hl(0, { name = "StatusLine" }).bg == nil)
+assert(vim.api.nvim_get_hl(0, { name = "StatusLineNC" }).bg == nil)
 
 load({ dim_inactive = true })
 local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
@@ -144,6 +146,11 @@ local lualine_theme = require("lualine.themes.limei")
 assert(lualine_theme.normal.a.fg == limei.get_palette().fg_bright)
 assert(lualine_theme.insert.a.fg == limei.get_palette().literal)
 assert(lualine_theme.inactive.c.fg == limei.get_palette().fg_muted)
+for _, mode in pairs(lualine_theme) do
+  for _, section in pairs(mode) do
+    assert(section.bg == limei.get_palette().bg)
+  end
+end
 
 local specimen = dofile("scripts/specimen.lua")
 assert(vim.bo[specimen].filetype == "limei-specimen")

@@ -199,6 +199,8 @@ for _, path in ipairs(vim.fn.glob("lua/limei/groups/**/*.lua", false, true)) do
 end
 
 check(groups.NormalNC.link == "Normal", "NormalNC does not inherit Normal")
+check(groups.StatusLine.bg == groups.Normal.bg, "StatusLine does not share the editor background")
+check(groups.StatusLineNC.bg == groups.Normal.bg, "StatusLineNC does not share the editor background")
 check(groups.WinSeparator.fg == "#000000" and groups.WinSeparator.bg == nil, "separator is not black foreground-only")
 check(groups.VertSplit.link == "WinSeparator", "VertSplit does not inherit WinSeparator")
 check(groups.VirtColumn.link == "WinSeparator", "VirtColumn does not inherit WinSeparator")

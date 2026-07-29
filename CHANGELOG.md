@@ -11,6 +11,8 @@
   their literal contents without adding work to ordinary cursor movement.
 - Extended built-in matching to angle brackets while preserving existing
   `matchpairs` entries across repeated colorscheme loads.
+- Flattened the core statusline and bundled lualine theme onto the editor
+  background for a quieter, more minimal presentation.
 
 ### Added
 

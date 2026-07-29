@@ -142,6 +142,9 @@ emphasis, making the active pair clear without adding a background block.
 Active and inactive splits share the same editor background. A foreground-only
 black separator provides a subtle boundary between windows.
 
+The statusline and bundled lualine theme use the editor background as well,
+keeping mode and section identity in the foreground instead of colored blocks.
+
 Whitespace markers use very low-contrast neutral colors. They remain
 discoverable when needed without becoming immediate visual noise, while
 end-of-buffer markers disappear into the editor background.
