@@ -85,8 +85,8 @@ interface supports them, rather than relying on hue alone.
 Limei keeps ordinary line numbers dim so they remain available without
 competing with code. The current line number is slightly clearer.
 
-Ordinary bracket colors remain unchanged. Matching brackets gain bold emphasis
-only, preserving their original syntax color.
+Matching brackets and quotes use Limei's muted warning yellow with bold
+emphasis, making the active pair clear without adding a background block.
 
 Active and inactive splits share the same editor background. A foreground-only
 black separator provides a subtle boundary between windows.
@@ -159,8 +159,6 @@ colorscheme after changing it.
 
 ### Matching pairs
 
-Limei preserves the existing syntax colors of all delimiters.
-
 For asymmetric pairs such as parentheses, square brackets, and braces,
 Neovim’s built-in matching system emphasizes both endpoints. Limei loads that
 runtime matcher when `matching.brackets` is enabled, even when a plugin manager
@@ -169,9 +167,11 @@ has omitted it from startup.
 For Tree-sitter-aware same-character delimiters, Limei emphasizes the opening
 and closing spans of single quotes, double quotes, backticks, and triple quotes.
 Unsupported or incomplete syntax is left untouched rather than guessed.
+Ordinary cursor movement performs no Tree-sitter query unless the cursor is on
+or immediately after a quote-like character.
 
-Matching emphasis is bold-only. Limei adds no foreground, background,
-underline, or semantic accent. Disable quote extmarks with
+Matching emphasis uses the muted `warning` foreground with bold text. Limei
+adds no background, underline, or undercurl. Disable quote extmarks with
 `matching.quotes = false`; disable Limei’s built-in matcher activation with
 `matching.brackets = false`.
 
@@ -248,10 +248,11 @@ tested environment:
 - Telescope, fzf-lua, and fzf-oil
 - Oil, Neo-tree, nvim-tree, Yazi, oil-git, and oil-lsp-diagnostics
 - Gitsigns, Diffview, Neogit, Gitgraph, and Undotree
-- Lspsaga, Fidget, Glance, Trouble, Tiny Inline Diagnostic, symbol-usage, and Quicker
+- Aerial, nvim-navic, Lspsaga, Fidget, Glance, Trouble, Tiny Inline Diagnostic, symbol-usage, and Quicker
 - nvim-dap and nvim-dap-ui
 - Neotest, Overseer, and Leetcode
-- Mini Indentscope, Starter, Hipatterns, and Surround
+- CodeCompanion
+- indent-blankline.nvim and Mini Indentscope, Starter, Hipatterns, and Surround
 - render-markdown and CSVView
 - Snacks picker, explorer, dashboard, notifier, input, terminal, indent, and diff
 - lazy.nvim, Mason, WhichKey, Noice, Notify, lualine, Slimline, Bufferline, Satellite, virt-column.nvim, and ToggleTerm
@@ -268,10 +269,13 @@ locally installed plugin versions.
 make format
 make check
 make test
+make specimen
 ```
 
 `make check` runs StyLua and the palette/semantic audit. `make test` loads the
 theme headlessly in default, transparent, override, and reload configurations.
+`make specimen` opens a deterministic visual reference containing the neutral
+hierarchy, semantic identities, states, surfaces, and interaction highlights.
 See `:help limei.nvim` for concise in-editor documentation.
 
 ## Design lineage

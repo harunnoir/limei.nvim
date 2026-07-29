@@ -125,8 +125,8 @@ Color should not be the only available signal for important state:
 - use backgrounds sparingly for selection, active rows, and focused regions.
 
 Preserve existing syntax identity whenever possible. Matching brackets and
-quotes must use bold-only emphasis, with no foreground, background, underline,
-undercurl, or semantic accent added.
+quotes are the deliberate exception: they use the muted `warning` foreground
+with bold emphasis, but no background, underline, or undercurl.
 
 Whitespace, punctuation, indentation, ordinary line numbers, and metadata
 should never compete with code. End-of-buffer markers should disappear into

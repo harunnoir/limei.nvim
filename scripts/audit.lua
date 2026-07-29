@@ -106,6 +106,14 @@ check(luminance(colors.separator) < luminance(colors.bg), "separator is not dark
 check(colors.separator ~= "#000000", "separator must not be pure black")
 
 local groups = require("limei.groups").get(colors, require("limei.config").defaults)
+local allowed_colors = {
+  NONE = true,
+  ["#000000"] = true,
+}
+for _, color in pairs(colors) do
+  allowed_colors[color] = true
+end
+
 local allowed = {
   altfont = true,
   bg = true,
@@ -131,6 +139,19 @@ for name, value in pairs(groups) do
   for attribute in pairs(value) do
     check(allowed[attribute], "invalid highlight attribute " .. attribute .. " in " .. name)
   end
+  for _, attribute in ipairs({ "fg", "bg", "sp" }) do
+    local color = value[attribute]
+    check(color == nil or allowed_colors[color], name .. " uses non-palette " .. attribute .. ": " .. tostring(color))
+  end
+end
+
+for _, path in ipairs(vim.fn.glob("lua/limei/groups/**/*.lua", false, true)) do
+  for line_number, line in ipairs(vim.fn.readfile(path)) do
+    for hex in line:gmatch("#%x%x%x%x%x%x") do
+      local is_structural_black = path:match("/editor%.lua$") and hex == "#000000"
+      check(is_structural_black, path .. ":" .. line_number .. " contains raw color " .. hex)
+    end
+  end
 end
 
 check(groups.NormalNC.link == "Normal", "NormalNC does not inherit Normal")
@@ -143,10 +164,15 @@ check(groups.LineNr.fg == colors.fg_hidden, "LineNr does not use the hidden fore
 check(groups.LineNrAbove.link == "LineNr", "LineNrAbove does not inherit LineNr")
 check(groups.LineNrBelow.link == "LineNr", "LineNrBelow does not inherit LineNr")
 check(groups.CursorLineNr.fg == colors.fg_dim and groups.CursorLineNr.bold, "CursorLineNr hierarchy is incorrect")
-check(groups.MatchParen.bold and vim.tbl_count(groups.MatchParen) == 1, "MatchParen must contain only bold emphasis")
 check(
-  groups.LimeiMatchDelimiter.bold and vim.tbl_count(groups.LimeiMatchDelimiter) == 1,
-  "LimeiMatchDelimiter must contain only bold emphasis"
+  groups.MatchParen.fg == colors.warning and groups.MatchParen.bold and vim.tbl_count(groups.MatchParen) == 2,
+  "MatchParen must use bold warning emphasis"
+)
+check(
+  groups.LimeiMatchDelimiter.fg == colors.warning
+    and groups.LimeiMatchDelimiter.bold
+    and vim.tbl_count(groups.LimeiMatchDelimiter) == 2,
+  "LimeiMatchDelimiter must use bold warning emphasis"
 )
 for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
   check(groups[name].fg == colors.fg_hidden, name .. " does not use the hidden foreground")
@@ -160,6 +186,15 @@ check(groups.NvimTreeFolderName.link == "Directory", "nvim-tree directories do n
 check(groups.DiffviewStatusAdded.link == "LimeiAdded", "Diffview added state is inconsistent")
 check(groups.NeogitChangeDeleted.link == "LimeiRemoved", "Neogit deleted state is inconsistent")
 check(groups.NeotestPassed.fg == colors.success, "Neotest passed state is inconsistent")
+check(groups.GitSignsAdd.link == "LimeiAdded", "Gitsigns additions do not use the added identity")
+check(groups.GitSignsChange.link == "LimeiChanged", "Gitsigns changes do not use the changed identity")
+check(groups.GitSignsDelete.link == "LimeiRemoved", "Gitsigns deletions do not use the removed identity")
+check(groups.GitSignsChangedelete.fg == colors.transform, "Gitsigns combined changes do not use transform")
+check(groups.GitSignsUntracked.fg == colors.fg_dim, "Gitsigns untracked state is too prominent")
+check(groups.CodeCompanionChatToolSuccess.fg == colors.success, "CodeCompanion success state is inconsistent")
+check(groups.AerialFunctionIcon.fg == colors.callable, "Aerial functions do not use callable identity")
+check(groups.NavicIconsClass.fg == colors.type, "Navic classes do not use type identity")
+check(groups.IblIndent.fg == colors.indent, "indent-blankline does not use the indent hierarchy")
 
 local readme = table.concat(vim.fn.readfile("README.md"), "\n"):lower()
 for role, meaning in pairs(palette.semantic) do

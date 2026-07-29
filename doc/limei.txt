@@ -48,8 +48,9 @@ terminal_colors   Install the muted 16-color terminal palette. Default: true.
 
 matching          Enable Neovim's built-in asymmetric bracket matcher and
                   Limei's Tree-sitter-aware same-character delimiter matcher.
-                  Both use bold-only emphasis. Set matching.brackets or
-                  matching.quotes to false to disable Limei's activation.
+                  Both use bold muted-warning emphasis without a background.
+                  Set matching.brackets or matching.quotes to false to disable
+                  Limei's activation.
 
 styles            Optional attributes for comments, keywords, functions, and
                   variables.

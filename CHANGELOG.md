@@ -7,6 +7,13 @@
 - Linked virt-column.nvim guides to the same quiet black structural highlight
   used by split separators and color columns.
 - Updated the README installation example, screenshots, and plugin support list.
+- Avoided Tree-sitter work during ordinary cursor movement by checking for a
+  quote-like character before querying syntax nodes.
+- Changed active bracket and quote pairs from bold-only emphasis to bold muted
+  warning-yellow emphasis without a background.
+- Completed Gitsigns highlight coverage with semantic colors for combined,
+  untracked, cursor-line, preview, virtual-line, and inline-diff states while
+  preserving Gitsigns' derived dimming for staged changes.
 
 ### Added
 
@@ -14,6 +21,12 @@
   Diffview, Neogit, and Neotest.
 - Added a native lualine theme that follows Limei's quiet surface hierarchy and
   semantic mode colors.
+- Added semantic highlight support for CodeCompanion, Aerial, nvim-navic, and
+  indent-blankline.nvim.
+- Added a deterministic visual specimen for reviewing palette identities,
+  states, surfaces, and interaction highlights.
+- Added audit enforcement against arbitrary non-palette colors and raw hex
+  values in highlight modules.
 
 ## [1.0.5]
 

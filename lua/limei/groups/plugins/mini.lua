@@ -2,6 +2,11 @@ local M = {}
 
 function M.get(c)
   return {
+    -- indent-blankline.nvim
+    IblIndent = { fg = c.indent, nocombine = true },
+    IblWhitespace = { fg = c.fg_hidden, nocombine = true },
+    IblScope = { fg = c.indent_scope, nocombine = true },
+
     -- mini.indentscope
     MiniIndentscopeSymbol = { fg = c.indent_scope, nocombine = true },
     MiniIndentscopeSymbolOff = { fg = c.indent, nocombine = true },

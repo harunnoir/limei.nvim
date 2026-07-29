@@ -38,13 +38,15 @@ assert(cursor_line_nr.bold == true)
 
 local match_paren = vim.api.nvim_get_hl(0, { name = "MatchParen", link = false })
 assert(match_paren.bold == true)
-for _, attribute in ipairs({ "fg", "bg", "sp", "underline", "undercurl", "reverse", "standout", "italic" }) do
+assert(match_paren.fg == tonumber(limei.get_palette().warning:sub(2), 16))
+for _, attribute in ipairs({ "bg", "sp", "underline", "undercurl", "reverse", "standout", "italic" }) do
   assert(match_paren[attribute] == nil or match_paren[attribute] == false)
 end
 
 local quote_match = vim.api.nvim_get_hl(0, { name = "LimeiMatchDelimiter", link = false })
 assert(quote_match.bold == true)
-for _, attribute in ipairs({ "fg", "bg", "sp", "underline", "undercurl", "reverse", "standout", "italic", "nocombine" }) do
+assert(quote_match.fg == tonumber(limei.get_palette().warning:sub(2), 16))
+for _, attribute in ipairs({ "bg", "sp", "underline", "undercurl", "reverse", "standout", "italic", "nocombine" }) do
   assert(quote_match[attribute] == nil or quote_match[attribute] == false)
 end
 
@@ -82,6 +84,7 @@ load({
 assert(vim.api.nvim_get_hl(0, { name = "TestLimeiOverride" }).fg ~= nil)
 
 for _, module in ipairs({
+  "ai",
   "completion",
   "dap",
   "files",
@@ -110,6 +113,16 @@ for _, group in ipairs({
   "@lsp.type.function",
   "DiagnosticError",
   "BlinkCmpKindFunction",
+  "GitSignsAdd",
+  "GitSignsChange",
+  "GitSignsDelete",
+  "GitSignsChangedelete",
+  "GitSignsUntracked",
+  "GitSignsAddInline",
+  "CodeCompanionChatToolSuccess",
+  "AerialFunctionIcon",
+  "NavicIconsClass",
+  "IblIndent",
   "TelescopeNormal",
   "NeoTreeDirectoryName",
   "NvimTreeFolderName",
@@ -126,6 +139,11 @@ local lualine_theme = require("lualine.themes.limei")
 assert(lualine_theme.normal.a.fg == limei.get_palette().fg_bright)
 assert(lualine_theme.insert.a.fg == limei.get_palette().literal)
 assert(lualine_theme.inactive.c.fg == limei.get_palette().fg_muted)
+
+local specimen = dofile("scripts/specimen.lua")
+assert(vim.bo[specimen].filetype == "limei-specimen")
+assert(vim.bo[specimen].modifiable == false)
+assert(vim.api.nvim_buf_line_count(specimen) > 20)
 
 local samples = {
   lua = "local answer = compute(42, 'quiet') -- note",

@@ -46,8 +46,8 @@ function M.get(c, options)
     CurSearch = { fg = c.bg, bg = c.warning, bold = true },
     IncSearch = { fg = c.bg, bg = c.warning, bold = true },
     Substitute = { fg = c.bg, bg = c.transform, bold = true },
-    MatchParen = { bold = true },
-    LimeiMatchDelimiter = { bold = true },
+    MatchParen = { fg = c.warning, bold = true },
+    LimeiMatchDelimiter = { fg = c.warning, bold = true },
 
     -- Tabs and statusline
     StatusLine = { fg = c.fg, bg = c.bg_surface },

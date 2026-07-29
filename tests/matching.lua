@@ -1,10 +1,10 @@
 local matching = require("limei.matching")
 
-local function assert_bold_only(name)
+local function assert_match_emphasis(name)
   local group = vim.api.nvim_get_hl(0, { name = name, link = false })
   assert(group.bold == true, name .. " is not bold")
+  assert(group.fg == tonumber(require("limei").get_palette().warning:sub(2), 16), name .. " does not use warning")
   for _, attribute in ipairs({
-    "fg",
     "bg",
     "sp",
     "underline",
@@ -22,8 +22,8 @@ local function assert_bold_only(name)
   end
 end
 
-assert_bold_only("MatchParen")
-assert_bold_only("LimeiMatchDelimiter")
+assert_match_emphasis("MatchParen")
+assert_match_emphasis("LimeiMatchDelimiter")
 
 local function matchparen_positions()
   for _, match in ipairs(vim.fn.getmatches()) do
@@ -109,6 +109,19 @@ local function assert_quote_pair(language, lines, opening, closing)
 end
 
 matching.setup({ brackets = true, quotes = true })
+
+vim.cmd.enew()
+vim.api.nvim_buf_set_lines(0, 0, -1, false, { "ordinary navigation" })
+vim.api.nvim_win_set_cursor(0, { 1, 5 })
+local original_get_node = vim.treesitter.get_node
+local tree_queries = 0
+vim.treesitter.get_node = function(...)
+  tree_queries = tree_queries + 1
+  return original_get_node(...)
+end
+matching.update(0)
+vim.treesitter.get_node = original_get_node
+assert(tree_queries == 0, "ordinary cursor movement performed a Tree-sitter quote query")
 
 assert_quote_pair("lua", { [[local value = "hello"]] }, { 0, 14, 15 }, { 0, 20, 21 })
 assert_quote_pair("lua", { [[local value = 'hello']] }, { 0, 14, 15 }, { 0, 20, 21 })

@@ -92,6 +92,24 @@ local function node_at(bufnr, row, col)
   return ok and node or nil
 end
 
+local function cursor_touches_quote(bufnr, row, col)
+  local line = vim.api.nvim_buf_get_lines(bufnr, row, row + 1, false)[1]
+  if not line then
+    return false
+  end
+
+  for _, candidate_col in ipairs({ col, col - 1 }) do
+    if candidate_col >= 0 then
+      local character = line:sub(candidate_col + 1, candidate_col + 1)
+      if character == "'" or character == '"' or character == "`" then
+        return true
+      end
+    end
+  end
+
+  return false
+end
+
 local function find_pair(bufnr, row, col)
   for _, candidate_col in ipairs({ col, col - 1 }) do
     local node = node_at(bufnr, row, candidate_col)
@@ -130,7 +148,12 @@ function M.update(bufnr)
   end
 
   local cursor = vim.api.nvim_win_get_cursor(0)
-  local pair = find_pair(bufnr, cursor[1] - 1, cursor[2])
+  local row, col = cursor[1] - 1, cursor[2]
+  if not cursor_touches_quote(bufnr, row, col) then
+    return
+  end
+
+  local pair = find_pair(bufnr, row, col)
   if not pair then
     return
   end
