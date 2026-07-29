@@ -20,22 +20,22 @@ local defaults = {
 
   -- Major code identities
   variable = "#ada9a3",
-  callable = "#9a897c",
-  structure = "#967a70",
-  literal = "#7f8c77",
-  numeric = "#9b8a6d",
-  type = "#97916f",
-  symbol = "#8d818a",
-  logic = "#898661",
+  callable = "#7984bd",
+  structure = "#ad72b9",
+  literal = "#50964a",
+  numeric = "#ac7e55",
+  type = "#759047",
+  symbol = "#4e919e",
+  logic = "#927cbf",
 
   -- State and relationship colors
-  error = "#96747d",
-  conflict = "#9d7461",
-  transform = "#9c805e",
-  warning = "#a38762",
-  success = "#768569",
-  information = "#788184",
-  navigation = "#918862",
+  error = "#bd7a85",
+  conflict = "#ba7e72",
+  transform = "#bc77a5",
+  warning = "#958f49",
+  success = "#4d9c6d",
+  information = "#6b91b6",
+  navigation = "#4c998d",
 
   -- Neutral UI colors
   border = "#373330",
