@@ -11,12 +11,13 @@ that remains readable and comfortable after ten hours.
 
 ### Editor
 
-<img width="1340" height="726" alt="image" src="https://github.com/user-attachments/assets/7e918655-6d03-470e-a9ee-d3817bcfde64" />
+<img width="1285" height="696" alt="image" src="https://github.com/user-attachments/assets/d6d3cf38-e484-4784-87b0-ca53fce96198" />
 
+<!--
 ### Explorer
 
 <img width="1340" height="726" alt="image" src="https://github.com/user-attachments/assets/325867c0-45f1-4666-a4f8-d435ba52a4b6" />
-
+-->
 ## A quiet, neutral palette
 
 Limei is emotionally neutral: calm, precise, detached from visual noise, and
