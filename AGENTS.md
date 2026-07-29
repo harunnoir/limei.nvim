@@ -49,6 +49,12 @@ semantic tokens, completion menus, symbol lists, LSP interfaces, and plugins.
 Related concepts should share an identity. Unrelated high-frequency concepts
 should not reuse the same visible color without a semantic reason.
 
+Keep every standard capture listed under Neovim's
+`treesitter-highlight-groups` explicitly defined. Do not rely on fallback when
+a specialized capture carries distinct meaning, such as paths, URLs, macros,
+symbols, checked states, or tag attributes. Update the standard-capture audit
+and parser-backed tests when Neovim adds or renames captures.
+
 ### State and relationship roles
 
 | Role | Meaning | Typical uses |

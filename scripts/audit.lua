@@ -196,6 +196,118 @@ check(groups.AerialFunctionIcon.fg == colors.callable, "Aerial functions do not 
 check(groups.NavicIconsClass.fg == colors.type, "Navic classes do not use type identity")
 check(groups.IblIndent.fg == colors.indent, "indent-blankline does not use the indent hierarchy")
 
+local standard_captures = {
+  "@variable",
+  "@variable.builtin",
+  "@variable.parameter",
+  "@variable.parameter.builtin",
+  "@variable.member",
+  "@constant",
+  "@constant.builtin",
+  "@constant.macro",
+  "@module",
+  "@module.builtin",
+  "@label",
+  "@string",
+  "@string.documentation",
+  "@string.regexp",
+  "@string.escape",
+  "@string.special",
+  "@string.special.symbol",
+  "@string.special.path",
+  "@string.special.url",
+  "@character",
+  "@character.special",
+  "@boolean",
+  "@number",
+  "@number.float",
+  "@type",
+  "@type.builtin",
+  "@type.definition",
+  "@attribute",
+  "@attribute.builtin",
+  "@property",
+  "@function",
+  "@function.builtin",
+  "@function.call",
+  "@function.macro",
+  "@function.method",
+  "@function.method.call",
+  "@constructor",
+  "@operator",
+  "@keyword",
+  "@keyword.coroutine",
+  "@keyword.function",
+  "@keyword.operator",
+  "@keyword.import",
+  "@keyword.type",
+  "@keyword.modifier",
+  "@keyword.repeat",
+  "@keyword.return",
+  "@keyword.debug",
+  "@keyword.exception",
+  "@keyword.conditional",
+  "@keyword.conditional.ternary",
+  "@keyword.directive",
+  "@keyword.directive.define",
+  "@punctuation",
+  "@punctuation.delimiter",
+  "@punctuation.bracket",
+  "@punctuation.special",
+  "@comment",
+  "@comment.documentation",
+  "@comment.error",
+  "@comment.warning",
+  "@comment.todo",
+  "@comment.note",
+  "@markup.strong",
+  "@markup.italic",
+  "@markup.strikethrough",
+  "@markup.underline",
+  "@markup.heading",
+  "@markup.heading.1",
+  "@markup.heading.2",
+  "@markup.heading.3",
+  "@markup.heading.4",
+  "@markup.heading.5",
+  "@markup.heading.6",
+  "@markup.quote",
+  "@markup.math",
+  "@markup.link",
+  "@markup.link.label",
+  "@markup.link.url",
+  "@markup.raw",
+  "@markup.raw.block",
+  "@markup.list",
+  "@markup.list.checked",
+  "@markup.list.unchecked",
+  "@diff.plus",
+  "@diff.minus",
+  "@diff.delta",
+  "@tag",
+  "@tag.builtin",
+  "@tag.attribute",
+  "@tag.delimiter",
+}
+for _, capture in ipairs(standard_captures) do
+  check(type(groups[capture]) == "table", "missing standard Tree-sitter capture: " .. capture)
+end
+
+for _, capture in ipairs({ "@none", "@conceal", "@spell", "@nospell" }) do
+  check(
+    type(groups[capture]) == "table" and vim.tbl_isempty(groups[capture]),
+    capture .. " must remain an unstyled Tree-sitter query control"
+  )
+end
+
+check(groups["@string.special.path"].link == "LimeiImport", "Tree-sitter paths do not use navigation identity")
+check(groups["@string.special.symbol"].link == "LimeiConstant", "Tree-sitter symbols do not use symbol identity")
+check(groups["@constant.macro"].link == "LimeiConstant", "Tree-sitter constant macros do not use symbol identity")
+check(groups["@function.macro"].link == "@function", "Tree-sitter function macros do not use callable identity")
+check(groups["@comment.note"].fg == colors.information, "Tree-sitter notes do not use information identity")
+check(groups["@markup.list.checked"].fg == colors.success, "checked markup does not use success identity")
+check(groups["@tag.attribute"].link == "LimeiVariable", "tag attributes do not use variable identity")
+
 local readme = table.concat(vim.fn.readfile("README.md"), "\n"):lower()
 for role, meaning in pairs(palette.semantic) do
   check(readme:find(role, 1, true) ~= nil, "README does not document " .. role)

@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-07-29
+
 ### Changed
 
 - Linked virt-column.nvim guides to the same quiet black structural highlight
@@ -27,6 +29,14 @@
   states, surfaces, and interaction highlights.
 - Added audit enforcement against arbitrary non-palette colors and raw hex
   values in highlight modules.
+- Added explicit semantic mappings for Neovim's complete standard Tree-sitter
+  capture taxonomy, including specialized strings, macros, directives, markup,
+  and tags.
+- Added parser-backed Lua, C, and Markdown capture tests plus an audit that
+  prevents standard Tree-sitter groups from going missing.
+- Audited the mappings against nvim-treesitter's shipped query vocabulary,
+  kept query-control captures unstyled, and added C parser tests distinguishing
+  callable function macros from symbolic constant macros.
 
 ## [1.0.5]
 

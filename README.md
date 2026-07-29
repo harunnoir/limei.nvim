@@ -49,6 +49,14 @@ These meanings remain stable across syntax, Treesitter, semantic tokens,
 diagnostics, Git, completion, LSP, file explorers, DAP, tasks, and plugins.
 Most code and UI remain neutral.
 
+Limei explicitly maps Neovim's complete standard Tree-sitter capture taxonomy.
+Specialized captures retain their actual meaning: paths use navigation, URLs
+use information, function-like macros use callable identity, constant macros
+and symbols use symbolic identity, checked items use success, and tag
+attributes use variable identity. Tree-sitter query-control captures remain
+unstyled. Parser-backed tests verify representative captures emitted by
+Neovim's Lua, C, and Markdown queries.
+
 ## Distinct semantic identities
 
 Important categories are recognizable without rainbow syntax:

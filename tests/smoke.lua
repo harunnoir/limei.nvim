@@ -168,4 +168,5 @@ end
 
 limei.load()
 dofile("tests/matching.lua")
+dofile("tests/treesitter.lua")
 print("limei.nvim smoke tests passed")
