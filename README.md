@@ -1,6 +1,8 @@
 **Heyyy... Shuush IT’S NIGHT... CODE doesn’t have to be noisy. let’s listen to the rain... drops... and our heartbeats... isn’t it Limei...**
 
-<img width="1254" height="1254" alt="image_2026-07-29_12-15-36" src="https://github.com/user-attachments/assets/e342b4d6-359f-4f77-8ba1-1c3f24c19366" />
+<div align="center">
+  <img src=".[/assets/logo.png](https://github.com/user-attachments/assets/a55dbb53-de65-4ed6-ad82-dd8fdbe24615)" alt="Limei logo" width="160">
+</div>
 
 # limei.nvim
 
