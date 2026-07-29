@@ -72,11 +72,11 @@ their values.
 | Role | Value | Role | Value |
 | --- | --- | --- | --- |
 | `variable` | `#ada9a3` | `callable` | `#9a897c` |
-| `structure` | `#967a70` | `literal` | `#7f8c77` |
-| `numeric` | `#9b8a6d` | `type` | `#97916f` |
+| `structure` | `#9a7869` | `literal` | `#7f8c77` |
+| `numeric` | `#a38762` | `type` | `#97916f` |
 | `symbol` | `#8d818a` | `logic` | `#898661` |
-| `error` | `#96747d` | `conflict` | `#9d7461` |
-| `transform` | `#9c805e` | `warning` | `#a38762` |
+| `error` | `#9a7477` | `conflict` | `#9b7469` |
+| `transform` | `#9c795e` | `warning` | `#a38762` |
 | `success` | `#768569` | `information` | `#788184` |
 | `navigation` | `#918862` | | |
 
@@ -116,9 +116,9 @@ Related elements share an identity; unrelated high-frequency categories do not
 reuse the same visible color. Parameters, modules, namespaces, operators,
 punctuation, paths, and metadata stay neutral or dim.
 
-Code identities and state colors remain distinct from one another. Added
-content uses success, changed content uses warning, removed content uses error,
-and untracked content stays neutral until its state becomes meaningful.
+Added content uses success, changed content uses warning, removed content uses
+error, and untracked content stays neutral until its state becomes meaningful.
+These mappings reuse Limei's canonical palette without altering its colors.
 
 ## Quiet surfaces
 
@@ -189,6 +189,7 @@ require("limei").setup({
   matching = {
     brackets = true,
     quotes = true,
+    string_delimiters = true,
   },
 
   styles = {
@@ -210,8 +211,9 @@ colorscheme after changing it.
 
 ### Matching pairs
 
-For asymmetric pairs such as parentheses, square brackets, and braces,
-Neovim’s built-in matching system emphasizes both endpoints. Limei loads that
+For asymmetric pairs such as parentheses, square brackets, braces, and angle
+brackets, Neovim’s built-in matching system emphasizes both endpoints. Limei
+adds `<:>` to `matchpairs` without replacing existing entries and loads that
 runtime matcher when `matching.brackets` is enabled, even when a plugin manager
 has omitted it from startup.
 
@@ -225,6 +227,13 @@ Matching emphasis uses the muted `warning` foreground with bold text. Limei
 adds no background, underline, or undercurl. Disable quote extmarks with
 `matching.quotes = false`; disable Limei’s built-in matcher activation with
 `matching.brackets = false`.
+
+Ordinary opening and closing string quotes use a secondary neutral foreground,
+separating delimiters from literal text without making strings busier. The
+parser-aware layer scans visible lines on buffer entry, edits, and scrolling;
+ordinary cursor movement performs no work. It ignores apostrophes in comments
+and quote-like characters that are not syntax delimiters. Disable it with
+`matching.string_delimiters = false`.
 
 ### Transparency and split presentation
 

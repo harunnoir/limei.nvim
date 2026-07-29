@@ -5,7 +5,7 @@
   "cursorColor": "#c0bbb3",
   "selectionBackground": "#292724",
   "black": "#080808",
-  "red": "#96747d",
+  "red": "#9a7477",
   "green": "#7f8c77",
   "yellow": "#a38762",
   "blue": "#788184",
@@ -13,11 +13,11 @@
   "cyan": "#837f78",
   "white": "#ada9a3",
   "brightBlack": "#393632",
-  "brightRed": "#9d7461",
+  "brightRed": "#9b7469",
   "brightGreen": "#768569",
   "brightYellow": "#97916f",
   "brightBlue": "#837f78",
-  "brightPurple": "#967a70",
+  "brightPurple": "#9a7869",
   "brightCyan": "#788184",
   "brightWhite": "#c0bbb3"
 }
