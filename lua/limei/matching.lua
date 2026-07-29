@@ -73,7 +73,7 @@ end
 
 local function cursor_touches(pair, row, col)
   for _, endpoint in pairs(pair) do
-    if row == endpoint[1] and col >= endpoint[2] and col <= endpoint[3] then
+    if row == endpoint[1] and col >= endpoint[2] and col < endpoint[3] then
       return true
     end
   end
@@ -98,30 +98,20 @@ local function cursor_touches_quote(bufnr, row, col)
     return false
   end
 
-  for _, candidate_col in ipairs({ col, col - 1 }) do
-    if candidate_col >= 0 then
-      local character = line:sub(candidate_col + 1, candidate_col + 1)
-      if character == "'" or character == '"' or character == "`" then
-        return true
-      end
-    end
-  end
-
-  return false
+  local character = line:sub(col + 1, col + 1)
+  return character == "'" or character == '"' or character == "`"
 end
 
 local function find_pair(bufnr, row, col)
-  for _, candidate_col in ipairs({ col, col - 1 }) do
-    local node = node_at(bufnr, row, candidate_col)
-    local depth = 0
-    while node and depth < 12 do
-      local pair = delimiter_pair(bufnr, node)
-      if pair and cursor_touches(pair, row, col) then
-        return pair
-      end
-      node = node:parent()
-      depth = depth + 1
+  local node = node_at(bufnr, row, col)
+  local depth = 0
+  while node and depth < 12 do
+    local pair = delimiter_pair(bufnr, node)
+    if pair and cursor_touches(pair, row, col) then
+      return pair
     end
+    node = node:parent()
+    depth = depth + 1
   end
   return nil
 end

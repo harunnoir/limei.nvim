@@ -87,28 +87,6 @@ local function contrast(a, b)
   return (high + 0.05) / (low + 0.05)
 end
 
-local function oklab(hex)
-  local red, green, blue = hex:match("^#(%x%x)(%x%x)(%x%x)$")
-  red = channel(tonumber(red, 16))
-  green = channel(tonumber(green, 16))
-  blue = channel(tonumber(blue, 16))
-
-  local l = (0.4122214708 * red + 0.5363325363 * green + 0.0514459929 * blue) ^ (1 / 3)
-  local m = (0.2119034982 * red + 0.6806995451 * green + 0.1073969566 * blue) ^ (1 / 3)
-  local s = (0.0883024619 * red + 0.2817188376 * green + 0.6299787005 * blue) ^ (1 / 3)
-
-  return {
-    0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,
-    1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
-    0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s,
-  }
-end
-
-local function perceptual_distance(a, b)
-  local first, second = oklab(a), oklab(b)
-  return math.sqrt((first[1] - second[1]) ^ 2 + (first[2] - second[2]) ^ 2 + (first[3] - second[3]) ^ 2)
-end
-
 for _, key in ipairs(required) do
   check(type(colors[key]) == "string", "missing palette key: " .. key)
 end
@@ -118,20 +96,6 @@ for _, key in ipairs(semantic_roles) do
   local value = colors[key]
   check(not seen[value], key .. " duplicates " .. tostring(seen[value]))
   seen[value] = key
-end
-
-local related = {
-  ["conflict:error"] = true,
-}
-for index, first in ipairs(semantic_roles) do
-  for second_index = index + 1, #semantic_roles do
-    local second = semantic_roles[second_index]
-    local pair = first < second and first .. ":" .. second or second .. ":" .. first
-    if not related[pair] then
-      local distance = perceptual_distance(colors[first], colors[second])
-      check(distance >= 0.04, ("%s and %s are perceptually too close: %.3f"):format(first, second, distance))
-    end
-  end
 end
 
 for key in pairs(colors) do

@@ -20,8 +20,8 @@ that remains readable and comfortable after ten hours.
 ## A quiet, neutral palette
 
 Limei is emotionally neutral: calm, precise, detached from visual noise, and
-timeless. Its muted spectrum balances warm and cool identities without letting
-one hue dominate the editor.
+timeless. It is not dominated by blue, cyan, icy, or metallic color. Cool color
+is reserved for occasional links, references, and informational states.
 
 ## Colors have meaning
 
@@ -74,9 +74,8 @@ Important categories are recognizable without rainbow syntax:
 | Comments | Secondary neutral |
 
 Related elements share an identity; unrelated high-frequency categories do not
-reuse the same visible color or a perceptually adjacent color. Parameters,
-modules, namespaces, operators, punctuation, paths, and metadata stay neutral
-or dim.
+reuse the same visible color. Parameters, modules, namespaces, operators,
+punctuation, paths, and metadata stay neutral or dim.
 
 Code identities and state colors remain distinct from one another. Added
 content uses success, changed content uses warning, removed content uses error,
@@ -225,6 +224,20 @@ require("limei").setup({
 
 The resolved palette is available through `require("limei").get_palette()`.
 Legacy v0.x palette role names remain accepted where practical.
+
+### Generated terminal themes
+
+Limei ships generated themes for Alacritty, Foot, Ghostty, Kitty, WezTerm, and
+Windows Terminal under `extras/`. They use the same palette and ANSI mapping as
+Neovim's terminal colors.
+
+After changing `palette.lua`, regenerate every external theme with:
+
+```sh
+make extras
+```
+
+`make check` fails when a generated theme is stale.
 
 ### Highlight overrides
 

@@ -98,11 +98,19 @@ local function assert_quote_pair(language, lines, opening, closing)
     end
   end
 
-  local content_col = opening[3] + 1
-  if opening[1] == closing[1] and content_col < closing[2] then
-    vim.api.nvim_win_set_cursor(0, { opening[1] + 1, content_col })
-    matching.update(bufnr)
-    assert(#extmarks(bufnr) == 0, language .. " pair remained active away from its delimiters")
+  local adjacent = {
+    { opening[1], opening[2] - 1 },
+    { opening[1], opening[3] },
+    { closing[1], closing[2] - 1 },
+    { closing[1], closing[3] },
+  }
+  for _, position in ipairs(adjacent) do
+    local line = lines[position[1] + 1]
+    if position[2] >= 0 and position[2] < #line then
+      vim.api.nvim_win_set_cursor(0, { position[1] + 1, position[2] })
+      matching.update(bufnr)
+      assert(#extmarks(bufnr) == 0, language .. " pair activated next to a delimiter")
+    end
   end
 
   return true

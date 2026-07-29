@@ -57,6 +57,12 @@ styles            Optional attributes for comments, keywords, functions, and
 
 palette           Palette overrides applied before highlights are generated.
 
+EXTERNAL TERMINAL THEMES
+
+Generated themes for Alacritty, Foot, Ghostty, Kitty, WezTerm, and Windows
+Terminal are available under extras/. Run `make extras` after palette changes.
+`make check` verifies that generated themes are current.
+
 highlights        A table or function returning final highlight overrides.
 
 ==============================================================================
