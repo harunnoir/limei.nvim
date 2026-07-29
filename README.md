@@ -17,7 +17,7 @@ that remains readable and comfortable after ten hours.
 
 ### Editor
 
-<img width="1285" height="696" alt="image" src="https://github.com/user-attachments/assets/d6d3cf38-e484-4784-87b0-ca53fce96198" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/5c347c45-822a-4839-a393-1c9748e5e780" />
 
 <!--
 ### Explorer
