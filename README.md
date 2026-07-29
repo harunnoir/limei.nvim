@@ -1,8 +1,8 @@
-**Heyyy... Shuush IT’S NIGHT... CODE doesn’t have to be noisy. let’s listen to the rain... drops... and our heartbeats... isn’t it Limei...**
-
 <div align="center">
   <img width="160" height="160" alt="image" src="https://github.com/user-attachments/assets/1d05b326-8a45-469b-8a72-ff58ddce85a0" />
 </div>
+
+**Heyyy... Shuush IT’S NIGHT... CODE doesn’t have to be noisy. let’s listen to the rain... drops... and our heartbeats... isn’t it Limei...**
 
 # limei.nvim
 
