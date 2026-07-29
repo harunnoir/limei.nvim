@@ -110,10 +110,22 @@ for _, group in ipairs({
   "@lsp.type.function",
   "DiagnosticError",
   "BlinkCmpKindFunction",
+  "TelescopeNormal",
+  "NeoTreeDirectoryName",
+  "NvimTreeFolderName",
+  "DiffviewStatusAdded",
+  "NeogitChangeDeleted",
+  "NeotestPassed",
+  "YaziFloat",
   "SnacksPicker",
 }) do
   assert(next(vim.api.nvim_get_hl(0, { name = group })) ~= nil, "missing highlight: " .. group)
 end
+
+local lualine_theme = require("lualine.themes.limei")
+assert(lualine_theme.normal.a.fg == limei.get_palette().fg_bright)
+assert(lualine_theme.insert.a.fg == limei.get_palette().literal)
+assert(lualine_theme.inactive.c.fg == limei.get_palette().fg_muted)
 
 local samples = {
   lua = "local answer = compute(42, 'quiet') -- note",

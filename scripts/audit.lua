@@ -154,6 +154,12 @@ for _, name in ipairs({ "Whitespace", "NonText", "SpecialKey" }) do
 end
 check(groups.EndOfBuffer.fg == groups.Normal.bg and groups.EndOfBuffer.bg == groups.Normal.bg, "EndOfBuffer is visible")
 check(groups.FloatBorder.link ~= "WinSeparator", "FloatBorder inherits the split separator")
+check(groups.TelescopeResultsFunction.link == "LimeiFunction", "Telescope functions do not use callable identity")
+check(groups.NeoTreeDirectoryName.link == "Directory", "Neo-tree directories do not use navigation identity")
+check(groups.NvimTreeFolderName.link == "Directory", "nvim-tree directories do not use navigation identity")
+check(groups.DiffviewStatusAdded.link == "LimeiAdded", "Diffview added state is inconsistent")
+check(groups.NeogitChangeDeleted.link == "LimeiRemoved", "Neogit deleted state is inconsistent")
+check(groups.NeotestPassed.fg == colors.success, "Neotest passed state is inconsistent")
 
 local readme = table.concat(vim.fn.readfile("README.md"), "\n"):lower()
 for role, meaning in pairs(palette.semantic) do

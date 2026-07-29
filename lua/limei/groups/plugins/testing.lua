@@ -2,6 +2,26 @@ local M = {}
 
 function M.get(c)
   return {
+    -- neotest
+    NeotestPassed = { fg = c.success },
+    NeotestFailed = { fg = c.error },
+    NeotestRunning = { fg = c.warning },
+    NeotestSkipped = { fg = c.fg_muted },
+    NeotestTest = { fg = c.fg },
+    NeotestNamespace = { fg = c.type },
+    NeotestFocused = { fg = c.fg_bright, bold = true, underline = true },
+    NeotestFile = { fg = c.fg },
+    NeotestDir = { fg = c.navigation },
+    NeotestBorder = { link = "FloatBorder" },
+    NeotestIndent = { fg = c.indent },
+    NeotestExpandMarker = { fg = c.fg_hidden },
+    NeotestAdapterName = { fg = c.fg_bright, bold = true },
+    NeotestWinSelect = { fg = c.warning, bold = true },
+    NeotestMarked = { fg = c.warning, bold = true },
+    NeotestTarget = { fg = c.transform },
+    NeotestUnknown = { fg = c.fg_muted },
+    NeotestWatching = { fg = c.information },
+
     -- Shared sidebar surface used by leetcode.nvim.
     NormalSB = { fg = c.fg, bg = c.bg },
 

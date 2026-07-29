@@ -245,16 +245,17 @@ Dedicated grouped highlights cover the visible interfaces in the project’s
 tested environment:
 
 - Blink, blink-cmp-words, and nvim-cmp
-- fzf-lua and fzf-oil
-- Oil, oil-git, and oil-lsp-diagnostics
-- Gitsigns, Gitgraph, and Undotree
+- Telescope, fzf-lua, and fzf-oil
+- Oil, Neo-tree, nvim-tree, Yazi, oil-git, and oil-lsp-diagnostics
+- Gitsigns, Diffview, Neogit, Gitgraph, and Undotree
 - Lspsaga, Fidget, Glance, Trouble, Tiny Inline Diagnostic, symbol-usage, and Quicker
 - nvim-dap and nvim-dap-ui
+- Neotest, Overseer, and Leetcode
 - Mini Indentscope, Starter, Hipatterns, and Surround
 - render-markdown and CSVView
 - Snacks picker, explorer, dashboard, notifier, input, terminal, indent, and diff
-- lazy.nvim, Mason, WhichKey, Noice, Notify, Slimline, Bufferline, Satellite, virt-column.nvim, and ToggleTerm
-- Overseer, Leetcode, Flash, todo-comments, grug-far, Marks, Harpoon, Yanky, hardtime, Haunt, and nvim-ufo
+- lazy.nvim, Mason, WhichKey, Noice, Notify, lualine, Slimline, Bufferline, Satellite, virt-column.nvim, and ToggleTerm
+- Flash, todo-comments, grug-far, Marks, Harpoon, Yanky, hardtime, Haunt, and nvim-ufo
 
 Plugins without dedicated highlight groups inherit standard editor, syntax,
 diagnostic, diff, popup, and floating-window groups. No plugin is required at

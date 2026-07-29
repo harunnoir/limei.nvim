@@ -8,6 +8,13 @@
   used by split separators and color columns.
 - Updated the README installation example, screenshots, and plugin support list.
 
+### Added
+
+- Added semantic highlight support for Telescope, Neo-tree, nvim-tree, Yazi,
+  Diffview, Neogit, and Neotest.
+- Added a native lualine theme that follows Limei's quiet surface hierarchy and
+  semantic mode colors.
+
 ## [1.0.5]
 
 ### Added
