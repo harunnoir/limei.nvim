@@ -81,6 +81,14 @@ their values.
 | `success` | `#768569` | `information` | `#788184` |
 | `navigation` | `#918862` | | |
 
+`#9b7469` is also Limei's signature visual center. The canonical palette keeps
+its original `conflict` meaning for merge and interruption states, while the
+focused `LimeiSignature` highlight reuses that locked value for selected
+declarations, primary Markdown headings, and compact normal-mode emphasis. It
+is never assigned to ordinary variables, punctuation, or persistent surfaces.
+Clay, transform orange, callable taupe, and warning amber provide related warm
+distinctions without deriving or adding colors.
+
 ### Structural colors
 
 | Role | Value | Role | Value |
@@ -105,7 +113,8 @@ Important categories are recognizable without rainbow syntax:
 | --- | --- |
 | Variables, fields, properties | Neutral data |
 | Functions and methods | Muted callable |
-| Keywords and declarations | Muted structure |
+| General keywords and tags | Muted structure |
+| Selected declarations | Signature rust |
 | Strings and characters | Muted literal |
 | Numbers and floats | Muted numeric |
 | Types and schemas | Muted type |

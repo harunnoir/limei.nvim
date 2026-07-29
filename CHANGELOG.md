@@ -4,6 +4,9 @@
 
 ### Changed
 
+- Established locked `#9b7469` as a focused signature accent for selected
+  declarations, primary Markdown headings, and compact normal-mode labels,
+  supported by clay, orange, taupe, amber, and neutral high-frequency syntax.
 - Balanced legacy shell, Tree-sitter, semantic-token, completion, and symbol
   highlights so frequent variables and punctuation remain neutral while
   commands, control flow, built-ins, operators, modules, and attributes retain

@@ -29,6 +29,9 @@ assert(separator.bg == nil)
 assert(vim.api.nvim_get_hl(0, { name = "VertSplit" }).link == "WinSeparator")
 assert(vim.api.nvim_get_hl(0, { name = "VirtColumn" }).link == "WinSeparator")
 
+local cursor = vim.api.nvim_get_hl(0, { name = "Cursor", link = false })
+assert(cursor.bg == tonumber(limei.get_palette().callable:sub(2), 16))
+
 local line_nr = vim.api.nvim_get_hl(0, { name = "LineNr", link = false })
 local cursor_line_nr = vim.api.nvim_get_hl(0, { name = "CursorLineNr", link = false })
 assert(line_nr.fg == tonumber(limei.get_palette().fg_hidden:sub(2), 16))
@@ -97,6 +100,8 @@ local effective_roles = {
   ["@number"] = "numeric",
   ["@constant"] = "symbol",
   ["@keyword"] = "structure",
+  ["@keyword.function"] = "conflict",
+  ["@keyword.directive.define"] = "conflict",
   ["@keyword.conditional"] = "transform",
   ["@operator"] = "logic",
   ["@punctuation.bracket"] = "fg_dim",
@@ -110,7 +115,7 @@ local effective_roles = {
   DiagnosticError = "error",
   DiagnosticWarn = "warning",
   DiagnosticInfo = "information",
-  DiagnosticHint = "fg_dim",
+  DiagnosticHint = "literal",
 }
 for name, role in pairs(effective_roles) do
   assert_foreground(name, role)
@@ -191,7 +196,7 @@ for _, group in ipairs({
 end
 
 local lualine_theme = require("lualine.themes.limei")
-assert(lualine_theme.normal.a.fg == limei.get_palette().fg_bright)
+assert(lualine_theme.normal.a.fg == limei.get_palette().conflict)
 assert(lualine_theme.insert.a.fg == limei.get_palette().literal)
 assert(lualine_theme.inactive.c.fg == limei.get_palette().fg_muted)
 for _, mode in pairs(lualine_theme) do

@@ -241,6 +241,13 @@ check(
   "LimeiMatchDelimiter must use bold warning emphasis"
 )
 check(groups.LimeiStringDelimiter.link == "LimeiMuted", "string delimiters do not use muted neutral emphasis")
+check(groups.LimeiSignature.fg == colors.conflict, "signature highlight does not use locked #9B7469")
+check(groups.LimeiDeclaration.fg == colors.conflict, "selected declarations do not use the signature identity")
+check(
+  groups.ModeMsg.fg == colors.conflict and groups.ModeMsg.bold,
+  "compact mode messages do not use signature emphasis"
+)
+check(groups.Cursor.bg == colors.callable, "primary cursor focus does not use callable taupe")
 
 -- Frequency-aware syntax invariants. Ordinary data and punctuation stay
 -- neutral, while medium-frequency identities resolve to distinct palette roles.
@@ -253,6 +260,7 @@ for _, name in ipairs({
   "@lsp.type.property",
 }) do
   uses_foreground(name, colors.variable, name .. " does not use neutral variable identity")
+  check(resolve(name).fg ~= colors.conflict, name .. " incorrectly uses signature rust")
 end
 for _, name in ipairs({ "@variable.parameter", "@variable.parameter.builtin", "@lsp.type.parameter" }) do
   uses_foreground(name, colors.fg_dim, name .. " does not use dim parameter identity")
@@ -378,7 +386,7 @@ local shell_roles = {
   bashStatement = "callable",
   shCommandSub = "callable",
   shOption = "information",
-  shLoop = "transform",
+  shLoop = "structure",
   shConditional = "transform",
   shTestOpr = "logic",
   shOperator = "logic",
@@ -413,7 +421,9 @@ check(groups.OilGitUntracked.fg == colors.fg_dim, "Oil untracked state is too pr
 check(groups.OilCopy.fg == colors.transform, "Oil copy does not use transform")
 check(groups.OilMove.fg == colors.transform, "Oil move does not use transform")
 check(groups.OilCreate.fg == colors.success, "Oil create does not use success")
-check(groups.LimeiHint.fg == colors.fg_dim, "hints do not use the secondary neutral hierarchy")
+check(groups.LimeiHint.fg == colors.literal, "hints do not use restrained sage identity")
+check(groups.DiagnosticHint.link == "LimeiHint", "diagnostic hints do not inherit sage hint identity")
+check(groups.DiagnosticUnderlineHint.sp == colors.literal, "diagnostic hint undercurls do not use sage")
 check(groups.CodeCompanionChatToolSuccess.fg == colors.success, "CodeCompanion success state is inconsistent")
 check(groups.AerialFunctionIcon.fg == colors.callable, "Aerial functions do not use callable identity")
 check(groups.NavicIconsClass.fg == colors.type, "Navic classes do not use type identity")
@@ -482,6 +492,30 @@ check(groups.RenderMarkdownLinkTitle.link == "RenderMarkdownLink", "render-markd
 check(groups.RenderMarkdownChecked.fg == colors.success, "render-markdown checked state is inconsistent")
 check(groups.RenderMarkdownUnchecked.fg == colors.warning, "render-markdown unchecked state is inconsistent")
 check(groups.RenderMarkdownError.fg == colors.error, "render-markdown error callout is inconsistent")
+
+local heading_roles = {
+  [1] = "conflict",
+  [2] = "structure",
+  [3] = "callable",
+  [4] = "type",
+  [5] = "information",
+  [6] = "symbol",
+}
+for level, role in ipairs(heading_roles) do
+  local tree_name = "@markup.heading." .. level
+  local render_name = "RenderMarkdownH" .. level
+  check(
+    groups[tree_name].fg == colors[role] and groups[tree_name].bold,
+    tree_name .. " does not use the restrained heading sequence"
+  )
+  check(
+    groups[render_name].fg == colors[role] and groups[render_name].bold,
+    render_name .. " disagrees with the Tree-sitter heading sequence"
+  )
+end
+check(groups["@tag"].link == "LimeiKeyword", "tags do not use general clay structure")
+check(groups.Tag.link == "LimeiKeyword", "legacy tags do not use general clay structure")
+check(groups.SlimlineModeNormal.fg == colors.conflict, "slimline normal mode does not use compact signature emphasis")
 
 local standard_captures = {
   "@variable",

@@ -3,12 +3,12 @@ local M = {}
 function M.get(c)
   local groups = {
     -- render-markdown.nvim
-    RenderMarkdownH1 = { fg = c.fg_bright, bold = true },
-    RenderMarkdownH2 = { link = "RenderMarkdownH1" },
-    RenderMarkdownH3 = { link = "RenderMarkdownH1" },
-    RenderMarkdownH4 = { link = "RenderMarkdownH1" },
-    RenderMarkdownH5 = { link = "RenderMarkdownH1" },
-    RenderMarkdownH6 = { link = "RenderMarkdownH1" },
+    RenderMarkdownH1 = { fg = c.conflict, bold = true },
+    RenderMarkdownH2 = { fg = c.structure, bold = true },
+    RenderMarkdownH3 = { fg = c.callable, bold = true },
+    RenderMarkdownH4 = { fg = c.type, bold = true },
+    RenderMarkdownH5 = { fg = c.information, bold = true },
+    RenderMarkdownH6 = { fg = c.symbol, bold = true },
     RenderMarkdownH1Bg = { bg = c.bg_alt },
     RenderMarkdownH2Bg = { link = "RenderMarkdownH1Bg" },
     RenderMarkdownH3Bg = { link = "RenderMarkdownH1Bg" },

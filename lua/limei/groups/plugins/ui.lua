@@ -34,7 +34,7 @@ function M.get(c)
     NotifyINFOBorder = { link = "DiagnosticInfo" },
 
     -- slimline.nvim and bufferline.nvim
-    SlimlineModeNormal = { fg = c.fg_bright, bold = true },
+    SlimlineModeNormal = { fg = c.conflict, bold = true },
     SlimlineModeInsert = { fg = c.literal, bold = true },
     SlimlineModeVisual = { fg = c.symbol, bold = true },
     SlimlineModeReplace = { fg = c.transform, bold = true },

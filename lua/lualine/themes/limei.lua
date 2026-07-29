@@ -6,7 +6,7 @@ local section_c = { fg = c.fg_dim, bg = status_bg }
 
 return {
   normal = {
-    a = { fg = c.fg_bright, bg = status_bg, gui = "bold" },
+    a = { fg = c.conflict, bg = status_bg, gui = "bold" },
     b = section_b,
     c = section_c,
   },

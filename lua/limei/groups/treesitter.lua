@@ -88,12 +88,12 @@ function M.get(c)
 
     -- Markup
     ["@markup.heading"] = { link = "Title" },
-    ["@markup.heading.1"] = { link = "@markup.heading" },
-    ["@markup.heading.2"] = { link = "@markup.heading" },
-    ["@markup.heading.3"] = { link = "@markup.heading" },
-    ["@markup.heading.4"] = { link = "@markup.heading" },
-    ["@markup.heading.5"] = { link = "@markup.heading" },
-    ["@markup.heading.6"] = { link = "@markup.heading" },
+    ["@markup.heading.1"] = { fg = c.conflict, bold = true },
+    ["@markup.heading.2"] = { fg = c.structure, bold = true },
+    ["@markup.heading.3"] = { fg = c.callable, bold = true },
+    ["@markup.heading.4"] = { fg = c.type, bold = true },
+    ["@markup.heading.5"] = { fg = c.information, bold = true },
+    ["@markup.heading.6"] = { fg = c.symbol, bold = true },
     ["@markup.link"] = { fg = c.information },
     ["@markup.link.url"] = { fg = c.information, underline = true },
     ["@markup.raw"] = { link = "LimeiString" },
@@ -115,7 +115,7 @@ function M.get(c)
     ["@diff.delta"] = { link = "LimeiChanged" },
 
     -- Tags
-    ["@tag"] = { link = "LimeiDeclaration" },
+    ["@tag"] = { link = "LimeiKeyword" },
     ["@tag.builtin"] = { link = "@tag" },
     ["@tag.attribute"] = { link = "LimeiInfo" },
     ["@tag.delimiter"] = { link = "LimeiPunctuation" },

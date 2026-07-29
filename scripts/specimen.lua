@@ -9,6 +9,7 @@ local entries = {
   { label = "Variable", group = "LimeiVariable", text = "request context property" },
   { label = "Callable", group = "LimeiFunction", text = "render_preview()" },
   { label = "Structure", group = "LimeiKeyword", text = "local function return end" },
+  { label = "Signature", group = "LimeiSignature", text = "selected declaration identity" },
   { label = "Literal", group = "LimeiString", text = '"quiet textual content"' },
   { label = "Numeric", group = "LimeiNumber", text = "10 42 3.14159" },
   { label = "Type", group = "LimeiType", text = "Palette HighlightGroup Result" },

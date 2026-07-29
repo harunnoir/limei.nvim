@@ -21,7 +21,7 @@ function M.get(c, options)
     VertSplit = { link = "WinSeparator" },
 
     -- Cursor and current line
-    Cursor = { fg = c.bg, bg = c.fg_bright },
+    Cursor = { fg = c.bg, bg = c.callable },
     lCursor = { link = "Cursor" },
     CursorIM = { link = "Cursor" },
     TermCursor = { link = "Cursor" },
@@ -86,7 +86,7 @@ function M.get(c, options)
     ErrorMsg = { link = "LimeiError" },
     WarningMsg = { link = "LimeiWarning" },
     MoreMsg = { link = "LimeiInfo" },
-    ModeMsg = { fg = c.fg_bright, bold = true },
+    ModeMsg = { fg = c.conflict, bold = true },
     Question = { link = "LimeiInfo" },
     QuickFixLine = { fg = c.fg_bright, bg = c.bg_selection },
 
